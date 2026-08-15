@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://srkuul614xex"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_opxtw"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_bh8b2"]
+sky_material = SubResource("ProceduralSkyMaterial_opxtw")
+
+[sub_resource type="Environment" id="Environment_x7uim"]
+background_mode = 1
+sky = SubResource("Sky_bh8b2")
+ssr_enabled = true
+ssao_enabled = true
+ssil_enabled = true
+sdfgi_enabled = true
+glow_enabled = true
+fog_density = 1.0
+fog_height = -3.0
+fog_height_density = 16.0
+volumetric_fog_density = 0.01
+
+[node name="PrototypeMap" type="Node" unique_id=244975850]
+
+[node name="Enviroment" type="Node" parent="." unique_id=1932585649]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Enviroment" unique_id=1961470598]
+environment = SubResource("Environment_x7uim")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Enviroment" unique_id=2030592686]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 10, 0)
+shadow_enabled = true
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=1715991785]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D" unique_id=2142864911]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
+size = Vector3(5, 20, 5)

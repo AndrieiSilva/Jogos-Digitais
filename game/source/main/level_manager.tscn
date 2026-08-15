@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://drng4k7jthcc8"]
+
+[ext_resource type="Script" uid="uid://c0vmpa50xon71" path="res://source/main/level_manager.gd" id="1_fr5ec"]
+[ext_resource type="PackedScene" uid="uid://srkuul614xex" path="res://source/maps/prototype_map/prototype_map.tscn" id="2_430wv"]
+[ext_resource type="PackedScene" uid="uid://fa1ku65wjwod" path="res://source/components/camera/cam_component.tscn" id="3_nw4ga"]
+
+[node name="LevelManager" type="Node" unique_id=145092760]
+script = ExtResource("1_fr5ec")
+metadata/_custom_type_script = "uid://c0vmpa50xon71"
+
+[node name="World" type="Node" parent="." unique_id=20449118]
+
+[node name="CurrentMap" type="Node" parent="World" unique_id=303693236]
+
+[node name="PrototypeMap" parent="World/CurrentMap" unique_id=854168582 instance=ExtResource("2_430wv")]
+
+[node name="Cameras" type="Node" parent="." unique_id=610777951]
+
+[node name="CameraPivot" type="Node3D" parent="Cameras" unique_id=1838129483]
+
+[node name="CameraGimbal" type="Node3D" parent="Cameras/CameraPivot" unique_id=904837406]
+
+[node name="Camera3D" type="Camera3D" parent="Cameras/CameraPivot/CameraGimbal" unique_id=731212925]
+projection = 1
+
+[node name="Components" type="Node" parent="." unique_id=414114676]
+
+[node name="CamComponent" parent="Components" unique_id=698739723 node_paths=PackedStringArray("cam", "cam_gimbal", "cam_pivot") instance=ExtResource("3_nw4ga")]
+cam = NodePath("../../Cameras/CameraPivot/CameraGimbal/Camera3D")
+cam_gimbal = NodePath("../../Cameras/CameraPivot/CameraGimbal")
+cam_pivot = NodePath("../../Cameras/CameraPivot")
+
+[node name="Node3D" type="Node3D" parent="." unique_id=740793939]
