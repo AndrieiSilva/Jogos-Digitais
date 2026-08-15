@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://srkuul614xex"]
+[gd_scene format=4 uid="uid://srkuul614xex"]
+
+[ext_resource type="LightmapGIData" uid="uid://bbwuxfqgkv2v0" path="res://data/lightmap/prototype_map_lightmap_gi_data.tres" id="1_bh8b2"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_opxtw"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -9,16 +11,32 @@ sky_material = SubResource("ProceduralSkyMaterial_opxtw")
 
 [sub_resource type="Environment" id="Environment_x7uim"]
 background_mode = 1
+background_color = Color(0.10363438, 0.13329297, 0.16294444, 1)
 sky = SubResource("Sky_bh8b2")
+ambient_light_source = 2
+tonemap_mode = 4
+tonemap_exposure = 0.9
+tonemap_agx_contrast = 1.5
 ssr_enabled = true
-ssao_enabled = true
-ssil_enabled = true
-sdfgi_enabled = true
 glow_enabled = true
 fog_density = 1.0
 fog_height = -3.0
 fog_height_density = 16.0
 volumetric_fog_density = 0.01
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_bh8b2"]
+lightmap_size_hint = Vector2i(642, 830)
+_surfaces = [{
+"aabb": AABB(-10, -5, -10, 20, 5, 20),
+"attribute_data": PackedByteArray("AACAPwAAgD/2zH8/2WB9PwAAgD8AAAAA9sx/P0ayAT8AAAAAAAAAAMeGVz9GsgE/AACAPwAAgD8Q7Fg83IX5PgAAgD8AAAAAEOxYPIFxeD8AAAAAAAAAACtKIz+BcXg/AACAPwAAgD9X03c/ZsUAPwAAgD8AAAAAKY1PP2bFAD8AAAAAAAAAACmNTz9f2qI8AAAAAAAAgD/Hhlc/2WB9PwAAgD8AAIA/td0qP4XYfz8AAIA/AAAAAOMjUz+F2H8/AAAAAAAAAADjI1M/8ikEPwAAAAAAAAAAhRkgPxus9z4AAAAAAACAP3gpTDobrPc+AACAPwAAgD94KUw6B+sdOgAAAAAAAIA/K0ojP9yF+T4AAAAAAACAP7XdKj/yKQQ/AACAPwAAgD+Ywkw/X9qiPAAAgD8AAAAAmMJMP2bFAD8AAAAAAAAAAGl8JD9mxQA/AAAAAAAAgD9X03c/X9qiPAAAgD8AAAAAhRkgPwfrHToAAAAAAACAP2l8JD9f2qI8"),
+"format": 34359742519,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAwAEAAUABgAHAAgAAgAJAAAACgALAAwADQAOAA8ABQAQAAMADAARAAoAEgATABQACAAVAAYADwAWAA0AFAAXABIA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AAAgwQAAoMAAACBBAAAgwQAAoMAAACDBAAAgwQAAAAAAACDBAAAgQQAAoMAAACDBAAAgwQAAoMAAACDBAAAgwQAAoMAAACBBAAAgwQAAAAAAACDBAAAgwQAAoMAAACDBAAAgQQAAoMAAACDBAAAgwQAAAAAAACBBAAAgwQAAoMAAACBBAAAgwQAAAAAAACBBAAAgQQAAAAAAACBBAAAgQQAAAAAAACBBAAAgwQAAAAAAACBBAAAgwQAAAAAAACDBAAAgQQAAoMAAACBBAAAgQQAAoMAAACBBAAAgQQAAoMAAACDBAAAgQQAAoMAAACBBAAAgQQAAAAAAACBBAAAgQQAAAAAAACDBAAAgQQAAAAAAACDBAAAgQQAAAAAAACDBAAAAgP9//n8AAACA/3/+fwAAAID/f/5/AIAAAP//AAAAgAAA//8AAACAAAD//wAA/////wAA/z//////AAD/P/////8AAP8/AAAAgP9//n//f/9/AAD/P/9//38AAP8//3//fwAA/z8AgP////8AAACA/////wAAAID/////AAAAgAAA//8AAP9//38AAP8///8AgP9//n///wCA/3/+f///AID/f/5//////wAA/z8AgP////8AAP//AID/f/5/")
+}]
 
 [node name="PrototypeMap" type="Node" unique_id=244975850]
 
@@ -29,10 +47,55 @@ environment = SubResource("Environment_x7uim")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Enviroment" unique_id=2030592686]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 10, 0)
+light_color = Color(0.27387285, 0.27387273, 0.2738727, 1)
+light_bake_mode = 1
 shadow_enabled = true
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=1715991785]
+visible = false
 
 [node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D" unique_id=2142864911]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
-size = Vector3(5, 20, 5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.5, 0)
+size = Vector3(20, 5, 20)
+
+[node name="CSGBakedMeshInstance3D" type="MeshInstance3D" parent="." unique_id=956494831]
+mesh = SubResource("ArrayMesh_bh8b2")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=718956035]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 3, 5)
+light_color = Color(0.9490196, 0.77254903, 0.4509804, 1)
+light_energy = 1.6
+light_bake_mode = 1
+shadow_enabled = true
+omni_range = 10.0
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="." unique_id=2096274931]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 3, -5)
+light_color = Color(0.9490196, 0.77254903, 0.4509804, 1)
+light_energy = 1.6
+light_bake_mode = 1
+shadow_enabled = true
+omni_range = 10.0
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="." unique_id=645667877]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 3, 5)
+light_color = Color(0.9490196, 0.77254903, 0.4509804, 1)
+light_energy = 1.6
+light_bake_mode = 1
+shadow_enabled = true
+omni_range = 10.0
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="." unique_id=78341716]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 3, -5)
+light_color = Color(0.9490196, 0.77254903, 0.4509804, 1)
+light_energy = 1.6
+light_bake_mode = 1
+shadow_enabled = true
+omni_range = 10.0
+
+[node name="LightmapGI" type="LightmapGI" parent="." unique_id=629839765]
+quality = 3
+supersampling = true
+supersampling_factor = 8.0
+bounces = 4
+light_data = ExtResource("1_bh8b2")

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://c0vmpa50xon71" path="res://source/main/level_manager.gd" id="1_fr5ec"]
 [ext_resource type="PackedScene" uid="uid://srkuul614xex" path="res://source/maps/prototype_map/prototype_map.tscn" id="2_430wv"]
 [ext_resource type="PackedScene" uid="uid://fa1ku65wjwod" path="res://source/components/camera/cam_component.tscn" id="3_nw4ga"]
+[ext_resource type="Resource" uid="uid://g7uvol5l3yg" path="res://data/resource/camera/base_camera.tres" id="4_pypv5"]
 
 [node name="LevelManager" type="Node" unique_id=145092760]
 script = ExtResource("1_fr5ec")
@@ -29,5 +30,4 @@ projection = 1
 cam = NodePath("../../Cameras/CameraPivot/CameraGimbal/Camera3D")
 cam_gimbal = NodePath("../../Cameras/CameraPivot/CameraGimbal")
 cam_pivot = NodePath("../../Cameras/CameraPivot")
-
-[node name="Node3D" type="Node3D" parent="." unique_id=740793939]
+camera_data = ExtResource("4_pypv5")

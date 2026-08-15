@@ -4,12 +4,9 @@ var move_vector2 : Vector2 = Vector2.ZERO
 @export var cam : Camera3D = null
 @export var cam_gimbal : Node3D = null
 @export var cam_pivot : Node3D = null
+@export var target : Node3D = null
 
-@export var target : Node3D
-
-@export var cam_distance : float = 15
-@export var cam_move_speed : float = 5
-@export var cam_rot_strength_degrees : float = 45
+@export var camera_data : CameraData = null
 
 func _ready() -> void:
 	if not cam or not cam_gimbal or not cam_pivot:
@@ -17,11 +14,11 @@ func _ready() -> void:
 		return
 	
 	cam.projection = Camera3D.PROJECTION_ORTHOGONAL
-	cam.size = cam_distance
+	cam.size = camera_data.cam_distance_base
 	
-	cam.position = Vector3(0, 0, cam_distance)
+	cam.position = Vector3(0, 0, camera_data.cam_distance_base)
 	
-	cam_pivot.rotation_degrees.y = cam_rot_strength_degrees
+	cam_pivot.rotation_degrees.y = camera_data.cam_rot_strenght_degrees
 	
 
 	var pitch_rad = -atan(0.5) 
@@ -32,9 +29,10 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	_update_move_vector2()
 	_move_camera(delta)
+	_rotate_camera(delta)
 
 
-func _move_camera(delta: float) -> void:
+func _move_camera(delta : float) -> void:
 	if target:
 		cam_pivot.global_position = target.global_position
 	else:
@@ -47,7 +45,23 @@ func _move_camera(delta: float) -> void:
 		right = right.normalized()
 		
 		var final_move_vector3 : Vector3 = (forward * -move_vector2.y) + (right * move_vector2.x)
-		cam_pivot.global_position += final_move_vector3 * cam_move_speed * delta
+		final_move_vector3 = final_move_vector3.normalized()
+		cam_pivot.global_position += final_move_vector3 * camera_data.cam_move_speed * delta
+
+
+func _rotate_camera(delta : float) -> void:
+	var rot_dir : int = 0
+	
+	if Input.is_action_just_pressed("cam_rotate_left"):
+		rot_dir = -1
+	elif Input.is_action_just_pressed("cam_rotate_right"):
+		rot_dir = 1
+	else:
+		rot_dir = 0
+	
+	cam_pivot.rotation_degrees.y = wrapf((camera_data.cam_rot_strenght_degrees * rot_dir)\
+			+ cam_pivot.rotation_degrees.y, 0, 360)
+
 
 func _update_move_vector2() -> void:
 	move_vector2 = Input.get_vector(
