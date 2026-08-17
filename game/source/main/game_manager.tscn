@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://df7bwhcm262i6"]
+
+[ext_resource type="Script" uid="uid://blw7bmex23ju8" path="res://source/main/game_manager.gd" id="1_761ke"]
+[ext_resource type="PackedScene" uid="uid://drng4k7jthcc8" path="res://source/main/level_manager.tscn" id="2_e2sej"]
+
+[node name="Main" type="Node" unique_id=1366001350]
+script = ExtResource("1_761ke")
+metadata/_custom_type_script = "uid://blw7bmex23ju8"
+
+[node name="Layers" type="Node" parent="." unique_id=858211834]
+
+[node name="Game" type="CanvasLayer" parent="Layers" unique_id=1397656494]
+
+[node name="LevelManager" parent="Layers/Game" unique_id=145092760 instance=ExtResource("2_e2sej")]

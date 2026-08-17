@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CameraData" format=3 uid="uid://g7uvol5l3yg"]
+
+[ext_resource type="Script" uid="uid://berek24r3ubf0" path="res://data/resource/camera/camera_data.gd" id="1_epn60"]
+
+[resource]
+script = ExtResource("1_epn60")
+cam_distance = 20.0
+cam_size = 15.0
+cam_move_speed = 7.0
+metadata/_custom_type_script = "uid://berek24r3ubf0"

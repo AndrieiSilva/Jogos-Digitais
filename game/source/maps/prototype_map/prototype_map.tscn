@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://srkuul614xex"]
+
+[ext_resource type="PackedScene" uid="uid://bp6g7ygw6n0cd" path="res://assets/models/maps/Map.glb" id="2_x7uim"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_x7uim"]
+
+[sub_resource type="Sky" id="Sky_bh8b2"]
+sky_material = SubResource("ProceduralSkyMaterial_x7uim")
+
+[sub_resource type="Environment" id="Environment_x7uim"]
+background_mode = 2
+background_color = Color(0.101960786, 0.13333334, 0.16470589, 1)
+sky = SubResource("Sky_bh8b2")
+ambient_light_source = 2
+ambient_light_color = Color(0.23529412, 0.29411766, 0.3529412, 1)
+reflected_light_source = 2
+tonemap_mode = 4
+tonemap_exposure = 0.9
+tonemap_agx_contrast = 1.75
+ssr_enabled = true
+ssao_enabled = true
+ssil_enabled = true
+sdfgi_enabled = true
+glow_enabled = true
+fog_mode = 1
+fog_light_color = Color(0.7876186, 0.794624, 0.94896346, 1)
+fog_density = 1.0
+fog_sky_affect = 0.0
+fog_depth_curve = 0.002167126
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.005
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_xisrv"]
+vertices = PackedVector3Array(-49.25, 0.5, -49.25, -49.25, 0.5, 49.25, 49.25, 0.5, 49.25, 49.25, 0.5, -49.25)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+agent_radius = 0.75
+
+[node name="PrototypeMap" type="Node" unique_id=244975850]
+
+[node name="Enviroment" type="Node" parent="." unique_id=1932585649]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Enviroment" unique_id=1961470598]
+environment = SubResource("Environment_x7uim")
+
+[node name="Sun_Realtime" type="DirectionalLight3D" parent="Enviroment" unique_id=2030592686]
+transform = Transform3D(0.70710677, -0.2418448, -0.664463, 0, -0.9396926, 0.3420202, -0.70710677, -0.2418448, -0.664463, 0, 10, 0)
+light_color = Color(0.5882353, 0.5882353, 0.78431374, 1)
+shadow_enabled = true
+
+[node name="Node" type="Node" parent="." unique_id=1262571599]
+
+[node name="Model" type="Node" parent="." unique_id=653506784]
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="Model" unique_id=1063666634]
+visible = false
+navigation_mesh = SubResource("NavigationMesh_xisrv")
+
+[node name="Map" parent="Model" unique_id=1728443788 instance=ExtResource("2_x7uim")]

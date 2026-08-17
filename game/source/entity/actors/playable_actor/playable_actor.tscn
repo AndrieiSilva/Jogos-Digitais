@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://bqwaxo3od8ou7"]
+
+[ext_resource type="Script" uid="uid://csil3pc5hdnm8" path="res://source/entity/actors/playable_actor/playable_actor.gd" id="1_mo5sk"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_xisrv"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mo5sk"]
+
+[node name="PlayableActor" type="CharacterBody3D" unique_id=1210677002 node_paths=PackedStringArray("nav_agent")]
+script = ExtResource("1_mo5sk")
+nav_agent = NodePath("NavigationAgent3D")
+metadata/_custom_type_script = "uid://csil3pc5hdnm8"
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=454473930]
+path_height_offset = 1.0
+avoidance_enabled = true
+debug_enabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=915522029]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_xisrv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2125873884]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_mo5sk")

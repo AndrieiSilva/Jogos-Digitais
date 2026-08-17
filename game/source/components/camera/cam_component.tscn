@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://fa1ku65wjwod"]
+
+[ext_resource type="Script" uid="uid://cyrvc62uksi77" path="res://source/components/camera/cam_component.gd" id="1_gmjj0"]
+
+[node name="CamComponent" type="Node" unique_id=1258061076]
+script = ExtResource("1_gmjj0")
+metadata/_custom_type_script = "uid://cyrvc62uksi77"
