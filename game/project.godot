@@ -64,6 +64,11 @@ char_click_move={
 ]
 }
 
+[layer_names]
+
+3d_render/layer_1="world"
+3d_render/layer_2="player"
+
 [navigation]
 
 pathfinding/max_threads=-1

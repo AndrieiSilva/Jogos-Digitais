@@ -8,19 +8,21 @@
 sky_material = SubResource("ProceduralSkyMaterial_x7uim")
 
 [sub_resource type="Environment" id="Environment_x7uim"]
-background_mode = 2
+background_mode = 1
 background_color = Color(0.101960786, 0.13333334, 0.16470589, 1)
+background_energy_multiplier = 0.8
 sky = SubResource("Sky_bh8b2")
 ambient_light_source = 2
-ambient_light_color = Color(0.23529412, 0.29411766, 0.3529412, 1)
-reflected_light_source = 2
+ambient_light_color = Color(0.078431375, 0.11764706, 0.15686275, 1)
 tonemap_mode = 4
-tonemap_exposure = 0.8
-tonemap_agx_contrast = 1.75
+tonemap_exposure = 0.9
+tonemap_agx_white = 19.29
+tonemap_agx_contrast = 1.8
 ssr_enabled = true
 ssao_enabled = true
 ssil_enabled = true
 sdfgi_enabled = true
+sdfgi_use_occlusion = true
 glow_enabled = true
 fog_mode = 1
 fog_light_color = Color(0.7876186, 0.794624, 0.94896346, 1)
@@ -29,6 +31,8 @@ fog_sky_affect = 0.0
 fog_depth_curve = 0.002167126
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.005
+adjustment_enabled = true
+adjustment_saturation = 0.8
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_xisrv"]
 vertices = PackedVector3Array(-49.25, 0.5, -49.25, -49.25, 0.5, 49.25, 49.25, 0.5, 49.25, 49.25, 0.5, -49.25)
@@ -45,8 +49,9 @@ environment = SubResource("Environment_x7uim")
 [node name="Sun_Realtime" type="DirectionalLight3D" parent="Enviroment" unique_id=2030592686]
 transform = Transform3D(0.70710677, -0.2418448, -0.664463, 0, -0.9396926, 0.3420202, -0.70710677, -0.2418448, -0.664463, 0, 10, 0)
 light_color = Color(0.47058824, 0.5294118, 0.9019608, 1)
+light_energy = 0.6
 shadow_enabled = true
-shadow_opacity = 0.5
+shadow_opacity = 0.2
 
 [node name="Node" type="Node" parent="." unique_id=1262571599]
 
