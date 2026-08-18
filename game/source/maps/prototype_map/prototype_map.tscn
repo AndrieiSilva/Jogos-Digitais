@@ -15,7 +15,7 @@ ambient_light_source = 2
 ambient_light_color = Color(0.23529412, 0.29411766, 0.3529412, 1)
 reflected_light_source = 2
 tonemap_mode = 4
-tonemap_exposure = 0.9
+tonemap_exposure = 0.8
 tonemap_agx_contrast = 1.75
 ssr_enabled = true
 ssao_enabled = true
@@ -44,8 +44,9 @@ environment = SubResource("Environment_x7uim")
 
 [node name="Sun_Realtime" type="DirectionalLight3D" parent="Enviroment" unique_id=2030592686]
 transform = Transform3D(0.70710677, -0.2418448, -0.664463, 0, -0.9396926, 0.3420202, -0.70710677, -0.2418448, -0.664463, 0, 10, 0)
-light_color = Color(0.5882353, 0.5882353, 0.78431374, 1)
+light_color = Color(0.47058824, 0.5294118, 0.9019608, 1)
 shadow_enabled = true
+shadow_opacity = 0.5
 
 [node name="Node" type="Node" parent="." unique_id=1262571599]
 
