@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c46udw373t3nt"
-path.s3tc="res://.godot/imported/Map_Normal.png-c83e8dcc72d1915800c1a49b88516fa8.s3tc.ctex"
+uid="uid://beh3hnj5dgxc1"
+path.s3tc="res://.godot/imported/wood_crate_Ucupaint Material Color.png-08bf5f92adb7503a0da0bdc3ef757fba.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "7628d266ff6f3cfdaafe451b9261b6da"
+"md5": "9dc6c83cc663342357cbc070bf5c7fbc"
 }
 
 [deps]
 
-source_file="res://assets/models/maps/Map_Normal.png"
-dest_files=["res://.godot/imported/Map_Normal.png-c83e8dcc72d1915800c1a49b88516fa8.s3tc.ctex"]
+source_file="res://assets/models/props/wood_crate_Ucupaint Material Color.png"
+dest_files=["res://.godot/imported/wood_crate_Ucupaint Material Color.png-08bf5f92adb7503a0da0bdc3ef757fba.s3tc.ctex"]
 
 [params]
 
@@ -25,12 +25,12 @@ compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
-compress/normal_map=1
+compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=1
-roughness/src_normal="res://assets/models/maps/Map_Normal.png"
+roughness/mode=0
+roughness/src_normal=""
 process/channel_remap/red=0
 process/channel_remap/green=1
 process/channel_remap/blue=2

@@ -17,7 +17,7 @@ func _ready() -> void:
 		return
 	
 	#cam.projection = Camera3D.PROJECTION_ORTHOGONAL
-	cam.size = camera_data.cam_size
+	cam.fov = camera_data.cam_fov
 	
 	cam.position = Vector3(0, 0, camera_data.cam_distance)
 	

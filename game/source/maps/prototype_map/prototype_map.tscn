@@ -1,64 +1,95 @@
-[gd_scene format=3 uid="uid://srkuul614xex"]
+[gd_scene format=4 uid="uid://srkuul614xex"]
 
-[ext_resource type="PackedScene" uid="uid://bp6g7ygw6n0cd" path="res://assets/models/maps/Map.glb" id="2_x7uim"]
+[ext_resource type="LightmapGIData" uid="uid://bdxrcd24upqbs" path="res://data/voxel_gi/prototype_map_lightmap_gi_data.tres" id="2_n68i4"]
+[ext_resource type="PackedScene" uid="uid://cqrcw13xsyb5t" path="res://assets/models/props/wood_crate.glb" id="2_x7uim"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_x7uim"]
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bh8b2"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
 
-[sub_resource type="Sky" id="Sky_bh8b2"]
-sky_material = SubResource("ProceduralSkyMaterial_x7uim")
+[sub_resource type="Sky" id="Sky_x7uim"]
+sky_material = SubResource("ProceduralSkyMaterial_bh8b2")
 
-[sub_resource type="Environment" id="Environment_x7uim"]
-background_mode = 1
-background_color = Color(0.101960786, 0.13333334, 0.16470589, 1)
-background_energy_multiplier = 0.8
-sky = SubResource("Sky_bh8b2")
-ambient_light_source = 2
-ambient_light_color = Color(0.078431375, 0.11764706, 0.15686275, 1)
+[sub_resource type="Environment" id="Environment_n68i4"]
+background_mode = 2
+sky = SubResource("Sky_x7uim")
+reflected_light_source = 2
 tonemap_mode = 4
-tonemap_exposure = 0.9
-tonemap_agx_white = 19.29
-tonemap_agx_contrast = 1.8
-ssr_enabled = true
+tonemap_agx_contrast = 1.4
 ssao_enabled = true
-ssil_enabled = true
-sdfgi_enabled = true
-sdfgi_use_occlusion = true
 glow_enabled = true
-fog_mode = 1
-fog_light_color = Color(0.7876186, 0.794624, 0.94896346, 1)
-fog_density = 1.0
-fog_sky_affect = 0.0
-fog_depth_curve = 0.002167126
 volumetric_fog_enabled = true
-volumetric_fog_density = 0.005
 adjustment_enabled = true
+adjustment_brightness = 0.9
 adjustment_saturation = 0.8
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_xisrv"]
-vertices = PackedVector3Array(-49.25, 0.5, -49.25, -49.25, 0.5, 49.25, 49.25, 0.5, 49.25, 49.25, 0.5, -49.25)
-polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+vertices = PackedVector3Array(-1.75, 0.5, 3.75, -0.75, 0.5, 3.25, -0.25, 0.5, 2.25, 0.5, 0.5, -99.25, -99.25, 0.5, -99.25, -99.25, 0.5, 4.5, -1.75, 0.5, 4.5, 0.5, 0.5, 2.25, 1.25, 0.5, 2.25, 1.75, 0.5, 3.25, 2.75, 0.5, 3.75, 99.25, 0.5, 4.5, 99.25, 0.5, -99.25, 2.75, 0.5, 4.5, 0.5, 0.5, 99.25, 0.5, 0.5, 5.75, -1.25, 0.5, 5.75, -99.25, 0.5, 99.25, 2.25, 0.5, 5.75, 99.25, 0.5, 99.25)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 5), PackedInt32Array(2, 5, 3), PackedInt32Array(3, 5, 4), PackedInt32Array(0, 6, 5), PackedInt32Array(3, 7, 2), PackedInt32Array(9, 8, 10), PackedInt32Array(10, 8, 11), PackedInt32Array(11, 8, 3), PackedInt32Array(11, 3, 12), PackedInt32Array(11, 13, 10), PackedInt32Array(8, 7, 3), PackedInt32Array(16, 15, 14), PackedInt32Array(16, 14, 6), PackedInt32Array(6, 14, 5), PackedInt32Array(5, 14, 17), PackedInt32Array(14, 15, 18), PackedInt32Array(18, 13, 14), PackedInt32Array(14, 13, 11), PackedInt32Array(14, 11, 19)]
 agent_radius = 0.75
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_x7uim"]
+lightmap_size_hint = Vector2i(4266, 8018)
+_surfaces = [{
+"aabb": AABB(-100, -0.5, -100, 200, 1, 200),
+"attribute_data": PackedByteArray("AACAPwAAgD8GliY96vt/PwAAgD8AAAAABpYmPU09AD8AAAAAAAAAAEJsEj1NPQA/AACAPwAAgD8A/TQ9cLb/PgAAgD8AAAAAx2h7P3C2/z4AAAAAAAAAAMdoez/UmX8/AACAPwAAgD9S+H8/x4UpPwAAgD8AAAAAtbV+P8eFKT8AAAAAAAAAALW1fj+sHCc+AAAAAAAAgD9CbBI96vt/PwAAgD8AAIA/kAd9P06tNj8AAIA/AAAAACxKfj9OrTY/AAAAAAAAAAAsSn4/yLpbPgAAAAAAAAAApSBwP2WF/z4AAAAAAACAP2TM9Thlhf8+AACAPwAAgD9kzPU4G8eCOAAAAAAAAIA/AP00PdSZfz8AAAAAAACAP5AHfT/Iuls+AACAPwAAgD952Xw/VEfrPgAAgD8AAAAAedl8P0ZidT8AAAAAAAAAAN2Wez9GYnU/AAAAAAAAgD9S+H8/rBwnPgAAgD8AAAAApSBwPxvHgjgAAAAAAACAP92Wez9UR+s+"),
+"format": 34359742519,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAwAEAAUABgAHAAgAAgAJAAAACgALAAwADQAOAA8ABQAQAAMADAARAAoAEgATABQACAAVAAYADwAWAA0AFAAXABIA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AADIwgAAAL8AAMhCAADIwgAAAL8AAMjCAADIwgAAAD8AAMjCAADIQgAAAL8AAMjCAADIwgAAAL8AAMjCAADIwgAAAL8AAMhCAADIwgAAAD8AAMjCAADIwgAAAL8AAMjCAADIQgAAAL8AAMjCAADIwgAAAD8AAMhCAADIwgAAAL8AAMhCAADIwgAAAD8AAMhCAADIQgAAAD8AAMhCAADIQgAAAD8AAMhCAADIwgAAAD8AAMhCAADIwgAAAD8AAMjCAADIQgAAAL8AAMhCAADIQgAAAL8AAMhCAADIQgAAAL8AAMjCAADIQgAAAL8AAMhCAADIQgAAAD8AAMhCAADIQgAAAD8AAMjCAADIQgAAAD8AAMjCAADIQgAAAD8AAMjCAAAAgP9//n8AAACA/3/+fwAAAID/f/5/AIAAAP//AAAAgAAA//8AAACAAAD//wAA/////wAA/z//////AAD/P/////8AAP8/AAAAgP9//n//f/9/AAD/P/9//38AAP8//3//fwAA/z8AgP////8AAACA/////wAAAID/////AAAAgAAA//8AAP9//38AAP8///8AgP9//n///wCA/3/+f///AID/f/5//////wAA/z8AgP////8AAP//AID/f/5/")
+}]
 
 [node name="PrototypeMap" type="Node" unique_id=244975850]
 
 [node name="Enviroment" type="Node" parent="." unique_id=1932585649]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="Enviroment" unique_id=1961470598]
-environment = SubResource("Environment_x7uim")
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Enviroment" unique_id=1972512165]
+environment = SubResource("Environment_n68i4")
 
-[node name="Sun_Realtime" type="DirectionalLight3D" parent="Enviroment" unique_id=2030592686]
-transform = Transform3D(0.70710677, -0.2418448, -0.664463, 0, -0.9396926, 0.3420202, -0.70710677, -0.2418448, -0.664463, 0, 10, 0)
-light_color = Color(0.47058824, 0.5294118, 0.9019608, 1)
-light_energy = 0.6
+[node name="RealSun" type="DirectionalLight3D" parent="Enviroment" unique_id=1246506066]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+light_color = Color(1, 1, 0.8627451, 1)
 shadow_enabled = true
-shadow_opacity = 0.2
+directional_shadow_blend_splits = true
 
 [node name="Node" type="Node" parent="." unique_id=1262571599]
 
 [node name="Model" type="Node" parent="." unique_id=653506784]
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="Model" unique_id=1063666634]
-visible = false
 navigation_mesh = SubResource("NavigationMesh_xisrv")
 
-[node name="Map" parent="Model" unique_id=1728443788 instance=ExtResource("2_x7uim")]
+[node name="Floor" type="Node" parent="Model/NavigationRegion3D" unique_id=1362004551]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Model/NavigationRegion3D/Floor" unique_id=42009880]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+visible = false
+use_collision = true
+collision_mask = 0
+size = Vector3(200, 1, 200)
+
+[node name="CSGBakedMeshInstance3D" type="MeshInstance3D" parent="Model/NavigationRegion3D/Floor" unique_id=1578846697]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+mesh = SubResource("ArrayMesh_x7uim")
+
+[node name="Props" type="Node" parent="Model/NavigationRegion3D" unique_id=2006739406]
+
+[node name="Crates" type="Node" parent="Model/NavigationRegion3D/Props" unique_id=146034166]
+
+[node name="wood_crate" parent="Model/NavigationRegion3D/Props/Crates" unique_id=111872953 instance=ExtResource("2_x7uim")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 3.6)
+
+[node name="wood_crate2" parent="Model/NavigationRegion3D/Props/Crates" unique_id=1801255826 instance=ExtResource("2_x7uim")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 4.5)
+
+[node name="wood_crate6" parent="Model/NavigationRegion3D/Props/Crates" unique_id=1219014044 instance=ExtResource("2_x7uim")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 4.5)
+
+[node name="wood_crate7" parent="Model/NavigationRegion3D/Props/Crates" unique_id=950806889 instance=ExtResource("2_x7uim")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 4.5)
+
+[node name="LightmapGI" type="LightmapGI" parent="." unique_id=922173599]
+light_data = ExtResource("2_n68i4")

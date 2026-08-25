@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bp6g7ygw6n0cd"
-path="res://.godot/imported/Map.glb-db31d219ee9aaed9cfdca21af133c7d4.scn"
+uid="uid://cqrcw13xsyb5t"
+path="res://.godot/imported/wood_crate.glb-bd7f1edff3561e46401b9c4e863d67bc.scn"
 
 [deps]
 
-source_file="res://assets/models/maps/Map.glb"
-dest_files=["res://.godot/imported/Map.glb-db31d219ee9aaed9cfdca21af133c7d4.scn"]
+source_file="res://assets/models/props/wood_crate.glb"
+dest_files=["res://.godot/imported/wood_crate.glb-bd7f1edff3561e46401b9c4e863d67bc.scn"]
 
 [params]
 

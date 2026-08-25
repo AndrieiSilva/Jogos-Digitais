@@ -28,7 +28,6 @@ metadata/_custom_type_script = "uid://c0vmpa50xon71"
 
 [node name="Camera3D" type="Camera3D" parent="Cameras/CameraPivot/CameraGimbal" unique_id=731212925]
 fov = 50.0
-far = 100.0
 
 [node name="Components" type="Node" parent="." unique_id=414114676]
 
