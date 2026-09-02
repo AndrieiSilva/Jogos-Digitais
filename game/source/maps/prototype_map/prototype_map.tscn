@@ -1,7 +1,9 @@
 [gd_scene format=4 uid="uid://srkuul614xex"]
 
-[ext_resource type="LightmapGIData" uid="uid://bdxrcd24upqbs" path="res://data/voxel_gi/prototype_map_lightmap_gi_data.tres" id="2_n68i4"]
-[ext_resource type="PackedScene" uid="uid://cqrcw13xsyb5t" path="res://assets/models/props/wood_crate.glb" id="2_x7uim"]
+[ext_resource type="PackedScene" uid="uid://b3uss0lmy3d2e" path="res://assets/models/props/wood_barrel.glb" id="2_u53cm"]
+[ext_resource type="PackedScene" uid="uid://boqb53flapqak" path="res://assets/models/props/wood_crate.glb" id="2_x7uim"]
+[ext_resource type="PackedScene" uid="uid://4o7glme62q3x" path="res://assets/models/props/wood_chest.glb" id="3_sy60i"]
+[ext_resource type="LightmapGIData" uid="uid://2c14pth8g3rg" path="res://data/voxel_gi/prototype_map_gi_data.tres" id="4_u53cm"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bh8b2"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -16,30 +18,29 @@ sky = SubResource("Sky_x7uim")
 reflected_light_source = 2
 tonemap_mode = 4
 tonemap_agx_contrast = 1.4
-ssao_enabled = true
+sdfgi_use_occlusion = true
 glow_enabled = true
-volumetric_fog_enabled = true
 adjustment_enabled = true
 adjustment_brightness = 0.9
 adjustment_saturation = 0.8
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_xisrv"]
-vertices = PackedVector3Array(-1.75, 0.5, 3.75, -0.75, 0.5, 3.25, -0.25, 0.5, 2.25, 0.5, 0.5, -99.25, -99.25, 0.5, -99.25, -99.25, 0.5, 4.5, -1.75, 0.5, 4.5, 0.5, 0.5, 2.25, 1.25, 0.5, 2.25, 1.75, 0.5, 3.25, 2.75, 0.5, 3.75, 99.25, 0.5, 4.5, 99.25, 0.5, -99.25, 2.75, 0.5, 4.5, 0.5, 0.5, 99.25, 0.5, 0.5, 5.75, -1.25, 0.5, 5.75, -99.25, 0.5, 99.25, 2.25, 0.5, 5.75, 99.25, 0.5, 99.25)
-polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 5), PackedInt32Array(2, 5, 3), PackedInt32Array(3, 5, 4), PackedInt32Array(0, 6, 5), PackedInt32Array(3, 7, 2), PackedInt32Array(9, 8, 10), PackedInt32Array(10, 8, 11), PackedInt32Array(11, 8, 3), PackedInt32Array(11, 3, 12), PackedInt32Array(11, 13, 10), PackedInt32Array(8, 7, 3), PackedInt32Array(16, 15, 14), PackedInt32Array(16, 14, 6), PackedInt32Array(6, 14, 5), PackedInt32Array(5, 14, 17), PackedInt32Array(14, 15, 18), PackedInt32Array(18, 13, 14), PackedInt32Array(14, 13, 11), PackedInt32Array(14, 11, 19)]
+vertices = PackedVector3Array(-49.25, 0.5, 6.5, -2.25, 0.5, 6.5, -1.25, 0.5, 5.25, -1.25, 0.5, -49.25, -49.25, 0.5, -49.25, 1, 0.5, 5.25, 1.5, 0.5, 6.25, 2, 0.5, 6.25, 3, 0.5, 5, 4.5, 0.5, 5.5, 4.5, 0.5, -49.25, 5.25, 0.5, 6.5, 49.25, 0.5, 6.5, 49.25, 0.5, -49.25, 1, 0.5, 7.75, 3.25, 0.5, 8, 4.75, 0.5, 49.25, 4.75, 0.5, 7.5, -1.5, 0.5, 7.75, -1.5, 0.5, 49.25, -2.25, 0.5, 7.25, -49.25, 0.5, 49.25, 49.25, 0.5, 49.25)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(3, 0, 4), PackedInt32Array(6, 5, 7), PackedInt32Array(7, 5, 8), PackedInt32Array(8, 10, 9), PackedInt32Array(5, 2, 8), PackedInt32Array(8, 2, 3), PackedInt32Array(8, 3, 10), PackedInt32Array(11, 9, 12), PackedInt32Array(12, 9, 10), PackedInt32Array(12, 10, 13), PackedInt32Array(6, 7, 14), PackedInt32Array(14, 7, 15), PackedInt32Array(15, 17, 16), PackedInt32Array(14, 15, 18), PackedInt32Array(18, 15, 19), PackedInt32Array(19, 15, 16), PackedInt32Array(18, 19, 20), PackedInt32Array(20, 19, 21), PackedInt32Array(20, 21, 0), PackedInt32Array(0, 1, 20), PackedInt32Array(17, 11, 16), PackedInt32Array(16, 11, 12), PackedInt32Array(16, 12, 22)]
 agent_radius = 0.75
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_x7uim"]
-lightmap_size_hint = Vector2i(4266, 8018)
+[sub_resource type="ArrayMesh" id="ArrayMesh_u53cm"]
+lightmap_size_hint = Vector2i(2222, 4006)
 _surfaces = [{
-"aabb": AABB(-100, -0.5, -100, 200, 1, 200),
-"attribute_data": PackedByteArray("AACAPwAAgD8GliY96vt/PwAAgD8AAAAABpYmPU09AD8AAAAAAAAAAEJsEj1NPQA/AACAPwAAgD8A/TQ9cLb/PgAAgD8AAAAAx2h7P3C2/z4AAAAAAAAAAMdoez/UmX8/AACAPwAAgD9S+H8/x4UpPwAAgD8AAAAAtbV+P8eFKT8AAAAAAAAAALW1fj+sHCc+AAAAAAAAgD9CbBI96vt/PwAAgD8AAIA/kAd9P06tNj8AAIA/AAAAACxKfj9OrTY/AAAAAAAAAAAsSn4/yLpbPgAAAAAAAAAApSBwP2WF/z4AAAAAAACAP2TM9Thlhf8+AACAPwAAgD9kzPU4G8eCOAAAAAAAAIA/AP00PdSZfz8AAAAAAACAP5AHfT/Iuls+AACAPwAAgD952Xw/VEfrPgAAgD8AAAAAedl8P0ZidT8AAAAAAAAAAN2Wez9GYnU/AAAAAAAAgD9S+H8/rBwnPgAAgD8AAAAApSBwPxvHgjgAAAAAAACAP92Wez9UR+s+"),
+"aabb": AABB(-50, -0.5, -50, 100, 1, 100),
+"attribute_data": PackedByteArray("AACAPwAAgD9B8X8/oRwgPwAAgD8AAAAAQfF/P2T1AD4AAAAAAAAAAOCFfT9k9QA+AACAPwAAgD9YgGU9ihgAPwAAgD8AAAAAWIBlPdL3fz8AAAAAAAAAANHhdD/S938/AACAPwAAgD9lLX0/aEsGPwAAgD8AAAAABMJ6P2hLBj8AAAAAAAAAAATCej8HhM08AAAAAAAAgD/ghX0/oRwgPwAAgD8AAIA/KP53P5wKPz8AAIA/AAAAAIlpej+cCj8/AAAAAAAAAACJaXo/T618PgAAAAAAAAAAiphmP+zO/z4AAAAAAACAPwX0aznszv8+AACAPwAAgD8F9Gs5LeACOQAAAAAAAIA/0eF0P4oYAD8AAAAAAACAPyj+dz9PrXw+AACAPwAAgD+tpXc/oWaPPQAAgD8AAAAAraV3PxzMET8AAAAAAAAAAEw6dT8czBE/AAAAAAAAgD9lLX0/B4TNPAAAgD8AAAAAiphmPy3gAjkAAAAAAACAP0w6dT+hZo89"),
 "format": 34359742519,
 "index_count": 36,
 "index_data": PackedByteArray("AAABAAIAAwAEAAUABgAHAAgAAgAJAAAACgALAAwADQAOAA8ABQAQAAMADAARAAoAEgATABQACAAVAAYADwAWAA0AFAAXABIA"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 24,
-"vertex_data": PackedByteArray("AADIwgAAAL8AAMhCAADIwgAAAL8AAMjCAADIwgAAAD8AAMjCAADIQgAAAL8AAMjCAADIwgAAAL8AAMjCAADIwgAAAL8AAMhCAADIwgAAAD8AAMjCAADIwgAAAL8AAMjCAADIQgAAAL8AAMjCAADIwgAAAD8AAMhCAADIwgAAAL8AAMhCAADIwgAAAD8AAMhCAADIQgAAAD8AAMhCAADIQgAAAD8AAMhCAADIwgAAAD8AAMhCAADIwgAAAD8AAMjCAADIQgAAAL8AAMhCAADIQgAAAL8AAMhCAADIQgAAAL8AAMjCAADIQgAAAL8AAMhCAADIQgAAAD8AAMhCAADIQgAAAD8AAMjCAADIQgAAAD8AAMjCAADIQgAAAD8AAMjCAAAAgP9//n8AAACA/3/+fwAAAID/f/5/AIAAAP//AAAAgAAA//8AAACAAAD//wAA/////wAA/z//////AAD/P/////8AAP8/AAAAgP9//n//f/9/AAD/P/9//38AAP8//3//fwAA/z8AgP////8AAACA/////wAAAID/////AAAAgAAA//8AAP9//38AAP8///8AgP9//n///wCA/3/+f///AID/f/5//////wAA/z8AgP////8AAP//AID/f/5/")
+"vertex_data": PackedByteArray("AABIwgAAAL8AAEhCAABIwgAAAL8AAEjCAABIwgAAAD8AAEjCAABIQgAAAL8AAEjCAABIwgAAAL8AAEjCAABIwgAAAL8AAEhCAABIwgAAAD8AAEjCAABIwgAAAL8AAEjCAABIQgAAAL8AAEjCAABIwgAAAD8AAEhCAABIwgAAAL8AAEhCAABIwgAAAD8AAEhCAABIQgAAAD8AAEhCAABIQgAAAD8AAEhCAABIwgAAAD8AAEhCAABIwgAAAD8AAEjCAABIQgAAAL8AAEhCAABIQgAAAL8AAEhCAABIQgAAAL8AAEjCAABIQgAAAL8AAEhCAABIQgAAAD8AAEhCAABIQgAAAD8AAEjCAABIQgAAAD8AAEjCAABIQgAAAD8AAEjCAAAAgP9//n8AAACA/3/+fwAAAID/f/5/AIAAAP//AAAAgAAA//8AAACAAAD//wAA/////wAA/z//////AAD/P/////8AAP8/AAAAgP9//n//f/9/AAD/P/9//38AAP8//3//fwAA/z8AgP////8AAACA/////wAAAID/////AAAAgAAA//8AAP9//38AAP8///8AgP9//n///wCA/3/+f///AID/f/5//////wAA/z8AgP////8AAP//AID/f/5/")
 }]
 
 [node name="PrototypeMap" type="Node" unique_id=244975850]
@@ -49,9 +50,22 @@ _surfaces = [{
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Enviroment" unique_id=1972512165]
 environment = SubResource("Environment_n68i4")
 
-[node name="RealSun" type="DirectionalLight3D" parent="Enviroment" unique_id=1246506066]
+[node name="RealSun" type="DirectionalLight3D" parent="Enviroment" unique_id=561542002]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
 light_color = Color(1, 1, 0.8627451, 1)
+light_energy = 0.75
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
+light_bake_mode = 0
+shadow_enabled = true
+shadow_blur = 0.55
+shadow_caster_mask = 4294967294
+directional_shadow_blend_splits = true
+
+[node name="BakedSun" type="DirectionalLight3D" parent="Enviroment" unique_id=1246506066]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+light_color = Color(1, 1, 0.8627451, 1)
+light_bake_mode = 1
 shadow_enabled = true
 directional_shadow_blend_splits = true
 
@@ -69,27 +83,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 visible = false
 use_collision = true
 collision_mask = 0
-size = Vector3(200, 1, 200)
+size = Vector3(100, 1, 100)
 
-[node name="CSGBakedMeshInstance3D" type="MeshInstance3D" parent="Model/NavigationRegion3D/Floor" unique_id=1578846697]
+[node name="CSGBakedMeshInstance3D" type="MeshInstance3D" parent="Model/NavigationRegion3D/Floor" unique_id=1865552685]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-mesh = SubResource("ArrayMesh_x7uim")
+mesh = SubResource("ArrayMesh_u53cm")
 
 [node name="Props" type="Node" parent="Model/NavigationRegion3D" unique_id=2006739406]
 
-[node name="Crates" type="Node" parent="Model/NavigationRegion3D/Props" unique_id=146034166]
+[node name="wood_barrel" parent="Model/NavigationRegion3D/Props" unique_id=650885600 instance=ExtResource("2_u53cm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0679867, 0.49500012, 6.581147)
 
-[node name="wood_crate" parent="Model/NavigationRegion3D/Props/Crates" unique_id=111872953 instance=ExtResource("2_x7uim")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 3.6)
+[node name="wood_chest" parent="Model/NavigationRegion3D/Props" unique_id=128491332 instance=ExtResource("3_sy60i")]
+transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 3.6309724, 0.40707135, 8.475903)
 
-[node name="wood_crate2" parent="Model/NavigationRegion3D/Props/Crates" unique_id=1801255826 instance=ExtResource("2_x7uim")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 4.5)
+[node name="wood_crate" parent="Model/NavigationRegion3D/Props" unique_id=1236507536 instance=ExtResource("2_x7uim")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1290698, 0.39999974, 6.587115)
 
-[node name="wood_crate6" parent="Model/NavigationRegion3D/Props/Crates" unique_id=1219014044 instance=ExtResource("2_x7uim")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 4.5)
-
-[node name="wood_crate7" parent="Model/NavigationRegion3D/Props/Crates" unique_id=950806889 instance=ExtResource("2_x7uim")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 4.5)
-
-[node name="LightmapGI" type="LightmapGI" parent="." unique_id=922173599]
-light_data = ExtResource("2_n68i4")
+[node name="LightmapGI" type="LightmapGI" parent="." unique_id=2123745176]
+quality = 0
+light_data = ExtResource("4_u53cm")
