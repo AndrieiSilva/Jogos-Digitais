@@ -1,0 +1,19 @@
+{
+	"nodes":[
+		{"id":"b518b1bc35088704","type":"group","x":-1040,"y":-1560,"width":2840,"height":1160,"label":"Personagens"},
+		{"id":"7a8984542f111043","type":"group","x":-3040,"y":-2800,"width":1000,"height":1000,"label":"Conceitos"},
+		{"id":"1fb9c73dc78e2311","type":"group","x":-2180,"y":-1560,"width":940,"height":1020,"label":"Mundo e História"},
+		{"id":"98e4a72541d17c4a","type":"group","x":-3040,"y":-1560,"width":657,"height":1220,"label":"Gameplay"},
+		{"id":"3223a1083d661643","type":"file","file":"04_Gameplay/Sistema de Mapa e Exploração.md","x":-2983,"y":-1500,"width":560,"height":1120},
+		{"id":"bfe68f3c29524b96","type":"file","file":"01_Mundo_e_história/Ambientação e Mundo.md","x":-2120,"y":-1500,"width":400,"height":860},
+		{"id":"92ab26f7493c0225","type":"file","file":"01_Mundo_e_história/Culto/Culto Twilight Covenant.md","x":-1720,"y":-1500,"width":440,"height":860},
+		{"id":"68ef8fdb7ae491be","type":"file","file":"00_Conceitos/Documento de Visão Geral (Resumo do Jogo).md","x":-2980,"y":-2716,"width":900,"height":836},
+		{"id":"cede27faa5243786","type":"file","file":"02_Personagens/Classes/Classe Mago.md","x":-120,"y":-1436,"width":400,"height":952},
+		{"id":"a4731a283ace6318","type":"file","file":"02_Personagens/Classes/Classe Guerreiro.md","x":280,"y":-1436,"width":400,"height":952},
+		{"id":"7c58f29c572e70a6","type":"file","file":"02_Personagens/Classes/Classe Arqueiro.md","x":680,"y":-1436,"width":400,"height":952},
+		{"id":"9ad18cb145dbb7ca","type":"file","file":"02_Personagens/Jogador.md","x":-1000,"y":-1436,"width":400,"height":952},
+		{"id":"e0336a1e4ea82030","x":1200,"y":-1436,"width":400,"height":952,"type":"file","file":"02_Personagens/Habilidades.md"},
+		{"id":"635b65e3051a1b6d","x":-600,"y":-1436,"width":400,"height":952,"type":"file","file":"02_Personagens/Criaturas e Inimigos.md"}
+	],
+	"edges":[]
+}

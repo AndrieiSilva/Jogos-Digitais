@@ -1,0 +1,233 @@
+{
+  "main": {
+    "id": "59b437dfee97cac0",
+    "type": "split",
+    "children": [
+      {
+        "id": "4c1e54314b657711",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "411e4115d0ba360d",
+            "type": "leaf",
+            "state": {
+              "type": "canvas",
+              "state": {
+                "file": "Geral.canvas",
+                "viewState": {
+                  "x": -2462.443150444507,
+                  "y": -1340.3397363023143,
+                  "zoom": -1.4446278037294613
+                }
+              },
+              "icon": "lucide-layout-dashboard",
+              "title": "Geral"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "1ca417d205e84c9f",
+    "type": "split",
+    "children": [
+      {
+        "id": "12e719fa89ba9d57",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "ea95132033553ff8",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Explorador de arquivos"
+            }
+          },
+          {
+            "id": "e26612bd9d3cc39c",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Procurar"
+            }
+          },
+          {
+            "id": "3227a3da2a3724b6",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-bookmark",
+              "title": "Marcadores"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "1ee0c6b3b3054f54",
+    "type": "split",
+    "children": [
+      {
+        "id": "4822f1c5d1329111",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "2fd3e2fd14b264f8",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Geral.canvas",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Links inversos"
+            }
+          },
+          {
+            "id": "a0e93d7fd0ceef47",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "00_Conceitos/Canvas Conceitos.canvas",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Links de saída"
+            }
+          },
+          {
+            "id": "d891efc7eb3375cc",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Etiquetas"
+            }
+          },
+          {
+            "id": "31bc00acdd010221",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "Todas as propriedades"
+            }
+          },
+          {
+            "id": "8a743c54e304f2cf",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "00_Conceitos/Canvas Conceitos.canvas",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Sumário"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "graph:Abrir visualização em gráfico": false,
+      "canvas:Criar novo canvas": false,
+      "switcher:Abrir a troca rápida": false,
+      "daily-notes:Abrir a nota de hoje": false,
+      "templates:Inserir modelo": false,
+      "bases:Criar nova base": false,
+      "command-palette:Abrir paleta de comandos": false
+    }
+  },
+  "active": "411e4115d0ba360d",
+  "lastOpenFiles": [
+    "02_Personagens/Habilidades.md",
+    "Geral.canvas",
+    "02_Personagens/Criaturas e Inimigos.md",
+    "00_Conceitos/Documento de Visão Geral (Resumo do Jogo).md",
+    "02_Personagens/Classes/Classe Arqueiro.md",
+    "02_Personagens/Classes/Classe Mago.md",
+    "02_Personagens/Jogador.md",
+    "02_Personagens/Classes/Classe Guerreiro.md",
+    "01_Mundo_e_história/Ambientação e Mundo.md",
+    "04_Gameplay/Sistema de Mapa e Exploração.md",
+    "01_Mundo_e_história/Culto/Culto Twilight Covenant.md",
+    "02_Personagens/Classes.md",
+    "02_Personagens/Classes",
+    "01_Mundo_e_história/Culto/Nome do Deus.md",
+    "01_Mundo_e_história/Culto",
+    "01_Mundo_e_história/Introdução do Mundo.md",
+    "Nome da Cidade.md",
+    "Itens Lendários.md",
+    "Culto.md",
+    "04_Gameplay",
+    "Sem título.base",
+    "Sem título 1.base",
+    "Sem título 2.base",
+    "pasta/Notas.md",
+    "pasta",
+    "00_Conceitos/Canvas Conceitos.canvas",
+    "03_Interface",
+    "05_Ideias_e_rascunhos",
+    "Sem título.md",
+    "classes",
+    "Sem título 3.canvas",
+    "Sem título 1.canvas",
+    "Sem título 2.canvas",
+    "2026-09-02.md",
+    "crie um link.md",
+    "Bem-vindo.md"
+  ]
+}
