@@ -4,6 +4,8 @@
 
 [resource]
 script = ExtResource("1_epn60")
-cam_distance = 30.0
-cam_move_speed = 7.0
+cam_distance = 25.0
+cam_fov = 20.0
+cam_move_speed = 5.0
+cam_rot_speed = 5.0
 metadata/_custom_type_script = "uid://berek24r3ubf0"
