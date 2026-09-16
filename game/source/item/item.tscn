@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://mgup6gsjotii"]
+
+[ext_resource type="Script" uid="uid://dgar2rjcg4xj0" path="res://source/item/item.gd" id="1_sbn5a"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sbn5a"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[node name="Item" type="RigidBody3D" unique_id=164069729]
+collision_layer = 4
+script = ExtResource("1_sbn5a")
+metadata/_custom_type_script = "uid://dgar2rjcg4xj0"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=670647556]
+shape = SubResource("BoxShape3D_sbn5a")

@@ -2,7 +2,7 @@ class_name CameraData extends Resource
 
 @export_category("Camera setup")
 @export var cam_distance : float = 15
-@export var cam_fov : float = 30
+@export var cam_size : float = 30
 
 @export_category("Camera Movement")
 @export var cam_move_speed : float = 10

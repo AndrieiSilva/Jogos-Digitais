@@ -1,16 +1,18 @@
 [gd_scene format=4 uid="uid://srkuul614xex"]
 
+[ext_resource type="Texture2D" uid="uid://mgje1rsgllhd" path="res://assets/texture/satara_night_no_lamps_4k.hdr" id="1_5xue5"]
+[ext_resource type="PackedScene" uid="uid://dhngt0kmuvhe7" path="res://assets/models/props/post_torch.glb" id="1_qi47a"]
 [ext_resource type="PackedScene" uid="uid://b3uss0lmy3d2e" path="res://assets/models/props/wood_barrel.glb" id="2_u53cm"]
 [ext_resource type="PackedScene" uid="uid://boqb53flapqak" path="res://assets/models/props/wood_crate.glb" id="2_x7uim"]
 [ext_resource type="PackedScene" uid="uid://4o7glme62q3x" path="res://assets/models/props/wood_chest.glb" id="3_sy60i"]
+[ext_resource type="Script" uid="uid://c8rv2st3vxki4" path="res://source/systems/interaction/loot_source.gd" id="4_sy60i"]
 [ext_resource type="LightmapGIData" uid="uid://2c14pth8g3rg" path="res://data/voxel_gi/prototype_map_gi_data.tres" id="4_u53cm"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bh8b2"]
-sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
-ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_l52w0"]
+panorama = ExtResource("1_5xue5")
 
 [sub_resource type="Sky" id="Sky_x7uim"]
-sky_material = SubResource("ProceduralSkyMaterial_bh8b2")
+sky_material = SubResource("PanoramaSkyMaterial_l52w0")
 
 [sub_resource type="Environment" id="Environment_n68i4"]
 background_mode = 2
@@ -18,6 +20,9 @@ sky = SubResource("Sky_x7uim")
 reflected_light_source = 2
 tonemap_mode = 4
 tonemap_agx_contrast = 1.4
+ssr_enabled = true
+ssao_enabled = true
+ssil_enabled = true
 sdfgi_use_occlusion = true
 glow_enabled = true
 adjustment_enabled = true
@@ -25,8 +30,8 @@ adjustment_brightness = 0.9
 adjustment_saturation = 0.8
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_xisrv"]
-vertices = PackedVector3Array(-49.25, 0.5, 7.25, -4, 0.5, 7.25, -2.5, 0.5, 5.25, -0.75, 0.5, -49.25, -49.25, 0.5, -49.25, -0.75, 0.5, 5.25, 1, 0.5, 5.25, 1.5, 0.5, 6, 2.5, 0.5, 6, 3, 0.5, 7.25, 49.25, 0.5, 7.25, 49.25, 0.5, -49.25, -1.5, 0.5, 49.25, -2, 0.5, 9, -2.75, 0.5, 9, -49.25, 0.5, 49.25, 2.5, 0.5, 8.75, 0.5, 0.5, 8.75, 0.5, 0.5, 49.25, 49.25, 0.5, 49.25)
-polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 4), PackedInt32Array(2, 4, 3), PackedInt32Array(3, 5, 2), PackedInt32Array(8, 7, 6), PackedInt32Array(10, 9, 8), PackedInt32Array(8, 6, 10), PackedInt32Array(10, 6, 11), PackedInt32Array(11, 6, 3), PackedInt32Array(6, 5, 3), PackedInt32Array(14, 13, 12), PackedInt32Array(14, 12, 1), PackedInt32Array(1, 12, 0), PackedInt32Array(0, 12, 15), PackedInt32Array(18, 17, 16), PackedInt32Array(16, 9, 18), PackedInt32Array(18, 9, 10), PackedInt32Array(18, 10, 19), PackedInt32Array(12, 13, 18), PackedInt32Array(18, 13, 17)]
+vertices = PackedVector3Array(-8.75, 0.5, -7.5, -7, 0.5, -7.5, -7.25, 0.5, -8.75, -6.25, 0.5, -9.25, -6.25, 0.5, -49.25, -49.25, 0.5, -6.25, -9.25, 0.5, -6.25, -49.25, 0.5, -49.25, -5.25, 0.5, -8.75, -5.25, 0.5, -8, -1, 0.5, -7.25, 1.25, 0.5, -7.25, 1.5, 0.5, -49.25, 7.25, 0.5, -7.5, 9, 0.5, -7.5, 8.75, 0.5, -8.75, 1.5, 0.5, -6.25, 6.75, 0.5, -6.25, 9.75, 0.5, -9.25, 9.75, 0.5, -49.25, 10.75, 0.5, -8.75, 10.75, 0.5, -8, 14, 0.5, -7.25, 14.5, 0.5, -7.5, 14.75, 0.5, -49.25, 16, 0.5, -7.5, 16.5, 0.5, -6.25, 49.25, 0.5, -6.25, 49.25, 0.5, -49.25, -5.75, 0.5, 6.75, -5.25, 0.5, 7.75, -4, 0.5, 7.5, -2.5, 0.5, 5.25, -5.75, 0.5, -7.25, -6.75, 0.5, -7.25, -6.5, 0.5, -5.25, -1.25, 0.5, -5.25, -7.75, 0.5, -4.75, -6.75, 0.5, 6.75, 0.25, 0.5, -4.75, -7.25, 0.5, 7.5, 0, 0.5, 5.25, 10.25, 0.5, -7.25, 9.25, 0.5, -7.25, 9.5, 0.5, -5.25, 13.75, 0.5, -5.25, 9, 0.5, -4.75, 10.25, 0.5, 6.75, 10.75, 0.5, 7.5, 14.5, 0.5, -4.75, 9.5, 0.5, 6.75, -7.25, 0.5, 7.75, -9.25, 0.5, -5.25, -49.25, 0.5, 7.75, 1.5, 0.5, -5.25, 7.25, 0.5, -4.75, 2.5, 0.5, 6, 3, 0.5, 7.5, 8.75, 0.5, 7.75, 10.75, 0.5, 8, 16, 0.5, -4.75, 49.25, 0.5, 8, -5.75, 0.5, 8.75, -2.75, 0.5, 9, -1.5, 0.5, 49.25, -2, 0.5, 9, -6.25, 0.5, 8.75, -6.25, 0.5, 49.25, 8.75, 0.5, 8.25, 2.5, 0.5, 8.75, 0.5, 0.5, 49.25, 9.75, 0.5, 49.25, 9.75, 0.5, 8.75, 0.5, 0.5, 8.75, -7.25, 0.5, 8.25, -49.25, 0.5, 49.25, 49.25, 0.5, 49.25)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(4, 3, 2), PackedInt32Array(0, 6, 5), PackedInt32Array(2, 0, 4), PackedInt32Array(4, 0, 7), PackedInt32Array(7, 0, 5), PackedInt32Array(10, 9, 8), PackedInt32Array(8, 3, 10), PackedInt32Array(10, 3, 11), PackedInt32Array(11, 3, 4), PackedInt32Array(11, 4, 12), PackedInt32Array(15, 14, 13), PackedInt32Array(16, 11, 17), PackedInt32Array(17, 11, 13), PackedInt32Array(15, 11, 18), PackedInt32Array(18, 11, 12), PackedInt32Array(18, 12, 19), PackedInt32Array(15, 13, 11), PackedInt32Array(22, 21, 20), PackedInt32Array(22, 20, 23), PackedInt32Array(23, 20, 18), PackedInt32Array(23, 18, 19), PackedInt32Array(23, 19, 24), PackedInt32Array(26, 25, 27), PackedInt32Array(27, 25, 28), PackedInt32Array(28, 25, 24), PackedInt32Array(25, 23, 24), PackedInt32Array(30, 29, 31), PackedInt32Array(31, 29, 32), PackedInt32Array(35, 34, 33), PackedInt32Array(33, 9, 35), PackedInt32Array(35, 9, 36), PackedInt32Array(36, 9, 10), PackedInt32Array(35, 36, 37), PackedInt32Array(37, 36, 39), PackedInt32Array(37, 39, 32), PackedInt32Array(37, 32, 38), PackedInt32Array(32, 29, 38), PackedInt32Array(38, 40, 37), PackedInt32Array(39, 41, 32), PackedInt32Array(44, 43, 42), PackedInt32Array(42, 21, 44), PackedInt32Array(44, 21, 22), PackedInt32Array(44, 22, 45), PackedInt32Array(44, 45, 46), PackedInt32Array(46, 45, 49), PackedInt32Array(46, 49, 47), PackedInt32Array(47, 49, 48), PackedInt32Array(47, 50, 46), PackedInt32Array(40, 51, 37), PackedInt32Array(37, 51, 52), PackedInt32Array(52, 51, 53), PackedInt32Array(52, 53, 5), PackedInt32Array(5, 6, 52), PackedInt32Array(54, 16, 17), PackedInt32Array(17, 55, 54), PackedInt32Array(54, 55, 39), PackedInt32Array(58, 57, 56), PackedInt32Array(55, 46, 50), PackedInt32Array(58, 56, 50), PackedInt32Array(50, 56, 41), PackedInt32Array(50, 41, 55), PackedInt32Array(55, 41, 39), PackedInt32Array(48, 49, 59), PackedInt32Array(59, 49, 60), PackedInt32Array(27, 61, 60), PackedInt32Array(60, 61, 59), PackedInt32Array(27, 60, 26), PackedInt32Array(30, 31, 62), PackedInt32Array(62, 31, 63), PackedInt32Array(63, 65, 64), PackedInt32Array(62, 63, 66), PackedInt32Array(66, 63, 67), PackedInt32Array(67, 63, 64), PackedInt32Array(57, 58, 68), PackedInt32Array(57, 68, 69), PackedInt32Array(69, 68, 72), PackedInt32Array(69, 72, 71), PackedInt32Array(69, 71, 70), PackedInt32Array(70, 73, 69), PackedInt32Array(66, 67, 74), PackedInt32Array(74, 67, 75), PackedInt32Array(74, 75, 53), PackedInt32Array(53, 51, 74), PackedInt32Array(59, 61, 72), PackedInt32Array(72, 61, 71), PackedInt32Array(71, 61, 76), PackedInt32Array(64, 65, 70), PackedInt32Array(70, 65, 73)]
 agent_radius = 0.75
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_u53cm"]
@@ -43,6 +48,24 @@ _surfaces = [{
 "vertex_data": PackedByteArray("AABIwgAAAL8AAEhCAABIwgAAAL8AAEjCAABIwgAAAD8AAEjCAABIQgAAAL8AAEjCAABIwgAAAL8AAEjCAABIwgAAAL8AAEhCAABIwgAAAD8AAEjCAABIwgAAAL8AAEjCAABIQgAAAL8AAEjCAABIwgAAAD8AAEhCAABIwgAAAL8AAEhCAABIwgAAAD8AAEhCAABIQgAAAD8AAEhCAABIQgAAAD8AAEhCAABIwgAAAD8AAEhCAABIwgAAAD8AAEjCAABIQgAAAL8AAEhCAABIQgAAAL8AAEhCAABIQgAAAL8AAEjCAABIQgAAAL8AAEhCAABIQgAAAD8AAEhCAABIQgAAAD8AAEjCAABIQgAAAD8AAEjCAABIQgAAAD8AAEjCAAAAgP9//n8AAACA/3/+fwAAAID/f/5/AIAAAP//AAAAgAAA//8AAACAAAD//wAA/////wAA/z//////AAD/P/////8AAP8/AAAAgP9//n//f/9/AAD/P/9//38AAP8//3//fwAA/z8AgP////8AAACA/////wAAAID/////AAAAgAAA//8AAP9//38AAP8///8AgP9//n///wCA/3/+f///AID/f/5//////wAA/z8AgP////8AAP//AID/f/5/")
 }]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qi47a"]
+albedo_color = Color(0.72277427, 0.29475948, 0.13120693, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_xisrv"]
+lightmap_size_hint = Vector2i(14, 21)
+add_uv2 = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u53cm"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sy60i"]
+albedo_color = Color(0.48178947, 0.48178947, 0.48178947, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5xue5"]
+albedo_color = Color(0.44125345, 0.4388522, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hjdfb"]
+albedo_color = Color(0.39215687, 0.78431374, 1, 1)
+
 [node name="PrototypeMap" type="Node" unique_id=244975850]
 
 [node name="Enviroment" type="Node" parent="." unique_id=1932585649]
@@ -50,26 +73,13 @@ _surfaces = [{
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Enviroment" unique_id=1972512165]
 environment = SubResource("Environment_n68i4")
 
-[node name="RealSun" type="DirectionalLight3D" parent="Enviroment" unique_id=561542002]
-transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
-light_color = Color(1, 1, 0.8627451, 1)
-light_energy = 0.75
-light_indirect_energy = 0.0
-light_volumetric_fog_energy = 0.0
-light_bake_mode = 0
-shadow_enabled = true
-shadow_blur = 0.55
-shadow_caster_mask = 4294967294
-directional_shadow_blend_splits = true
-
 [node name="BakedSun" type="DirectionalLight3D" parent="Enviroment" unique_id=1246506066]
-transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
-light_color = Color(1, 1, 0.8627451, 1)
+transform = Transform3D(-0.56120574, -0.19719066, 0.803843, 0.68102115, 0.44193718, 0.58386844, -0.47038156, 0.8751041, -0.11372662, 0, 22.767365, 0)
+light_color = Color(0.85882354, 0.92156863, 0.7882353, 1)
 light_bake_mode = 1
 shadow_enabled = true
+shadow_caster_mask = 4294967294
 directional_shadow_blend_splits = true
-
-[node name="Node" type="Node" parent="." unique_id=1262571599]
 
 [node name="Model" type="Node" parent="." unique_id=653506784]
 
@@ -87,6 +97,7 @@ size = Vector3(100, 1, 100)
 
 [node name="CSGBakedMeshInstance3D" type="MeshInstance3D" parent="Model/NavigationRegion3D/Floor" unique_id=1865552685]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+layers = 2
 mesh = SubResource("ArrayMesh_u53cm")
 
 [node name="Props" type="Node" parent="Model/NavigationRegion3D" unique_id=2006739406]
@@ -112,5 +123,118 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1290698, 0.39999974, 6.5871
 [node name="wood_crate2" parent="Model/NavigationRegion3D/Props" unique_id=228877650 instance=ExtResource("2_x7uim")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1290698, 0.39999974, 7.587115)
 
+[node name="LightSource" type="Node" parent="Model/NavigationRegion3D/Props" unique_id=634933728]
+
+[node name="post_torch" parent="Model/NavigationRegion3D/Props/LightSource" unique_id=1290534959 instance=ExtResource("1_qi47a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.243164, 6.1035156e-05, 7.8082275)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Model/NavigationRegion3D/Props/LightSource/post_torch" unique_id=1012079276]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.2896895, 0)
+layers = 2
+light_color = Color(1, 0.87058824, 0.60784316, 1)
+light_bake_mode = 1
+omni_range = 15.0
+omni_attenuation = 0.3
+
+[node name="post_torch2" parent="Model/NavigationRegion3D/Props/LightSource" unique_id=1240540859 instance=ExtResource("1_qi47a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.243164, 6.1035156e-05, -8.191772)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Model/NavigationRegion3D/Props/LightSource/post_torch2" unique_id=991340580]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.2896895, 0)
+layers = 2
+light_color = Color(1, 0.87058824, 0.60784316, 1)
+light_bake_mode = 1
+omni_range = 15.0
+omni_attenuation = 0.3
+
+[node name="post_torch3" parent="Model/NavigationRegion3D/Props/LightSource" unique_id=29836265 instance=ExtResource("1_qi47a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.756836, 6.1035156e-05, -8.191772)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Model/NavigationRegion3D/Props/LightSource/post_torch3" unique_id=1922224622]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.2896895, 0)
+layers = 2
+light_color = Color(1, 0.87058824, 0.60784316, 1)
+light_bake_mode = 1
+omni_range = 15.0
+omni_attenuation = 0.3
+
+[node name="post_torch4" parent="Model/NavigationRegion3D/Props/LightSource" unique_id=1643640368 instance=ExtResource("1_qi47a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.756836, 6.1035156e-05, 7.8082275)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Model/NavigationRegion3D/Props/LightSource/post_torch4" unique_id=1671775466]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.2896895, 0)
+layers = 2
+light_color = Color(1, 0.87058824, 0.60784316, 1)
+light_bake_mode = 1
+omni_range = 15.0
+omni_attenuation = 0.3
+
+[node name="LootSource" type="Node" parent="Model/NavigationRegion3D" unique_id=1708057989]
+
+[node name="BronzeSource" type="StaticBody3D" parent="Model/NavigationRegion3D/LootSource" unique_id=1809932652]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0.5, -6.0129585)
+collision_layer = 8
+collision_mask = 3
+script = ExtResource("4_sy60i")
+interaction_type = 1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Model/NavigationRegion3D/LootSource/BronzeSource" unique_id=1810119645]
+layers = 2
+material_override = SubResource("StandardMaterial3D_qi47a")
+mesh = SubResource("BoxMesh_xisrv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Model/NavigationRegion3D/LootSource/BronzeSource" unique_id=446402945]
+shape = SubResource("BoxShape3D_u53cm")
+
+[node name="SilverSource" type="StaticBody3D" parent="Model/NavigationRegion3D/LootSource" unique_id=381224931]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -6.0129585)
+collision_layer = 8
+collision_mask = 3
+script = ExtResource("4_sy60i")
+source_tier = 1
+interaction_type = 1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Model/NavigationRegion3D/LootSource/SilverSource" unique_id=2138787991]
+layers = 2
+material_override = SubResource("StandardMaterial3D_sy60i")
+mesh = SubResource("BoxMesh_xisrv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Model/NavigationRegion3D/LootSource/SilverSource" unique_id=1705971555]
+shape = SubResource("BoxShape3D_u53cm")
+
+[node name="GoldSource" type="StaticBody3D" parent="Model/NavigationRegion3D/LootSource" unique_id=998419066]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.5, -6.0129585)
+collision_layer = 8
+collision_mask = 3
+script = ExtResource("4_sy60i")
+source_tier = 2
+interaction_type = 1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Model/NavigationRegion3D/LootSource/GoldSource" unique_id=1779526742]
+layers = 2
+material_override = SubResource("StandardMaterial3D_5xue5")
+mesh = SubResource("BoxMesh_xisrv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Model/NavigationRegion3D/LootSource/GoldSource" unique_id=1641264457]
+shape = SubResource("BoxShape3D_u53cm")
+
+[node name="DiamondSource" type="StaticBody3D" parent="Model/NavigationRegion3D/LootSource" unique_id=74144042]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0.5, -6.0129585)
+collision_layer = 8
+collision_mask = 3
+script = ExtResource("4_sy60i")
+source_tier = 3
+interaction_type = 1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Model/NavigationRegion3D/LootSource/DiamondSource" unique_id=575005732]
+layers = 2
+material_override = SubResource("StandardMaterial3D_hjdfb")
+mesh = SubResource("BoxMesh_xisrv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Model/NavigationRegion3D/LootSource/DiamondSource" unique_id=1412554496]
+shape = SubResource("BoxShape3D_u53cm")
+
 [node name="LightmapGI" type="LightmapGI" parent="." unique_id=2123745176]
+layers = 2
+quality = 0
 light_data = ExtResource("4_u53cm")

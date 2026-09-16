@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://boqb53flapqak"
-path="res://.godot/imported/wood_crate.glb-bd7f1edff3561e46401b9c4e863d67bc.scn"
+uid="uid://dhngt0kmuvhe7"
+path="res://.godot/imported/post_torch.glb-6e20e5c4d5543027e96790a91d3a5a74.scn"
 
 [deps]
 
-source_file="res://assets/models/props/wood_crate.glb"
-dest_files=["res://.godot/imported/wood_crate.glb-bd7f1edff3561e46401b9c4e863d67bc.scn"]
+source_file="res://assets/models/props/post_torch.glb"
+dest_files=["res://.godot/imported/post_torch.glb-6e20e5c4d5543027e96790a91d3a5a74.scn"]
 
 [params]
 
@@ -41,10 +41,10 @@ materials/extract_format=0
 materials/extract_path=""
 _subresources={
 "nodes": {
-"PATH:Cube": {
+"PATH:Cylinder": {
 "mesh_instance/layers": 2
 },
-"PATH:Cube_001": {
+"PATH:Cylinder_001": {
 "mesh_instance/layers": 2
 }
 }

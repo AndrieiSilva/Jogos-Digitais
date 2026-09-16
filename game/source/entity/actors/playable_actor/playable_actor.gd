@@ -3,13 +3,19 @@ class_name PlayableActor extends Actor
 signal move_requested(target : Vector3)
 
 @export var nav_agent : NavigationAgent3D
-@export var move_speed : float = 5
+@export var move_speed : float = 4
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		await get_tree().physics_frame
-		var target_pos : Vector3 = _calc_click_pos(event.position)
-		if target_pos != Vector3.INF:
+		var result : Dictionary = _calc_click_pos(event.position)
+		if not result:
+			return
+		var collider : Node3D = result.collider
+		if collider is Interaction:
+			collider._interact()
+		else:
+			var target_pos : Vector3 = result.position
 			nav_agent.target_position = target_pos
 
 func _ready() -> void:
@@ -34,7 +40,7 @@ func _on_velocity_computed(safe_velocity: Vector3) -> void:
 	velocity = safe_velocity
 	move_and_slide()
 
-func _calc_click_pos(click_pos : Vector2) -> Vector3:
+func _calc_click_pos(click_pos : Vector2) -> Dictionary:
 	var space_state = get_world_3d().direct_space_state
 	var cam : Camera3D = get_viewport().get_camera_3d()
 	var ray_lenght : float = 1000
@@ -44,7 +50,4 @@ func _calc_click_pos(click_pos : Vector2) -> Vector3:
 	var query : PhysicsRayQueryParameters3D = PhysicsRayQueryParameters3D.create(ray_origin, ray_end)
 	var result : Dictionary = space_state.intersect_ray(query)
 	
-	if result:
-		return result.position
-	else:
-		return Vector3.INF
+	return result

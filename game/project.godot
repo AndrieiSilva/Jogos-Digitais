@@ -15,6 +15,10 @@ run/main_scene="uid://df7bwhcm262i6"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://assets/icons/icon.svg"
 
+[autoload]
+
+ItemTracker="*uid://bj80wogp3kghk"
+
 [display]
 
 window/stretch/mode="canvas_items"
@@ -66,10 +70,12 @@ char_click_move={
 
 [layer_names]
 
-3d_render/layer_1="static"
-3d_render/layer_2="dinamic"
+3d_render/layer_1="dinamic"
+3d_render/layer_2="static"
 3d_physics/layer_1="World"
 3d_physics/layer_2="Player"
+3d_physics/layer_3="Item"
+3d_physics/layer_4="Interaction"
 
 [navigation]
 

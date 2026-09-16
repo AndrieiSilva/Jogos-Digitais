@@ -16,15 +16,15 @@ func _ready() -> void:
 		push_error("CamComponent: Set the goddam references!")
 		return
 	
-	#cam.projection = Camera3D.PROJECTION_ORTHOGONAL
-	cam.fov = camera_data.cam_fov
+	cam.projection = Camera3D.PROJECTION_ORTHOGONAL
+	cam.size = camera_data.cam_size
 	
 	cam.position = Vector3(0, 0, camera_data.cam_distance)
 	
 	cam_pivot.rotation_degrees.y = camera_data.initial_cam_rot_degrees
 	rotation_target = camera_data.initial_cam_rot_degrees
 	
-	var pitch_rad = -deg_to_rad(60)
+	var pitch_rad = -deg_to_rad(33)
 	cam_gimbal.rotation.x = pitch_rad
 
 

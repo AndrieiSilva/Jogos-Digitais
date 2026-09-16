@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cy6bi782uhn1p"]
+
+[ext_resource type="Script" uid="uid://cqo7sjrickbjw" path="res://data/resource/itens/item_data.gd" id="1_rikg5"]
+
+[resource]
+script = ExtResource("1_rikg5")
+name = "Bronze Coin"
+model_uid = "uid://druluy16d6maa"
+spawn_weight = 10.0
+metadata/_custom_type_script = "uid://cqo7sjrickbjw"
