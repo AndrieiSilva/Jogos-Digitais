@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dk5eutii26fu3"]
+
+[ext_resource type="Script" uid="uid://cqo7sjrickbjw" path="res://data/resource/itens/item_data.gd" id="1_iqdxk"]
+
+[resource]
+script = ExtResource("1_iqdxk")
+name = "Sword Placeholder"
+model_uid = "uid://cnyt2p5slaxsp"
+spawn_weight = 1.0
+metadata/_custom_type_script = "uid://cqo7sjrickbjw"

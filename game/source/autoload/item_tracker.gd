@@ -5,8 +5,19 @@ var all_itens : Array[ItemData] = []
 var coin_itens : Array[ItemData] = []
 var equipment_itens : Array[ItemData] = []
 
+var equipments_common : Array[ItemData] = []
+var equipments_uncommon : Array[ItemData] = []
+var equipments_rare : Array[ItemData] = []
+var equipments_legendary : Array[ItemData] = []
+
+var equipment_by_rarity : Dictionary = {}
+
 func _ready() -> void:
 	_load_all_itens()
+	equipment_by_rarity = {
+		ItemData.Rarity.COMMON : equipments_common,
+		ItemData.Rarity.UNCOMMON : equipments_uncommon,
+	}
 
 func _load_all_itens() -> void:
 	all_itens.clear()
@@ -26,10 +37,23 @@ func _load_all_itens() -> void:
 					var item : ItemData = load(full_path)
 					if item:
 						all_itens.append(item)
-						if "coin" in file_name.to_lower():
-							coin_itens.append(item)
-						elif "sword" in file_name.to_lower():
-							equipment_itens.append(item)
+						_filter(item)
 			
 			file_name = dir.get_next()
 		dir.list_dir_end()
+
+func _filter(item : ItemData) -> void:
+	var item_name : String = item.name.to_lower()
+	
+	if "coin" in item_name:
+		coin_itens.append(item)
+		return
+	
+	if "sword" in item_name or "armor" in item_name:
+		equipment_itens.append(item)
+		
+		match item.rarity:
+			ItemData.Rarity.COMMON:
+				equipments_common.append(item)
+			ItemData.Rarity.UNCOMMON:
+				equipments_uncommon.append(item)
