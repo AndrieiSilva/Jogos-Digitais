@@ -9,7 +9,11 @@ var max_coin : int
 var min_equipment : int
 var max_equipment : int
 #----------------------------
-var rarity_array : Array[ItemData.Rarity] = [ItemData.Rarity.COMMON, ItemData.Rarity.UNCOMMON]
+var rarity_array : Array[ItemData.Rarity] = [ItemData.Rarity.COMMON,
+											ItemData.Rarity.UNCOMMON,
+											ItemData.Rarity.RARE,
+											ItemData.Rarity.LEGENDARY,
+											]
 var rarity_weight_array : Array[float] = []
 
 @export var source_tier : LootTiers.Tiers = LootTiers.Tiers.BRONZE
@@ -27,6 +31,8 @@ func _setup_reward(tier : LootTiers.Tiers) -> void:
 	var eligible_rarity_id : String = "eligible_rarity"
 	var common_id = "common"
 	var uncommon_id = "uncommon"
+	var rare_id = "rare"
+	var legendary_id = "legendary"
 	
 	min_coin = tier_data[coins_id][min_id]
 	max_coin = tier_data[coins_id][max_id]
@@ -34,14 +40,29 @@ func _setup_reward(tier : LootTiers.Tiers) -> void:
 	max_equipment = tier_data[equipment_id][max_id]
 	rarity_weight_array.append(tier_data[eligible_rarity_id].get(common_id, 0.0))
 	rarity_weight_array.append(tier_data[eligible_rarity_id].get(uncommon_id, 0.0))
+	rarity_weight_array.append(tier_data[eligible_rarity_id].get(rare_id, 0.0))
+	rarity_weight_array.append(tier_data[eligible_rarity_id].get(legendary_id, 0.0))
 
 func _interact() -> void:
 	_spawn_loot(ItemTracker.coin_itens, min_coin, max_coin)
-	_spawn_loot(ItemTracker.equipment_itens, min_equipment, max_equipment)
+	
+	var itens_array : Array[ItemData] = []
+	
+	match _select_rarity():
+		ItemData.Rarity.COMMON:
+			itens_array = ItemTracker.equipments_common
+		ItemData.Rarity.UNCOMMON:
+			itens_array = ItemTracker.equipments_uncommon
+		ItemData.Rarity.RARE:
+			itens_array = ItemTracker.equipments_rare
+		ItemData.Rarity.LEGENDARY:
+			itens_array = ItemTracker.equipments_legendary
+	
+	_spawn_loot(itens_array, min_equipment, max_equipment)
 
 
 func _select_rarity() -> ItemData.Rarity:
-	var total_weight : float
+	var total_weight : float = 0
 	for w in rarity_weight_array:
 		total_weight += w
 	
@@ -65,12 +86,11 @@ func _spawn_loot(item_array : Array[ItemData], min : int, max : int) -> void:
 		total_weight += item.spawn_weight
 	
 	for i : int in range(item_qt):
-		var dir : Vector3 = generate_dir()
+		
 		var item : Item = item_packed_scene.instantiate()
 		item.item_data = _get_item_by_weight(total_weight, item_array)
 		self.add_child(item)
-		var force : Vector3 = dir * item_fly_strenght
-		item.apply_impulse(force, Vector3.UP)
+		
 
 func _get_item_by_weight(total_weight : float, item_array : Array[ItemData]) -> ItemData:
 	var random_val : float = randf() * total_weight
@@ -82,9 +102,3 @@ func _get_item_by_weight(total_weight : float, item_array : Array[ItemData]) -> 
 			return item
 			
 	return item_array.front()
-
-func generate_dir() -> Vector3:
-	var dir : Vector3 = Vector3(randf_range(-1, 1), 1, randf_range(-1, 1))
-	dir = dir.normalized()
-	dir.y = 2
-	return dir

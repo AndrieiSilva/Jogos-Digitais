@@ -57,3 +57,7 @@ func _filter(item : ItemData) -> void:
 				equipments_common.append(item)
 			ItemData.Rarity.UNCOMMON:
 				equipments_uncommon.append(item)
+			ItemData.Rarity.RARE:
+				equipments_rare.append(item)
+			ItemData.Rarity.LEGENDARY:
+				equipments_legendary.append(item)

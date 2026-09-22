@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://cgc0piqcgcnyi"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sdsp4"]
+
+[sub_resource type="Sky" id="Sky_scdwq"]
+sky_material = SubResource("ProceduralSkyMaterial_sdsp4")
+
+[sub_resource type="Environment" id="Environment_n68i4"]
+background_mode = 2
+background_color = Color(0.1584723, 0.15847233, 0.1584723, 1)
+sky = SubResource("Sky_scdwq")
+reflected_light_source = 2
+tonemap_mode = 4
+tonemap_agx_contrast = 1.4
+ssr_enabled = true
+ssao_enabled = true
+sdfgi_use_occlusion = true
+glow_enabled = true
+adjustment_enabled = true
+adjustment_brightness = 0.9
+adjustment_saturation = 0.8
+
+[node name="Enviroment" type="Node" unique_id=1362415731]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1827767326]
+environment = SubResource("Environment_n68i4")
+
+[node name="BakedSun" type="DirectionalLight3D" parent="." unique_id=1045914840]
+transform = Transform3D(-0.56120574, -0.19719066, 0.803843, 0.68102115, 0.44193718, 0.58386844, -0.47038156, 0.8751041, -0.11372662, 0, 22.767365, 0)
+light_color = Color(0.85882354, 0.92156863, 0.7882353, 1)
+light_bake_mode = 1
+shadow_enabled = true
+shadow_caster_mask = 4294967294
+directional_shadow_blend_splits = true

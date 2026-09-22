@@ -16,23 +16,26 @@ const TIER : Dictionary = {
 		"equipments" : {"min" : 1, "max" : 2},
 		"eligible_rarity" : {
 			"common" : 5,
-			"uncommon" : 1,
+			"uncommon" : 5,
+			"rare" : 1,
 		}
 	},
 	Tiers.GOLD: {
 		"coins" : {"min" : 300, "max" : 400},
 		"equipments" : {"min" : 2, "max" : 4},
 		"eligible_rarity" : {
-			"common" : 1,
-			"uncommon" : 1,
+			"uncommon" : 10,
+			"rare" : 6,
+			"legendary" : 1,
 		}
 	},
 	Tiers.DIAMOND: {
 		"coins" : {"min" : 500, "max" : 750},
 		"equipments" : {"min" : 3, "max" : 6},
 		"eligible_rarity" : {
-			"common" : 1,
-			"uncommon" : 5,
+			"uncommon" : 3,
+			"rare" : 10,
+			"legendary" : 5,
 		}
 	},
 }

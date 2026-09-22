@@ -10,8 +10,20 @@ static var current_itens_count : int = 0
 static var current_itens : Array[Item] = []
 var is_auto_collected : bool = false
 
+func generate_dir() -> Vector3:
+	var dir : Vector3 = Vector3(randf_range(-1, 1), 1, randf_range(-1, 1))
+	dir = dir.normalized()
+	dir.y = 2
+	return dir
+
+func _apply_force() -> void:
+	var item_fly_strenght : float = 3
+	var dir : Vector3 = generate_dir()
+	var force : Vector3 = dir * item_fly_strenght
+	apply_impulse(force, Vector3.UP)
 
 func _ready() -> void:
+	_apply_force()
 	_control_item_limit()
 	_load_model()
 	_set_effects()
@@ -33,7 +45,7 @@ func _auto_collect_control(delta : float) -> void:
 	cool -= delta
 	if cool <= 0:
 		if self in current_itens:
-			current_itens.erase(self) # Remova do array imediatamente!
+			current_itens.erase(self)
 			current_itens_count -= 1
 			
 			hide()
@@ -78,8 +90,10 @@ func _set_effects() -> void:
 				color = Color(1.0, 1.0, 0.0)
 			
 		mat_unique.albedo_color = color
-		print(item_data.rarity)
-		
+	else:
+		printerr("no mat")
+
+
 func _load_model() -> void:
 	var path : String = ResourceUID.uid_to_path(item_data.model_uid)
 	ResourceLoader.load_threaded_request(path)

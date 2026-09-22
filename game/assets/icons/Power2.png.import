@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://mgje1rsgllhd"
-path.bptc="res://.godot/imported/satara_night_no_lamps_4k.hdr-fef1808c02e025a8979eb1a223f45a62.bptc.ctex"
+uid="uid://dtr00yoasdgo"
+path.s3tc="res://.godot/imported/Power2.png-db2117b96d2f3a04561eddf0e42e5b39.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/texture/satara_night_no_lamps_4k.hdr"
-dest_files=["res://.godot/imported/satara_night_no_lamps_4k.hdr-fef1808c02e025a8979eb1a223f45a62.bptc.ctex"]
+source_file="res://assets/icons/Power2.png"
+dest_files=["res://.godot/imported/Power2.png-db2117b96d2f3a04561eddf0e42e5b39.s3tc.ctex"]
 
 [params]
 

@@ -2,8 +2,8 @@
 
 importer="2d_array_texture"
 type="CompressedTexture2DArray"
-uid="uid://x8nuwhal0msu"
-path.bptc="res://.godot/imported/prototype_map_gi_data.exr-2a492e15950b9fbff846ad76d3b1492d.bptc.ctexarray"
+uid="uid://wjtr477yincb"
+path.bptc="res://.godot/imported/happy_port_lightmap_gi_data.exr-606c1319a8b7189179c8c53ab2eacc0c.bptc.ctexarray"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://data/voxel_gi/prototype_map_gi_data.exr"
-dest_files=["res://.godot/imported/prototype_map_gi_data.exr-2a492e15950b9fbff846ad76d3b1492d.bptc.ctexarray"]
+source_file="res://data/gi/happy_port_map/happy_port_lightmap_gi_data.exr"
+dest_files=["res://.godot/imported/happy_port_lightmap_gi_data.exr-606c1319a8b7189179c8c53ab2eacc0c.bptc.ctexarray"]
 
 [params]
 
