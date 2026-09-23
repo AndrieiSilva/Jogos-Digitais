@@ -23,6 +23,7 @@ func _apply_force() -> void:
 	apply_impulse(force, Vector3.UP)
 
 func _ready() -> void:
+	position.y += 1
 	_apply_force()
 	_control_item_limit()
 	_load_model()

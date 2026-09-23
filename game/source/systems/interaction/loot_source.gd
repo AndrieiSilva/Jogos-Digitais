@@ -19,7 +19,6 @@ var rarity_weight_array : Array[float] = []
 @export var source_tier : LootTiers.Tiers = LootTiers.Tiers.BRONZE
 
 func _ready() -> void:
-	super._ready()
 	_setup_reward(source_tier)
 
 func _setup_reward(tier : LootTiers.Tiers) -> void:
@@ -44,8 +43,6 @@ func _setup_reward(tier : LootTiers.Tiers) -> void:
 	rarity_weight_array.append(tier_data[eligible_rarity_id].get(legendary_id, 0.0))
 
 func _interact() -> void:
-	
-	
 	var coin_qt : int = randi_range(min_coin, max_coin) 
 	for i : int in range(coin_qt):
 		_spawn_loot(ItemTracker.coin_itens)
@@ -85,8 +82,6 @@ func _select_rarity() -> ItemData.Rarity:
 	return ItemData.Rarity.COMMON
 
 func _spawn_loot(item_array : Array[ItemData]) -> void:
-	
-	
 	var total_weight : float = 0.0
 	for item in item_array:
 		total_weight += item.spawn_weight
@@ -96,7 +91,7 @@ func _spawn_loot(item_array : Array[ItemData]) -> void:
 	var item : Item = item_packed_scene.instantiate()
 	item.item_data = _get_item_by_weight(total_weight, item_array)
 	self.add_child(item)
-		
+	
 
 func _get_item_by_weight(total_weight : float, item_array : Array[ItemData]) -> ItemData:
 	var random_val : float = randf() * total_weight

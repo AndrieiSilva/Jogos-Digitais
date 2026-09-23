@@ -14,6 +14,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		var collider : Node3D = result.collider
 		if collider is Interaction:
 			collider._interact()
+		elif collider.get_parent().get_parent() is Interaction:
+			collider.get_parent().get_parent()._interact()
+			collider = collider as StaticBody3D
 		else:
 			var target_pos : Vector3 = result.position
 			nav_agent.target_position = target_pos
