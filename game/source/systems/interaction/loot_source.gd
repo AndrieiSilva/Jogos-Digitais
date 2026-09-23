@@ -44,21 +44,27 @@ func _setup_reward(tier : LootTiers.Tiers) -> void:
 	rarity_weight_array.append(tier_data[eligible_rarity_id].get(legendary_id, 0.0))
 
 func _interact() -> void:
-	_spawn_loot(ItemTracker.coin_itens, min_coin, max_coin)
+	
+	
+	var coin_qt : int = randi_range(min_coin, max_coin) 
+	for i : int in range(coin_qt):
+		_spawn_loot(ItemTracker.coin_itens)
 	
 	var itens_array : Array[ItemData] = []
+	var item_qt : int = randi_range(min_equipment, max_equipment) 
 	
-	match _select_rarity():
-		ItemData.Rarity.COMMON:
-			itens_array = ItemTracker.equipments_common
-		ItemData.Rarity.UNCOMMON:
-			itens_array = ItemTracker.equipments_uncommon
-		ItemData.Rarity.RARE:
-			itens_array = ItemTracker.equipments_rare
-		ItemData.Rarity.LEGENDARY:
-			itens_array = ItemTracker.equipments_legendary
-	
-	_spawn_loot(itens_array, min_equipment, max_equipment)
+	for i : int in range(item_qt):
+		match _select_rarity():
+			ItemData.Rarity.COMMON:
+				itens_array = ItemTracker.equipments_common
+			ItemData.Rarity.UNCOMMON:
+				itens_array = ItemTracker.equipments_uncommon
+			ItemData.Rarity.RARE:
+				itens_array = ItemTracker.equipments_rare
+			ItemData.Rarity.LEGENDARY:
+				itens_array = ItemTracker.equipments_legendary
+		
+		_spawn_loot(itens_array)
 
 
 func _select_rarity() -> ItemData.Rarity:
@@ -78,18 +84,18 @@ func _select_rarity() -> ItemData.Rarity:
 	
 	return ItemData.Rarity.COMMON
 
-func _spawn_loot(item_array : Array[ItemData], min : int, max : int) -> void:
-	var item_qt : int = randi_range(min, max) 
+func _spawn_loot(item_array : Array[ItemData]) -> void:
+	
 	
 	var total_weight : float = 0.0
 	for item in item_array:
 		total_weight += item.spawn_weight
 	
-	for i : int in range(item_qt):
+	
 		
-		var item : Item = item_packed_scene.instantiate()
-		item.item_data = _get_item_by_weight(total_weight, item_array)
-		self.add_child(item)
+	var item : Item = item_packed_scene.instantiate()
+	item.item_data = _get_item_by_weight(total_weight, item_array)
+	self.add_child(item)
 		
 
 func _get_item_by_weight(total_weight : float, item_array : Array[ItemData]) -> ItemData:
