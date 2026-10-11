@@ -24,7 +24,7 @@ func _ready() -> void:
 	cam_pivot.rotation_degrees.y = camera_data.initial_cam_rot_degrees
 	rotation_target = camera_data.initial_cam_rot_degrees
 	
-	var pitch_rad = -deg_to_rad(26)
+	var pitch_rad = -deg_to_rad(33)
 	cam_gimbal.rotation.x = pitch_rad
 
 

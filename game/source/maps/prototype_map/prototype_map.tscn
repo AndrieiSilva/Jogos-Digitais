@@ -295,5 +295,6 @@ mesh = SubResource("PlaneMesh_xisrv")
 
 [node name="LightmapGI" type="LightmapGI" parent="." unique_id=2123745176]
 layers = 2
+quality = 0
 directional = true
 light_data = ExtResource("4_u53cm")

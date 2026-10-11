@@ -22,6 +22,7 @@ collision_layer = 2
 collision_mask = 17
 script = ExtResource("1_mo5sk")
 character_animated_model = NodePath("main_character_model")
+anim_lerp_speed = 6.0
 nav_agent = NodePath("NavigationAgent3D")
 state_tree = NodePath("StateTree")
 state_chart = NodePath("StateChart")

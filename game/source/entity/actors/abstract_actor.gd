@@ -1,6 +1,7 @@
 class_name Actor extends CharacterBody3D
 
 @export var character_animated_model : AnimatedModel
+@export var anim_lerp_speed : float = 10
 
 @export var nav_agent : NavigationAgent3D
 

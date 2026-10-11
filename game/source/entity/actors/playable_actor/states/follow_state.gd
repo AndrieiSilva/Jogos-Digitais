@@ -31,13 +31,7 @@ func lerped_look(delta : float) -> void:
 		actor.global_transform.basis = actor.global_transform.basis.slerp(temp_transform.basis, rotation_speed * delta)
 
 func animate() -> void:
-	var player : AnimationPlayer = actor.character_animated_model.anim_player
-	
-	if player.is_playing():
-		if not player.current_animation == "run":
-			player.play("run")
-	else:
-		player.play("run")
+	var player : AnimationTree = actor.character_animated_model.anim_tree
 
 
 func _on_follow_state_entered() -> void:

@@ -33,7 +33,7 @@ func _transition_to() -> void:
 
 func _state_action(delta : float) -> void:
 	lerped_look(delta)
-	animate()
+	animate(delta)
 	handle_input()
 
 func lerped_look(delta : float) -> void:
@@ -49,14 +49,12 @@ func lerped_look(delta : float) -> void:
 func _on_run_state_entered() -> void:
 	pass
 
-func animate() -> void:
-	var player : AnimationPlayer = actor.character_animated_model.anim_player
+func animate(delta : float) -> void:
+	var player : AnimationTree = actor.character_animated_model.anim_tree
 	
-	if player.is_playing():
-		if not player.current_animation == "run":
-			player.play("run")
-	else:
-		player.play("run")
+	var run_val : float = player.get("parameters/BlendRun/blend_amount")
+	run_val = lerpf(run_val, 1, actor.anim_lerp_speed * delta)
+	player["parameters/BlendRun/blend_amount"] = run_val
 
 func _on_run_state_physics_processing(delta: float) -> void:
 	_transition_to()

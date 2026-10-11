@@ -13,7 +13,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	_on_move_requested()
 
-
 func _on_move_requested() -> void:
 	if nav_agent.is_navigation_finished():
 		return
@@ -27,4 +26,5 @@ func _on_move_requested() -> void:
 
 func _on_velocity_computed(safe_velocity: Vector3) -> void:
 	velocity = safe_velocity
+	
 	move_and_slide()

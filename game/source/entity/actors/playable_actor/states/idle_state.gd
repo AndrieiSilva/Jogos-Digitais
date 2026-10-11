@@ -32,16 +32,14 @@ func _transition_to() -> void:
 		state_chart.send_event(States["run"])
 
 func _state_action(delta : float) -> void:
-	animate()
+	animate(delta)
 
-func animate() -> void:
-	var player : AnimationPlayer = actor.character_animated_model.anim_player
+func animate(delta : float) -> void:
+	var player : AnimationTree = actor.character_animated_model.anim_tree
 	
-	if player.is_playing():
-		if not player.current_animation == "idle":
-			player.play("idle")
-	else:
-		player.play("idle")
+	var run_val : float = player.get("parameters/BlendRun/blend_amount")
+	run_val = lerpf(run_val, 0, actor.anim_lerp_speed * delta)
+	player["parameters/BlendRun/blend_amount"] = run_val
 
 func _on_idle_state_entered() -> void:
 	pass # Replace with function body.
