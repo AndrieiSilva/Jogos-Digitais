@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://cfloadrub4c14"]
+
+[ext_resource type="Script" uid="uid://b6oxcppd8ovui" path="res://source/entity/actors/bot/enemy/enemy.gd" id="1_mog23"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xisrv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mog23"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_mog23"]
+material = SubResource("StandardMaterial3D_mog23")
+
+[node name="Dummy" type="CharacterBody3D" unique_id=235059105]
+collision_layer = 16
+collision_mask = 3
+script = ExtResource("1_mog23")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1369382619]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_xisrv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1388092605]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_mog23")

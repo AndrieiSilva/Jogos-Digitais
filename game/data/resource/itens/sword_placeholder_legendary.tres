@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_0d72r")
 name = "Sword Placeholder"
-model_uid = "uid://cnyt2p5slaxsp"
+model_uid = "uid://dbi7vhkhp22eg"
 spawn_weight = 1.0
 rarity = 3
 metadata/_custom_type_script = "uid://cqo7sjrickbjw"

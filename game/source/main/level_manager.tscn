@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://fa1ku65wjwod" path="res://source/components/camera/cam_component.tscn" id="3_nw4ga"]
 [ext_resource type="PackedScene" uid="uid://bqwaxo3od8ou7" path="res://source/entity/actors/playable_actor/playable_actor.tscn" id="3_scdwq"]
 [ext_resource type="Resource" uid="uid://g7uvol5l3yg" path="res://data/resource/camera/base_camera.tres" id="4_pypv5"]
+[ext_resource type="PackedScene" uid="uid://cfloadrub4c14" path="res://source/entity/actors/bot/enemy/dummy.tscn" id="4_sdsp4"]
 
 [node name="LevelManager" type="Node" unique_id=145092760]
 script = ExtResource("1_fr5ec")
@@ -20,6 +21,9 @@ metadata/_custom_type_script = "uid://c0vmpa50xon71"
 
 [node name="PlayableActor" parent="Actors" unique_id=1210677002 instance=ExtResource("3_scdwq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.10000014, 0)
+
+[node name="Dummy" parent="Actors" unique_id=235059105 instance=ExtResource("4_sdsp4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
 
 [node name="Cameras" type="Node" parent="." unique_id=610777951]
 

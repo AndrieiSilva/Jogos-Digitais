@@ -14,6 +14,7 @@ tonemap_mode = 4
 tonemap_agx_contrast = 1.4
 ssr_enabled = true
 ssao_enabled = true
+ssil_enabled = true
 sdfgi_use_occlusion = true
 glow_enabled = true
 adjustment_enabled = true

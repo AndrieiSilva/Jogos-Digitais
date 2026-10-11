@@ -24,10 +24,15 @@ ItemTracker="*uid://bj80wogp3kghk"
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godot_state_charts/plugin.cfg")
+
 [file_customization]
 
 folder_colors={
 "res://assets/models/": "green",
+"res://assets/models_scene/": "yellow",
 "res://source/": "red"
 }
 
@@ -76,6 +81,11 @@ char_click_move={
 "events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":1,"position":Vector2(225, 17),"global_position":Vector2(234, 65),"factor":1.0,"button_index":1,"canceled":false,"pressed":true,"double_click":true,"script":null)
 ]
 }
+primary_action={
+"deadzone": 0.2,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":1,"position":Vector2(266, 7),"global_position":Vector2(275, 55),"factor":1.0,"button_index":1,"canceled":false,"pressed":true,"double_click":false,"script":null)
+]
+}
 
 [layer_names]
 
@@ -85,6 +95,7 @@ char_click_move={
 3d_physics/layer_2="Player"
 3d_physics/layer_3="Item"
 3d_physics/layer_4="Interaction"
+3d_physics/layer_5="Enemy"
 
 [navigation]
 
@@ -102,7 +113,8 @@ lights_and_shadows/directional_shadow/soft_shadow_filter_quality=5
 lights_and_shadows/positional_shadow/soft_shadow_filter_quality=5
 environment/ssao/quality=3
 environment/ssil/quality=3
-anti_aliasing/quality/msaa_3d=2
+anti_aliasing/quality/msaa_3d=3
 anti_aliasing/quality/use_debanding=true
 environment/screen_space_reflection/half_size=false
 environment/subsurface_scattering/subsurface_scattering_quality=3
+anti_aliasing/quality/screen_space_aa=2

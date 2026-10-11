@@ -1,17 +1,30 @@
 [gd_scene format=3 uid="uid://bqwaxo3od8ou7"]
 
 [ext_resource type="Script" uid="uid://csil3pc5hdnm8" path="res://source/entity/actors/playable_actor/playable_actor.gd" id="1_mo5sk"]
-[ext_resource type="PackedScene" uid="uid://c0qblcso1iufg" path="res://assets/models/characters/female.glb" id="2_7vf3l"]
-[ext_resource type="PackedScene" uid="uid://5h8m4ylg8wrj" path="res://assets/models/characters/male.glb" id="3_6x4ys"]
+[ext_resource type="PackedScene" uid="uid://dxigubauv62bp" path="res://assets/models_scene/characters/main_character_model_scene.tscn" id="2_trq00"]
+[ext_resource type="Script" uid="uid://bw2qrysbqse7t" path="res://source/helper/animated_model.gd" id="3_7vf3l"]
+[ext_resource type="Script" uid="uid://couw105c3bde4" path="res://addons/godot_state_charts/state_chart.gd" id="4_6x4ys"]
+[ext_resource type="Script" uid="uid://jk2jm1g6q853" path="res://addons/godot_state_charts/compound_state.gd" id="5_c55ws"]
+[ext_resource type="Script" uid="uid://cytafq8i1y8qm" path="res://addons/godot_state_charts/atomic_state.gd" id="7_gyodb"]
+[ext_resource type="Script" uid="uid://cf1nsco3w0mf6" path="res://addons/godot_state_charts/transition.gd" id="8_atmrn"]
+[ext_resource type="Script" uid="uid://bfpx8efh76267" path="res://source/entity/actors/playable_actor/states/idle_state.gd" id="9_y0x11"]
+[ext_resource type="Script" uid="uid://dphyg4egcth2x" path="res://source/entity/actors/playable_actor/states/run_state.gd" id="10_fclbw"]
+[ext_resource type="Script" uid="uid://cykfd5a6hdv0o" path="res://source/entity/actors/playable_actor/states/follow_state.gd" id="10_k3okx"]
+[ext_resource type="PackedScene" uid="uid://bcwkugn6v3oy7" path="res://addons/godot_state_charts/utilities/state_chart_debugger.tscn" id="11_fclbw"]
+[ext_resource type="Script" uid="uid://dg32q366ol6en" path="res://source/entity/actors/playable_actor/states/base_attack_state.gd" id="11_k3okx"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_xisrv"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mo5sk"]
 
-[node name="PlayableActor" type="CharacterBody3D" unique_id=1210677002 node_paths=PackedStringArray("nav_agent")]
+[node name="PlayableActor" type="CharacterBody3D" unique_id=1210677002 node_paths=PackedStringArray("character_animated_model", "nav_agent", "state_tree", "state_chart")]
 collision_layer = 2
+collision_mask = 17
 script = ExtResource("1_mo5sk")
+character_animated_model = NodePath("main_character_model")
 nav_agent = NodePath("NavigationAgent3D")
+state_tree = NodePath("StateTree")
+state_chart = NodePath("StateChart")
 metadata/_custom_type_script = "uid://csil3pc5hdnm8"
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=454473930]
@@ -21,14 +34,136 @@ debug_enabled = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=915522029]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
 mesh = SubResource("CapsuleMesh_xisrv")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2125873884]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_mo5sk")
 
-[node name="female" parent="." unique_id=1970105673 instance=ExtResource("2_7vf3l")]
-visible = false
+[node name="main_character_model" parent="." unique_id=1005630152 instance=ExtResource("2_trq00")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+script = ExtResource("3_7vf3l")
 
-[node name="male" parent="." unique_id=1406875923 instance=ExtResource("3_6x4ys")]
-visible = false
+[node name="StateChart" type="Node" parent="." unique_id=1725022016]
+script = ExtResource("4_6x4ys")
+metadata/_custom_type_script = "uid://couw105c3bde4"
+
+[node name="Root" type="Node" parent="StateChart" unique_id=32964574]
+script = ExtResource("5_c55ws")
+initial_state = NodePath("Alive")
+
+[node name="Alive" type="Node" parent="StateChart/Root" unique_id=2059637370]
+script = ExtResource("5_c55ws")
+initial_state = NodePath("Movement")
+
+[node name="Movement" type="Node" parent="StateChart/Root/Alive" unique_id=460049438]
+script = ExtResource("5_c55ws")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateChart/Root/Alive/Movement" unique_id=1675375837]
+script = ExtResource("7_gyodb")
+
+[node name="onRun" type="Node" parent="StateChart/Root/Alive/Movement/Idle" unique_id=221263602]
+script = ExtResource("8_atmrn")
+to = NodePath("../../Run")
+event = &"onRun"
+delay_in_seconds = "0.0"
+
+[node name="onFollow" type="Node" parent="StateChart/Root/Alive/Movement/Idle" unique_id=678708736]
+script = ExtResource("8_atmrn")
+to = NodePath("../../Follow")
+event = &"onFollow"
+delay_in_seconds = "0.0"
+
+[node name="Run" type="Node" parent="StateChart/Root/Alive/Movement" unique_id=2061543345]
+script = ExtResource("7_gyodb")
+
+[node name="onIdle" type="Node" parent="StateChart/Root/Alive/Movement/Run" unique_id=1205216783]
+script = ExtResource("8_atmrn")
+to = NodePath("../../Idle")
+event = &"onIdle"
+delay_in_seconds = "0.0"
+
+[node name="onFollow" type="Node" parent="StateChart/Root/Alive/Movement/Run" unique_id=468646150]
+script = ExtResource("8_atmrn")
+to = NodePath("../../Follow")
+event = &"onFollow"
+delay_in_seconds = "0.0"
+
+[node name="Follow" type="Node" parent="StateChart/Root/Alive/Movement" unique_id=1950921160]
+script = ExtResource("7_gyodb")
+
+[node name="onIdle" type="Node" parent="StateChart/Root/Alive/Movement/Follow" unique_id=371783477]
+script = ExtResource("8_atmrn")
+to = NodePath("../../Idle")
+event = &"onIdle"
+delay_in_seconds = "0.0"
+
+[node name="onRun" type="Node" parent="StateChart/Root/Alive/Movement/Follow" unique_id=30557404]
+script = ExtResource("8_atmrn")
+to = NodePath("../../Run")
+event = &"onRun"
+delay_in_seconds = "0.0"
+
+[node name="onBaseAttack" type="Node" parent="StateChart/Root/Alive/Movement" unique_id=1544108015]
+script = ExtResource("8_atmrn")
+to = NodePath("../../Attack/BaseAttack")
+event = &"onBaseAttack"
+delay_in_seconds = "0.0"
+
+[node name="Attack" type="Node" parent="StateChart/Root/Alive" unique_id=2095535834]
+script = ExtResource("5_c55ws")
+initial_state = NodePath("BaseAttack")
+
+[node name="BaseAttack" type="Node" parent="StateChart/Root/Alive/Attack" unique_id=1572823942]
+script = ExtResource("7_gyodb")
+
+[node name="onIdle" type="Node" parent="StateChart/Root/Alive/Attack" unique_id=1524852087]
+script = ExtResource("8_atmrn")
+to = NodePath("../../Movement/Idle")
+event = &"onIdle"
+delay_in_seconds = "0.0"
+
+[node name="Dead" type="Node" parent="StateChart/Root" unique_id=2101878865]
+script = ExtResource("7_gyodb")
+
+[node name="StateTree" type="Node" parent="." unique_id=1114551261]
+
+[node name="Root" type="Node" parent="StateTree" unique_id=1972400938]
+
+[node name="Alive" type="Node" parent="StateTree/Root" unique_id=1591496958]
+
+[node name="Movement" type="Node" parent="StateTree/Root/Alive" unique_id=624030056]
+
+[node name="Idle" type="Node" parent="StateTree/Root/Alive/Movement" unique_id=199114442]
+script = ExtResource("9_y0x11")
+
+[node name="Run" type="Node" parent="StateTree/Root/Alive/Movement" unique_id=809226122]
+script = ExtResource("10_fclbw")
+
+[node name="Follow" type="Node" parent="StateTree/Root/Alive/Movement" unique_id=1539814492]
+script = ExtResource("10_k3okx")
+
+[node name="Attack" type="Node" parent="StateTree/Root/Alive" unique_id=858838853]
+
+[node name="BaseAttack" type="Node" parent="StateTree/Root/Alive/Attack" unique_id=467913338]
+script = ExtResource("11_k3okx")
+
+[node name="Dead" type="Node" parent="StateTree/Root" unique_id=896993185]
+
+[node name="StateChartDebugger" parent="." unique_id=531099551 instance=ExtResource("11_fclbw")]
+anchors_preset = -1
+anchor_right = 0.31163195
+anchor_bottom = 0.6666667
+initial_node_to_watch = NodePath("../StateChart")
+metadata/_edit_use_anchors_ = true
+
+[connection signal="state_entered" from="StateChart/Root/Alive/Movement/Idle" to="StateTree/Root/Alive/Movement/Idle" method="_on_idle_state_entered"]
+[connection signal="state_physics_processing" from="StateChart/Root/Alive/Movement/Idle" to="StateTree/Root/Alive/Movement/Idle" method="_on_idle_state_physics_processing"]
+[connection signal="state_entered" from="StateChart/Root/Alive/Movement/Run" to="StateTree/Root/Alive/Movement/Run" method="_on_run_state_entered"]
+[connection signal="state_physics_processing" from="StateChart/Root/Alive/Movement/Run" to="StateTree/Root/Alive/Movement/Run" method="_on_run_state_physics_processing"]
+[connection signal="state_entered" from="StateChart/Root/Alive/Movement/Follow" to="StateTree/Root/Alive/Movement/Follow" method="_on_follow_state_entered"]
+[connection signal="state_physics_processing" from="StateChart/Root/Alive/Movement/Follow" to="StateTree/Root/Alive/Movement/Follow" method="_on_follow_state_physics_processing"]
+[connection signal="state_entered" from="StateChart/Root/Alive/Attack/BaseAttack" to="StateTree/Root/Alive/Attack/BaseAttack" method="_on_base_attack_state_entered"]
+[connection signal="state_physics_processing" from="StateChart/Root/Alive/Attack/BaseAttack" to="StateTree/Root/Alive/Attack/BaseAttack" method="_on_base_attack_state_physics_processing"]
