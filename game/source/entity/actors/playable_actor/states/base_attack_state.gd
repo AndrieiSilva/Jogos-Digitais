@@ -1,7 +1,6 @@
 class_name AttackState extends PlayerState
 
 
-
 func _transition_to() -> void:
 	var player : AnimationTree = actor.character_animated_model.anim_tree
 	var one_shot_active = player.get("parameters/SlashShot/active")
@@ -9,9 +8,11 @@ func _transition_to() -> void:
 		actor.current_enemy_target = null
 		state_chart.send_event(States["idle"])
 
+
 func _state_action(delta : float) -> void:
 	lerped_look(delta)
 	animate(delta)
+
 
 func lerped_look(delta : float) -> void:
 	var rotation_speed : float = 7
@@ -26,7 +27,10 @@ func lerped_look(delta : float) -> void:
 
 
 func _on_base_attack_state_entered() -> void:
+	actor.nav_agent.target_position = actor.position
+	actor.current_state = States["baseAttack"]
 	var player : AnimationTree = actor.character_animated_model.anim_tree
+	player["parameters/SlashTimeScale/scale"] = actor.current_weapon_data.speed
 	var one_shot_active = player.get("parameters/SlashShot/active")
 	if not one_shot_active:
 		player.set("parameters/SlashShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)

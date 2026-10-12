@@ -1,9 +1,13 @@
 class_name Item extends RigidBody3D
 
 const MAX_ITENS : int = 10000
+const OUTLINE_MAT = preload("uid://ca7yc1o6y3bbl")
 
 @export var item_label : Label3D
 @export var particles : GPUParticles3D
+
+@export var model_node : Node3D
+var meshes : Array[MeshInstance3D] = []
 
 var item_data : ItemData
 static var current_itens_count : int = 0
@@ -31,6 +35,25 @@ func _ready() -> void:
 	
 	if "coin" in item_data.name.to_lower():
 		is_auto_collected = true
+		collision_layer = 0
+
+func set_outline_enabled(enabled : bool) -> void:
+	for mesh : MeshInstance3D in meshes:
+		if enabled:
+			mesh.material_overlay = OUTLINE_MAT
+		else:
+			mesh.material_overlay = null
+
+func recursive_mesh_search(node : Node3D) -> void:
+	if not node:
+		return
+	
+	if node is MeshInstance3D:
+		meshes.append(node as MeshInstance3D)
+		
+	for child in node.get_children():
+		if child is Node3D:
+			recursive_mesh_search(child)
 
 
 func _process(delta: float) -> void:
@@ -105,4 +128,5 @@ func _load_model() -> void:
 	if ResourceLoader.load_threaded_get_status(path) == ResourceLoader.THREAD_LOAD_LOADED:
 		var model_packed: PackedScene = ResourceLoader.load_threaded_get(path)
 		var model_instance: Node3D = model_packed.instantiate() as Node3D
-		add_child(model_instance)
+		model_node.add_child(model_instance)
+		recursive_mesh_search(model_node)

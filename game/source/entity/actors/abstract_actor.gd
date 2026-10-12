@@ -8,9 +8,10 @@ class_name Actor extends CharacterBody3D
 @export var state_tree : Node
 @export var state_chart : StateChart
 
-@export var min_attack_range : float = 2
-@export var move_speed : float = 4
+@export var actor_data : ActorData
+@export var current_weapon_data : ItemData
 
+var current_state : String = ""
 var current_enemy_target : Actor = null
 
 func _setup_state_tree_recursive(node : Node) -> void:

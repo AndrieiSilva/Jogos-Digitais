@@ -27,7 +27,7 @@ adjustment_saturation = 0.85
 environment = SubResource("Environment_n68i4")
 
 [node name="BakedSun" type="DirectionalLight3D" parent="." unique_id=1045914840]
-transform = Transform3D(-0.3785224, -0.018028257, 0.92541635, 0.8137979, 0.46984625, 0.34202006, -0.44096968, 0.88256407, -0.1631759, 0, 22.767365, 0)
+transform = Transform3D(-0.51325846, -0.095818155, 0.8528683, 0.7500002, 0.43301263, 0.4999999, -0.41721204, 0.8962805, -0.15038371, 0, 22.767365, 0)
 light_color = Color(1, 0.60784316, 0.54901963, 1)
 light_bake_mode = 1
 shadow_enabled = true

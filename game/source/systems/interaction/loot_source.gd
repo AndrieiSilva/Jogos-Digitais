@@ -2,8 +2,10 @@ class_name LootSource extends Interaction
 
 @export var item_fly_strenght : float = 3
 
-var item_packed_scene : PackedScene = preload("res://source/item/item.tscn")
+var meshes : Array[MeshInstance3D] = []
+const OUTLINE_MAT = preload("uid://ca7yc1o6y3bbl")
 
+var item_packed_scene : PackedScene = preload("res://source/item/item.tscn")
 var min_coin : int
 var max_coin : int
 var min_equipment : int
@@ -20,6 +22,25 @@ var rarity_weight_array : Array[float] = []
 
 func _ready() -> void:
 	_setup_reward(source_tier)
+	recursive_mesh_search(self)
+
+func set_outline_enabled(enabled : bool) -> void:
+	for mesh : MeshInstance3D in meshes:
+		if enabled:
+			mesh.material_overlay = OUTLINE_MAT
+		else:
+			mesh.material_overlay = null
+
+func recursive_mesh_search(node : Node3D) -> void:
+	if not node:
+		return
+		
+	if node is MeshInstance3D:
+		meshes.append(node as MeshInstance3D)
+		
+	for child in node.get_children():
+		if child is Node3D:
+			recursive_mesh_search(child)
 
 func _setup_reward(tier : LootTiers.Tiers) -> void:
 	var tier_data : Dictionary = LootTiers.TIER[source_tier]

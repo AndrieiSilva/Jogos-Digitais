@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dgar2rjcg4xj0" path="res://source/item/item.gd" id="1_sbn5a"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uj30w"]
-size = Vector3(0.5, 0.5, 0.5)
+size = Vector3(2.381836, 0.5, 0.5)
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_sbn5a"]
 emission_shape = 1
@@ -21,11 +21,12 @@ material = SubResource("StandardMaterial3D_uj30w")
 radius = 0.05
 height = 0.3
 
-[node name="Item" type="RigidBody3D" unique_id=164069729 node_paths=PackedStringArray("item_label", "particles")]
-collision_layer = 0
+[node name="Item" type="RigidBody3D" unique_id=164069729 node_paths=PackedStringArray("item_label", "particles", "model_node")]
+collision_layer = 4
 script = ExtResource("1_sbn5a")
 item_label = NodePath("ItemLabel")
 particles = NodePath("GPUParticles3D")
+model_node = NodePath("Model")
 metadata/_custom_type_script = "uid://dgar2rjcg4xj0"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=670647556]
@@ -44,3 +45,5 @@ explosiveness = 0.5
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_sbn5a")
 draw_pass_1 = SubResource("SphereMesh_sbn5a")
+
+[node name="Model" type="Node3D" parent="." unique_id=1896374762]

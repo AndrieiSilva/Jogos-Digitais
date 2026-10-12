@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://bqwaxo3od8ou7"]
 
 [ext_resource type="Script" uid="uid://csil3pc5hdnm8" path="res://source/entity/actors/playable_actor/playable_actor.gd" id="1_mo5sk"]
+[ext_resource type="Resource" uid="uid://d3yxifcfgqlnd" path="res://data/resource/actor/player_data.tres" id="2_k3okx"]
 [ext_resource type="PackedScene" uid="uid://dxigubauv62bp" path="res://assets/models_scene/characters/main_character_model_scene.tscn" id="2_trq00"]
 [ext_resource type="Script" uid="uid://bw2qrysbqse7t" path="res://source/helper/animated_model.gd" id="3_7vf3l"]
+[ext_resource type="Resource" uid="uid://dk5eutii26fu3" path="res://data/resource/itens/long_sword_common.tres" id="3_xhtks"]
 [ext_resource type="Script" uid="uid://couw105c3bde4" path="res://addons/godot_state_charts/state_chart.gd" id="4_6x4ys"]
 [ext_resource type="Script" uid="uid://jk2jm1g6q853" path="res://addons/godot_state_charts/compound_state.gd" id="5_c55ws"]
 [ext_resource type="Script" uid="uid://cytafq8i1y8qm" path="res://addons/godot_state_charts/atomic_state.gd" id="7_gyodb"]
@@ -10,12 +12,12 @@
 [ext_resource type="Script" uid="uid://bfpx8efh76267" path="res://source/entity/actors/playable_actor/states/idle_state.gd" id="9_y0x11"]
 [ext_resource type="Script" uid="uid://dphyg4egcth2x" path="res://source/entity/actors/playable_actor/states/run_state.gd" id="10_fclbw"]
 [ext_resource type="Script" uid="uid://cykfd5a6hdv0o" path="res://source/entity/actors/playable_actor/states/follow_state.gd" id="10_k3okx"]
-[ext_resource type="PackedScene" uid="uid://bcwkugn6v3oy7" path="res://addons/godot_state_charts/utilities/state_chart_debugger.tscn" id="11_fclbw"]
 [ext_resource type="Script" uid="uid://dg32q366ol6en" path="res://source/entity/actors/playable_actor/states/base_attack_state.gd" id="11_k3okx"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_xisrv"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mo5sk"]
+radius = 0.3
 
 [node name="PlayableActor" type="CharacterBody3D" unique_id=1210677002 node_paths=PackedStringArray("character_animated_model", "nav_agent", "state_tree", "state_chart")]
 collision_layer = 2
@@ -26,6 +28,8 @@ anim_lerp_speed = 6.0
 nav_agent = NodePath("NavigationAgent3D")
 state_tree = NodePath("StateTree")
 state_chart = NodePath("StateChart")
+actor_data = ExtResource("2_k3okx")
+current_weapon_data = ExtResource("3_xhtks")
 metadata/_custom_type_script = "uid://csil3pc5hdnm8"
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=454473930]
@@ -152,13 +156,6 @@ script = ExtResource("10_k3okx")
 script = ExtResource("11_k3okx")
 
 [node name="Dead" type="Node" parent="StateTree/Root" unique_id=896993185]
-
-[node name="StateChartDebugger" parent="." unique_id=531099551 instance=ExtResource("11_fclbw")]
-anchors_preset = -1
-anchor_right = 0.31163195
-anchor_bottom = 0.6666667
-initial_node_to_watch = NodePath("../StateChart")
-metadata/_edit_use_anchors_ = true
 
 [connection signal="state_entered" from="StateChart/Root/Alive/Movement/Idle" to="StateTree/Root/Alive/Movement/Idle" method="_on_idle_state_entered"]
 [connection signal="state_physics_processing" from="StateChart/Root/Alive/Movement/Idle" to="StateTree/Root/Alive/Movement/Idle" method="_on_idle_state_physics_processing"]
