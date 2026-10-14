@@ -1,7 +1,6 @@
 class_name SpinAttackState extends PlayerState
 
 @export var base_advance_distance : float = 8
-var last_click_action : Dictionary
 
 func _transition_to() -> void:
 	var player : AnimationTree = actor.character_animated_model.anim_tree
@@ -62,9 +61,7 @@ func _on_spin_attack_state_entered() -> void:
 func _on_spin_attack_state_physics_processing(delta: float) -> void:
 	_transition_to()
 	_state_action(delta)
-	last_click_action = PlayerInputHelper.calc_click_pos(get_viewport().get_mouse_position(), actor, get_viewport())
 
 
 func _on_spin_attack_state_exited() -> void:
 	PlayerInputHelper.input_enabled = true
-	PlayerInputHelper.handle_player_click(actor.nav_agent, actor, get_viewport(), PlayerInputHelper.calc_click_pos(get_viewport().get_mouse_position(), actor, get_viewport()))

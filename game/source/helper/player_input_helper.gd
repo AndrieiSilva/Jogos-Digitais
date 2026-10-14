@@ -32,7 +32,7 @@ static func handle_player_overlay(viewport : Viewport, result : Dictionary) -> v
 
 
 static func handle_player_click(nav_agent : NavigationAgent3D, actor : Actor, viewport : Viewport, result : Dictionary) -> void:
-	if not input_enabled:
+	if not input_enabled or result.is_empty():
 		return
 	
 	actor = actor as PlayableActor
