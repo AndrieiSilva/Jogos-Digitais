@@ -7,4 +7,5 @@ script = ExtResource("1_vxpcq")
 name = "Long Sword"
 model_uid = "uid://dbi7vhkhp22eg"
 spawn_weight = 1.0
+range = 1.7
 metadata/_custom_type_script = "uid://cqo7sjrickbjw"

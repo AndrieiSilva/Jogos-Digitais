@@ -5,7 +5,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		return
 	if Input.is_action_pressed("primary_action"):
 		await get_tree().physics_frame
-		PlayerInputHelper.handle_player_click(nav_agent, actor, get_viewport(), PlayerInputHelper._calc_click_pos(get_viewport().get_mouse_position(), actor, get_viewport()))
+		PlayerInputHelper.handle_player_click(nav_agent, actor, get_viewport(), PlayerInputHelper.calc_click_pos(get_viewport().get_mouse_position(), actor, get_viewport()))
 
 func _transition_to() -> void:
 	if not actor.current_enemy_target:

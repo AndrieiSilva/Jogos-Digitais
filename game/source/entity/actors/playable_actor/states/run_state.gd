@@ -18,7 +18,7 @@ func handle_input() -> void:
 	
 	if Input.is_action_pressed("primary_action"):
 		await get_tree().physics_frame
-		PlayerInputHelper.handle_player_click(nav_agent, actor, get_viewport(), PlayerInputHelper._calc_click_pos(get_viewport().get_mouse_position(), actor, get_viewport()))
+		PlayerInputHelper.handle_player_click(nav_agent, actor, get_viewport(), PlayerInputHelper.calc_click_pos(get_viewport().get_mouse_position(), actor, get_viewport()))
 
 
 func _transition_to() -> void:
@@ -29,6 +29,9 @@ func _transition_to() -> void:
 		else:
 			click_pressed = false
 			state_chart.send_event(States["baseAttack"])
+	
+	if Input.is_action_just_pressed("spin_attack"):
+		state_chart.send_event(States["spinAttack"])
 	
 	if actor.velocity.is_zero_approx():
 		click_pressed = false

@@ -13,6 +13,8 @@
 [ext_resource type="Script" uid="uid://dphyg4egcth2x" path="res://source/entity/actors/playable_actor/states/run_state.gd" id="10_fclbw"]
 [ext_resource type="Script" uid="uid://cykfd5a6hdv0o" path="res://source/entity/actors/playable_actor/states/follow_state.gd" id="10_k3okx"]
 [ext_resource type="Script" uid="uid://dg32q366ol6en" path="res://source/entity/actors/playable_actor/states/base_attack_state.gd" id="11_k3okx"]
+[ext_resource type="PackedScene" uid="uid://bcwkugn6v3oy7" path="res://addons/godot_state_charts/utilities/state_chart_debugger.tscn" id="14_ewth7"]
+[ext_resource type="Script" uid="uid://cts77mkgnk5iq" path="res://source/entity/actors/playable_actor/states/spin_attack_state.gd" id="14_omcrx"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_xisrv"]
 
@@ -21,7 +23,7 @@ radius = 0.3
 
 [node name="PlayableActor" type="CharacterBody3D" unique_id=1210677002 node_paths=PackedStringArray("character_animated_model", "nav_agent", "state_tree", "state_chart")]
 collision_layer = 2
-collision_mask = 17
+collision_mask = 51
 script = ExtResource("1_mo5sk")
 character_animated_model = NodePath("main_character_model")
 anim_lerp_speed = 6.0
@@ -35,7 +37,6 @@ metadata/_custom_type_script = "uid://csil3pc5hdnm8"
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=454473930]
 path_height_offset = 1.0
 avoidance_enabled = true
-debug_enabled = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=915522029]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -46,8 +47,7 @@ mesh = SubResource("CapsuleMesh_xisrv")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_mo5sk")
 
-[node name="main_character_model" parent="." unique_id=1005630152 instance=ExtResource("2_trq00")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+[node name="main_character_model" parent="." unique_id=1751672782 instance=ExtResource("2_trq00")]
 script = ExtResource("3_7vf3l")
 
 [node name="StateChart" type="Node" parent="." unique_id=1725022016]
@@ -117,6 +117,12 @@ to = NodePath("../../Attack/BaseAttack")
 event = &"onBaseAttack"
 delay_in_seconds = "0.0"
 
+[node name="onSpinAttack" type="Node" parent="StateChart/Root/Alive/Movement" unique_id=1470990407]
+script = ExtResource("8_atmrn")
+to = NodePath("../../Attack/SpinAttack")
+event = &"onSpinAttack"
+delay_in_seconds = "0.0"
+
 [node name="Attack" type="Node" parent="StateChart/Root/Alive" unique_id=2095535834]
 script = ExtResource("5_c55ws")
 initial_state = NodePath("BaseAttack")
@@ -129,6 +135,9 @@ script = ExtResource("8_atmrn")
 to = NodePath("../../Movement/Idle")
 event = &"onIdle"
 delay_in_seconds = "0.0"
+
+[node name="SpinAttack" type="Node" parent="StateChart/Root/Alive/Attack" unique_id=1018079151]
+script = ExtResource("7_gyodb")
 
 [node name="Dead" type="Node" parent="StateChart/Root" unique_id=2101878865]
 script = ExtResource("7_gyodb")
@@ -155,7 +164,18 @@ script = ExtResource("10_k3okx")
 [node name="BaseAttack" type="Node" parent="StateTree/Root/Alive/Attack" unique_id=467913338]
 script = ExtResource("11_k3okx")
 
+[node name="SpinAttack" type="Node" parent="StateTree/Root/Alive/Attack" unique_id=131119917]
+script = ExtResource("14_omcrx")
+
 [node name="Dead" type="Node" parent="StateTree/Root" unique_id=896993185]
+
+[node name="StateChartDebugger" parent="." unique_id=2090795940 instance=ExtResource("14_ewth7")]
+anchors_preset = -1
+anchor_right = 0.38541666
+anchor_bottom = 0.7268519
+offset_bottom = -3.0517578e-05
+initial_node_to_watch = NodePath("../StateChart")
+metadata/_edit_use_anchors_ = true
 
 [connection signal="state_entered" from="StateChart/Root/Alive/Movement/Idle" to="StateTree/Root/Alive/Movement/Idle" method="_on_idle_state_entered"]
 [connection signal="state_physics_processing" from="StateChart/Root/Alive/Movement/Idle" to="StateTree/Root/Alive/Movement/Idle" method="_on_idle_state_physics_processing"]
@@ -164,4 +184,8 @@ script = ExtResource("11_k3okx")
 [connection signal="state_entered" from="StateChart/Root/Alive/Movement/Follow" to="StateTree/Root/Alive/Movement/Follow" method="_on_follow_state_entered"]
 [connection signal="state_physics_processing" from="StateChart/Root/Alive/Movement/Follow" to="StateTree/Root/Alive/Movement/Follow" method="_on_follow_state_physics_processing"]
 [connection signal="state_entered" from="StateChart/Root/Alive/Attack/BaseAttack" to="StateTree/Root/Alive/Attack/BaseAttack" method="_on_base_attack_state_entered"]
+[connection signal="state_exited" from="StateChart/Root/Alive/Attack/BaseAttack" to="StateTree/Root/Alive/Attack/BaseAttack" method="_on_base_attack_state_exited"]
 [connection signal="state_physics_processing" from="StateChart/Root/Alive/Attack/BaseAttack" to="StateTree/Root/Alive/Attack/BaseAttack" method="_on_base_attack_state_physics_processing"]
+[connection signal="state_entered" from="StateChart/Root/Alive/Attack/SpinAttack" to="StateTree/Root/Alive/Attack/SpinAttack" method="_on_spin_attack_state_entered"]
+[connection signal="state_exited" from="StateChart/Root/Alive/Attack/SpinAttack" to="StateTree/Root/Alive/Attack/SpinAttack" method="_on_spin_attack_state_exited"]
+[connection signal="state_physics_processing" from="StateChart/Root/Alive/Attack/SpinAttack" to="StateTree/Root/Alive/Attack/SpinAttack" method="_on_spin_attack_state_physics_processing"]

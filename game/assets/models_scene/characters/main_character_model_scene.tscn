@@ -1,127 +1,165 @@
 [gd_scene format=3 uid="uid://dxigubauv62bp"]
 
-[ext_resource type="PackedScene" uid="uid://cwtviesns3rw4" path="res://assets/models/characters/main_character_model.glb" id="1_cingf"]
+[ext_resource type="PackedScene" uid="uid://cleie12dw2aje" path="res://assets/models/characters/main_character_model.glb" id="1_cingf"]
 [ext_resource type="PackedScene" uid="uid://dbi7vhkhp22eg" path="res://assets/models/itens/long_sword.glb" id="2_udr1j"]
 
-[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_le4a2"]
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_udr1j"]
-animation = &"idle"
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_cingf"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_le4a2"]
-animation = &"run"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dq30u"]
-animation = &"slash_attack"
+animation = &"cast_magick"
 
 [sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_udr1j"]
 filter_enabled = true
-filters = ["Armature/Skeleton3D:Ctrl_Index1_Left", "Armature/Skeleton3D:Ctrl_Index1_Right", "Armature/Skeleton3D:Ctrl_Index2_Left", "Armature/Skeleton3D:Ctrl_Index2_Right", "Armature/Skeleton3D:Ctrl_Index3_Left", "Armature/Skeleton3D:Ctrl_Index3_Right", "Armature/Skeleton3D:Ctrl_Middle1_Left", "Armature/Skeleton3D:Ctrl_Middle1_Right", "Armature/Skeleton3D:Ctrl_Middle2_Left", "Armature/Skeleton3D:Ctrl_Middle2_Right", "Armature/Skeleton3D:Ctrl_Middle3_Left", "Armature/Skeleton3D:Ctrl_Middle3_Right", "Armature/Skeleton3D:Ctrl_Pinky1_Left", "Armature/Skeleton3D:Ctrl_Pinky1_Right", "Armature/Skeleton3D:Ctrl_Pinky2_Left", "Armature/Skeleton3D:Ctrl_Pinky2_Right", "Armature/Skeleton3D:Ctrl_Pinky3_Left", "Armature/Skeleton3D:Ctrl_Pinky3_Right", "Armature/Skeleton3D:Ctrl_Ring1_Left", "Armature/Skeleton3D:Ctrl_Ring1_Right", "Armature/Skeleton3D:Ctrl_Ring2_Left", "Armature/Skeleton3D:Ctrl_Ring2_Right", "Armature/Skeleton3D:Ctrl_Ring3_Left", "Armature/Skeleton3D:Ctrl_Ring3_Right", "Armature/Skeleton3D:Ctrl_Thumb1_Left", "Armature/Skeleton3D:Ctrl_Thumb1_Right", "Armature/Skeleton3D:Ctrl_Thumb2_Left", "Armature/Skeleton3D:Ctrl_Thumb2_Right", "Armature/Skeleton3D:Ctrl_Thumb3_Left", "Armature/Skeleton3D:Ctrl_Thumb3_Right", "Armature/Skeleton3D:mixamorig_LeftArm", "Armature/Skeleton3D:mixamorig_LeftForeArm", "Armature/Skeleton3D:mixamorig_LeftHand", "Armature/Skeleton3D:mixamorig_LeftHandIndex1", "Armature/Skeleton3D:mixamorig_LeftHandIndex2", "Armature/Skeleton3D:mixamorig_LeftHandIndex3", "Armature/Skeleton3D:mixamorig_LeftHandMiddle1", "Armature/Skeleton3D:mixamorig_LeftHandMiddle2", "Armature/Skeleton3D:mixamorig_LeftHandMiddle3", "Armature/Skeleton3D:mixamorig_LeftHandPinky1", "Armature/Skeleton3D:mixamorig_LeftHandPinky2", "Armature/Skeleton3D:mixamorig_LeftHandPinky3", "Armature/Skeleton3D:mixamorig_LeftHandRing1", "Armature/Skeleton3D:mixamorig_LeftHandRing2", "Armature/Skeleton3D:mixamorig_LeftHandRing3", "Armature/Skeleton3D:mixamorig_LeftHandThumb1", "Armature/Skeleton3D:mixamorig_LeftHandThumb2", "Armature/Skeleton3D:mixamorig_LeftHandThumb3", "Armature/Skeleton3D:mixamorig_LeftShoulder", "Armature/Skeleton3D:mixamorig_RightArm", "Armature/Skeleton3D:mixamorig_RightForeArm", "Armature/Skeleton3D:mixamorig_RightHand", "Armature/Skeleton3D:mixamorig_RightHandIndex1", "Armature/Skeleton3D:mixamorig_RightHandIndex2", "Armature/Skeleton3D:mixamorig_RightHandIndex3", "Armature/Skeleton3D:mixamorig_RightHandMiddle1", "Armature/Skeleton3D:mixamorig_RightHandMiddle2", "Armature/Skeleton3D:mixamorig_RightHandMiddle3", "Armature/Skeleton3D:mixamorig_RightHandPinky1", "Armature/Skeleton3D:mixamorig_RightHandPinky2", "Armature/Skeleton3D:mixamorig_RightHandPinky3", "Armature/Skeleton3D:mixamorig_RightHandRing1", "Armature/Skeleton3D:mixamorig_RightHandRing2", "Armature/Skeleton3D:mixamorig_RightHandRing3", "Armature/Skeleton3D:mixamorig_RightHandThumb1", "Armature/Skeleton3D:mixamorig_RightHandThumb2", "Armature/Skeleton3D:mixamorig_RightHandThumb3", "Armature/Skeleton3D:mixamorig_RightShoulder", "Armature/Skeleton3D:mixamorig_Spine", "Armature/Skeleton3D:mixamorig_Spine1", "Armature/Skeleton3D:mixamorig_Spine2"]
-fadein_time = 0.4
+filters = ["Armature/Skeleton3D:Ctrl_Index1_Left", "Armature/Skeleton3D:Ctrl_Index1_Right", "Armature/Skeleton3D:Ctrl_Index2_Left", "Armature/Skeleton3D:Ctrl_Index2_Right", "Armature/Skeleton3D:Ctrl_Index3_Left", "Armature/Skeleton3D:Ctrl_Index3_Right", "Armature/Skeleton3D:Ctrl_Middle1_Left", "Armature/Skeleton3D:Ctrl_Middle1_Right", "Armature/Skeleton3D:Ctrl_Middle2_Left", "Armature/Skeleton3D:Ctrl_Middle2_Right", "Armature/Skeleton3D:Ctrl_Middle3_Left", "Armature/Skeleton3D:Ctrl_Middle3_Right", "Armature/Skeleton3D:Ctrl_Pinky1_Left", "Armature/Skeleton3D:Ctrl_Pinky1_Right", "Armature/Skeleton3D:Ctrl_Pinky2_Left", "Armature/Skeleton3D:Ctrl_Pinky2_Right", "Armature/Skeleton3D:Ctrl_Pinky3_Left", "Armature/Skeleton3D:Ctrl_Pinky3_Right", "Armature/Skeleton3D:Ctrl_Ring1_Left", "Armature/Skeleton3D:Ctrl_Ring1_Right", "Armature/Skeleton3D:Ctrl_Ring2_Left", "Armature/Skeleton3D:Ctrl_Ring2_Right", "Armature/Skeleton3D:Ctrl_Ring3_Left", "Armature/Skeleton3D:Ctrl_Ring3_Right", "Armature/Skeleton3D:Ctrl_Thumb1_Left", "Armature/Skeleton3D:Ctrl_Thumb1_Right", "Armature/Skeleton3D:Ctrl_Thumb2_Left", "Armature/Skeleton3D:Ctrl_Thumb2_Right", "Armature/Skeleton3D:Ctrl_Thumb3_Left", "Armature/Skeleton3D:Ctrl_Thumb3_Right", "Armature/Skeleton3D:mixamorig_LeftArm", "Armature/Skeleton3D:mixamorig_LeftForeArm", "Armature/Skeleton3D:mixamorig_LeftHand", "Armature/Skeleton3D:mixamorig_LeftHandIndex1", "Armature/Skeleton3D:mixamorig_LeftHandIndex2", "Armature/Skeleton3D:mixamorig_LeftHandIndex3", "Armature/Skeleton3D:mixamorig_LeftHandMiddle1", "Armature/Skeleton3D:mixamorig_LeftHandMiddle2", "Armature/Skeleton3D:mixamorig_LeftHandMiddle3", "Armature/Skeleton3D:mixamorig_LeftHandPinky1", "Armature/Skeleton3D:mixamorig_LeftHandPinky2", "Armature/Skeleton3D:mixamorig_LeftHandPinky3", "Armature/Skeleton3D:mixamorig_LeftHandRing1", "Armature/Skeleton3D:mixamorig_LeftHandRing2", "Armature/Skeleton3D:mixamorig_LeftHandRing3", "Armature/Skeleton3D:mixamorig_LeftHandThumb1", "Armature/Skeleton3D:mixamorig_LeftHandThumb2", "Armature/Skeleton3D:mixamorig_LeftHandThumb3", "Armature/Skeleton3D:mixamorig_LeftShoulder", "Armature/Skeleton3D:mixamorig_RightArm", "Armature/Skeleton3D:mixamorig_RightForeArm", "Armature/Skeleton3D:mixamorig_RightHand", "Armature/Skeleton3D:mixamorig_RightHandIndex1", "Armature/Skeleton3D:mixamorig_RightHandIndex2", "Armature/Skeleton3D:mixamorig_RightHandIndex3", "Armature/Skeleton3D:mixamorig_RightHandMiddle1", "Armature/Skeleton3D:mixamorig_RightHandMiddle2", "Armature/Skeleton3D:mixamorig_RightHandMiddle3", "Armature/Skeleton3D:mixamorig_RightHandPinky1", "Armature/Skeleton3D:mixamorig_RightHandPinky2", "Armature/Skeleton3D:mixamorig_RightHandPinky3", "Armature/Skeleton3D:mixamorig_RightHandRing1", "Armature/Skeleton3D:mixamorig_RightHandRing2", "Armature/Skeleton3D:mixamorig_RightHandRing3", "Armature/Skeleton3D:mixamorig_RightHandThumb1", "Armature/Skeleton3D:mixamorig_RightHandThumb2", "Armature/Skeleton3D:mixamorig_RightHandThumb3", "Armature/Skeleton3D:mixamorig_RightShoulder"]
+fadein_time = 0.3
 fadeout_time = 0.3
 
-[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_udr1j"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_yr380"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dq30u"]
+animation = &"leon_kick"
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_le4a2"]
+filter_enabled = true
+filters = ["Armature/Skeleton3D:Ctrl_Index1_Left", "Armature/Skeleton3D:Ctrl_Index1_Right", "Armature/Skeleton3D:Ctrl_Index2_Left", "Armature/Skeleton3D:Ctrl_Index2_Right", "Armature/Skeleton3D:Ctrl_Index3_Left", "Armature/Skeleton3D:Ctrl_Index3_Right", "Armature/Skeleton3D:Ctrl_Middle1_Left", "Armature/Skeleton3D:Ctrl_Middle1_Right", "Armature/Skeleton3D:Ctrl_Middle2_Left", "Armature/Skeleton3D:Ctrl_Middle2_Right", "Armature/Skeleton3D:Ctrl_Middle3_Left", "Armature/Skeleton3D:Ctrl_Middle3_Right", "Armature/Skeleton3D:Ctrl_Pinky1_Left", "Armature/Skeleton3D:Ctrl_Pinky1_Right", "Armature/Skeleton3D:Ctrl_Pinky2_Left", "Armature/Skeleton3D:Ctrl_Pinky2_Right", "Armature/Skeleton3D:Ctrl_Pinky3_Left", "Armature/Skeleton3D:Ctrl_Pinky3_Right", "Armature/Skeleton3D:Ctrl_Ring1_Left", "Armature/Skeleton3D:Ctrl_Ring1_Right", "Armature/Skeleton3D:Ctrl_Ring2_Left", "Armature/Skeleton3D:Ctrl_Ring2_Right", "Armature/Skeleton3D:Ctrl_Ring3_Left", "Armature/Skeleton3D:Ctrl_Ring3_Right", "Armature/Skeleton3D:Ctrl_Thumb1_Left", "Armature/Skeleton3D:Ctrl_Thumb1_Right", "Armature/Skeleton3D:Ctrl_Thumb2_Left", "Armature/Skeleton3D:Ctrl_Thumb2_Right", "Armature/Skeleton3D:Ctrl_Thumb3_Left", "Armature/Skeleton3D:Ctrl_Thumb3_Right", "Armature/Skeleton3D:mixamorig_Head", "Armature/Skeleton3D:mixamorig_Hips", "Armature/Skeleton3D:mixamorig_LeftArm", "Armature/Skeleton3D:mixamorig_LeftFoot", "Armature/Skeleton3D:mixamorig_LeftForeArm", "Armature/Skeleton3D:mixamorig_LeftHand", "Armature/Skeleton3D:mixamorig_LeftHandIndex1", "Armature/Skeleton3D:mixamorig_LeftHandIndex2", "Armature/Skeleton3D:mixamorig_LeftHandIndex3", "Armature/Skeleton3D:mixamorig_LeftHandMiddle1", "Armature/Skeleton3D:mixamorig_LeftHandMiddle2", "Armature/Skeleton3D:mixamorig_LeftHandMiddle3", "Armature/Skeleton3D:mixamorig_LeftHandPinky1", "Armature/Skeleton3D:mixamorig_LeftHandPinky2", "Armature/Skeleton3D:mixamorig_LeftHandPinky3", "Armature/Skeleton3D:mixamorig_LeftHandRing1", "Armature/Skeleton3D:mixamorig_LeftHandRing2", "Armature/Skeleton3D:mixamorig_LeftHandRing3", "Armature/Skeleton3D:mixamorig_LeftHandThumb1", "Armature/Skeleton3D:mixamorig_LeftHandThumb2", "Armature/Skeleton3D:mixamorig_LeftHandThumb3", "Armature/Skeleton3D:mixamorig_LeftLeg", "Armature/Skeleton3D:mixamorig_LeftShoulder", "Armature/Skeleton3D:mixamorig_LeftToeBase", "Armature/Skeleton3D:mixamorig_LeftUpLeg", "Armature/Skeleton3D:mixamorig_Neck", "Armature/Skeleton3D:mixamorig_RightArm", "Armature/Skeleton3D:mixamorig_RightFoot", "Armature/Skeleton3D:mixamorig_RightForeArm", "Armature/Skeleton3D:mixamorig_RightHand", "Armature/Skeleton3D:mixamorig_RightHandIndex1", "Armature/Skeleton3D:mixamorig_RightHandIndex2", "Armature/Skeleton3D:mixamorig_RightHandIndex3", "Armature/Skeleton3D:mixamorig_RightHandMiddle1", "Armature/Skeleton3D:mixamorig_RightHandMiddle2", "Armature/Skeleton3D:mixamorig_RightHandMiddle3", "Armature/Skeleton3D:mixamorig_RightHandPinky1", "Armature/Skeleton3D:mixamorig_RightHandPinky2", "Armature/Skeleton3D:mixamorig_RightHandPinky3", "Armature/Skeleton3D:mixamorig_RightHandRing1", "Armature/Skeleton3D:mixamorig_RightHandRing2", "Armature/Skeleton3D:mixamorig_RightHandRing3", "Armature/Skeleton3D:mixamorig_RightHandThumb1", "Armature/Skeleton3D:mixamorig_RightHandThumb2", "Armature/Skeleton3D:mixamorig_RightHandThumb3", "Armature/Skeleton3D:mixamorig_RightLeg", "Armature/Skeleton3D:mixamorig_RightShoulder", "Armature/Skeleton3D:mixamorig_RightToeBase", "Armature/Skeleton3D:mixamorig_RightUpLeg", "Armature/Skeleton3D:mixamorig_Spine", "Armature/Skeleton3D:mixamorig_Spine1", "Armature/Skeleton3D:mixamorig_Spine2"]
+fadein_time = 0.3
+fadeout_time = 0.3
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4g1os"]
+animation = &"run"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_cingf"]
+animation = &"slash_attack"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_udr1j"]
+animation = &"slash_attack_mirror"
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_cingf"]
+filter_enabled = true
+filters = ["Armature/Skeleton3D:Ctrl_Index1_Left", "Armature/Skeleton3D:Ctrl_Index1_Right", "Armature/Skeleton3D:Ctrl_Index2_Left", "Armature/Skeleton3D:Ctrl_Index2_Right", "Armature/Skeleton3D:Ctrl_Index3_Left", "Armature/Skeleton3D:Ctrl_Index3_Right", "Armature/Skeleton3D:Ctrl_Middle1_Left", "Armature/Skeleton3D:Ctrl_Middle1_Right", "Armature/Skeleton3D:Ctrl_Middle2_Left", "Armature/Skeleton3D:Ctrl_Middle2_Right", "Armature/Skeleton3D:Ctrl_Middle3_Left", "Armature/Skeleton3D:Ctrl_Middle3_Right", "Armature/Skeleton3D:Ctrl_Pinky1_Left", "Armature/Skeleton3D:Ctrl_Pinky1_Right", "Armature/Skeleton3D:Ctrl_Pinky2_Left", "Armature/Skeleton3D:Ctrl_Pinky2_Right", "Armature/Skeleton3D:Ctrl_Pinky3_Left", "Armature/Skeleton3D:Ctrl_Pinky3_Right", "Armature/Skeleton3D:Ctrl_Ring1_Left", "Armature/Skeleton3D:Ctrl_Ring1_Right", "Armature/Skeleton3D:Ctrl_Ring2_Left", "Armature/Skeleton3D:Ctrl_Ring2_Right", "Armature/Skeleton3D:Ctrl_Ring3_Left", "Armature/Skeleton3D:Ctrl_Ring3_Right", "Armature/Skeleton3D:Ctrl_Thumb1_Left", "Armature/Skeleton3D:Ctrl_Thumb1_Right", "Armature/Skeleton3D:Ctrl_Thumb2_Left", "Armature/Skeleton3D:Ctrl_Thumb2_Right", "Armature/Skeleton3D:Ctrl_Thumb3_Left", "Armature/Skeleton3D:Ctrl_Thumb3_Right", "Armature/Skeleton3D:mixamorig_Head", "Armature/Skeleton3D:mixamorig_LeftArm", "Armature/Skeleton3D:mixamorig_LeftForeArm", "Armature/Skeleton3D:mixamorig_LeftHand", "Armature/Skeleton3D:mixamorig_LeftHandIndex1", "Armature/Skeleton3D:mixamorig_LeftHandIndex2", "Armature/Skeleton3D:mixamorig_LeftHandIndex3", "Armature/Skeleton3D:mixamorig_LeftHandMiddle1", "Armature/Skeleton3D:mixamorig_LeftHandMiddle2", "Armature/Skeleton3D:mixamorig_LeftHandMiddle3", "Armature/Skeleton3D:mixamorig_LeftHandPinky1", "Armature/Skeleton3D:mixamorig_LeftHandPinky2", "Armature/Skeleton3D:mixamorig_LeftHandPinky3", "Armature/Skeleton3D:mixamorig_LeftHandRing1", "Armature/Skeleton3D:mixamorig_LeftHandRing2", "Armature/Skeleton3D:mixamorig_LeftHandRing3", "Armature/Skeleton3D:mixamorig_LeftHandThumb1", "Armature/Skeleton3D:mixamorig_LeftHandThumb2", "Armature/Skeleton3D:mixamorig_LeftHandThumb3", "Armature/Skeleton3D:mixamorig_LeftShoulder", "Armature/Skeleton3D:mixamorig_Neck", "Armature/Skeleton3D:mixamorig_RightArm", "Armature/Skeleton3D:mixamorig_RightForeArm", "Armature/Skeleton3D:mixamorig_RightHand", "Armature/Skeleton3D:mixamorig_RightHandIndex1", "Armature/Skeleton3D:mixamorig_RightHandIndex2", "Armature/Skeleton3D:mixamorig_RightHandIndex3", "Armature/Skeleton3D:mixamorig_RightHandMiddle1", "Armature/Skeleton3D:mixamorig_RightHandMiddle2", "Armature/Skeleton3D:mixamorig_RightHandMiddle3", "Armature/Skeleton3D:mixamorig_RightHandPinky1", "Armature/Skeleton3D:mixamorig_RightHandPinky2", "Armature/Skeleton3D:mixamorig_RightHandPinky3", "Armature/Skeleton3D:mixamorig_RightHandRing1", "Armature/Skeleton3D:mixamorig_RightHandRing2", "Armature/Skeleton3D:mixamorig_RightHandRing3", "Armature/Skeleton3D:mixamorig_RightHandThumb1", "Armature/Skeleton3D:mixamorig_RightHandThumb2", "Armature/Skeleton3D:mixamorig_RightHandThumb3", "Armature/Skeleton3D:mixamorig_RightShoulder", "Armature/Skeleton3D:mixamorig_Spine", "Armature/Skeleton3D:mixamorig_Spine1", "Armature/Skeleton3D:mixamorig_Spine2"]
+fadein_time = 0.3
+fadeout_time = 0.3
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_f0xgq"]
+filter_enabled = true
+filters = ["Armature/Skeleton3D:Ctrl_Index1_Left", "Armature/Skeleton3D:Ctrl_Index1_Right", "Armature/Skeleton3D:Ctrl_Index2_Left", "Armature/Skeleton3D:Ctrl_Index2_Right", "Armature/Skeleton3D:Ctrl_Index3_Left", "Armature/Skeleton3D:Ctrl_Index3_Right", "Armature/Skeleton3D:Ctrl_Middle1_Left", "Armature/Skeleton3D:Ctrl_Middle1_Right", "Armature/Skeleton3D:Ctrl_Middle2_Left", "Armature/Skeleton3D:Ctrl_Middle2_Right", "Armature/Skeleton3D:Ctrl_Middle3_Left", "Armature/Skeleton3D:Ctrl_Middle3_Right", "Armature/Skeleton3D:Ctrl_Pinky1_Left", "Armature/Skeleton3D:Ctrl_Pinky1_Right", "Armature/Skeleton3D:Ctrl_Pinky2_Left", "Armature/Skeleton3D:Ctrl_Pinky2_Right", "Armature/Skeleton3D:Ctrl_Pinky3_Left", "Armature/Skeleton3D:Ctrl_Pinky3_Right", "Armature/Skeleton3D:Ctrl_Ring1_Left", "Armature/Skeleton3D:Ctrl_Ring1_Right", "Armature/Skeleton3D:Ctrl_Ring2_Left", "Armature/Skeleton3D:Ctrl_Ring2_Right", "Armature/Skeleton3D:Ctrl_Ring3_Left", "Armature/Skeleton3D:Ctrl_Ring3_Right", "Armature/Skeleton3D:Ctrl_Thumb1_Left", "Armature/Skeleton3D:Ctrl_Thumb1_Right", "Armature/Skeleton3D:Ctrl_Thumb2_Left", "Armature/Skeleton3D:Ctrl_Thumb2_Right", "Armature/Skeleton3D:Ctrl_Thumb3_Left", "Armature/Skeleton3D:Ctrl_Thumb3_Right", "Armature/Skeleton3D:mixamorig_Head", "Armature/Skeleton3D:mixamorig_LeftArm", "Armature/Skeleton3D:mixamorig_LeftForeArm", "Armature/Skeleton3D:mixamorig_LeftHand", "Armature/Skeleton3D:mixamorig_LeftHandIndex1", "Armature/Skeleton3D:mixamorig_LeftHandIndex2", "Armature/Skeleton3D:mixamorig_LeftHandIndex3", "Armature/Skeleton3D:mixamorig_LeftHandMiddle1", "Armature/Skeleton3D:mixamorig_LeftHandMiddle2", "Armature/Skeleton3D:mixamorig_LeftHandMiddle3", "Armature/Skeleton3D:mixamorig_LeftHandPinky1", "Armature/Skeleton3D:mixamorig_LeftHandPinky2", "Armature/Skeleton3D:mixamorig_LeftHandPinky3", "Armature/Skeleton3D:mixamorig_LeftHandRing1", "Armature/Skeleton3D:mixamorig_LeftHandRing2", "Armature/Skeleton3D:mixamorig_LeftHandRing3", "Armature/Skeleton3D:mixamorig_LeftHandThumb1", "Armature/Skeleton3D:mixamorig_LeftHandThumb2", "Armature/Skeleton3D:mixamorig_LeftHandThumb3", "Armature/Skeleton3D:mixamorig_LeftShoulder", "Armature/Skeleton3D:mixamorig_Neck", "Armature/Skeleton3D:mixamorig_RightArm", "Armature/Skeleton3D:mixamorig_RightForeArm", "Armature/Skeleton3D:mixamorig_RightHand", "Armature/Skeleton3D:mixamorig_RightHandIndex1", "Armature/Skeleton3D:mixamorig_RightHandIndex2", "Armature/Skeleton3D:mixamorig_RightHandIndex3", "Armature/Skeleton3D:mixamorig_RightHandMiddle1", "Armature/Skeleton3D:mixamorig_RightHandMiddle2", "Armature/Skeleton3D:mixamorig_RightHandMiddle3", "Armature/Skeleton3D:mixamorig_RightHandPinky1", "Armature/Skeleton3D:mixamorig_RightHandPinky2", "Armature/Skeleton3D:mixamorig_RightHandPinky3", "Armature/Skeleton3D:mixamorig_RightHandRing1", "Armature/Skeleton3D:mixamorig_RightHandRing2", "Armature/Skeleton3D:mixamorig_RightHandRing3", "Armature/Skeleton3D:mixamorig_RightHandThumb1", "Armature/Skeleton3D:mixamorig_RightHandThumb2", "Armature/Skeleton3D:mixamorig_RightHandThumb3", "Armature/Skeleton3D:mixamorig_RightShoulder", "Armature/Skeleton3D:mixamorig_Spine", "Armature/Skeleton3D:mixamorig_Spine1", "Armature/Skeleton3D:mixamorig_Spine2"]
+fadein_time = 0.3
+fadeout_time = 0.3
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_f0xgq"]
 animation = &"spin_attack"
 
-[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_le4a2"]
-fadein_time = 0.4
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_dq30u"]
+filter_enabled = true
+filters = ["Armature/Skeleton3D:Ctrl_Index1_Left", "Armature/Skeleton3D:Ctrl_Index1_Right", "Armature/Skeleton3D:Ctrl_Index2_Left", "Armature/Skeleton3D:Ctrl_Index2_Right", "Armature/Skeleton3D:Ctrl_Index3_Left", "Armature/Skeleton3D:Ctrl_Index3_Right", "Armature/Skeleton3D:Ctrl_Middle1_Left", "Armature/Skeleton3D:Ctrl_Middle1_Right", "Armature/Skeleton3D:Ctrl_Middle2_Left", "Armature/Skeleton3D:Ctrl_Middle2_Right", "Armature/Skeleton3D:Ctrl_Middle3_Left", "Armature/Skeleton3D:Ctrl_Middle3_Right", "Armature/Skeleton3D:Ctrl_Pinky1_Left", "Armature/Skeleton3D:Ctrl_Pinky1_Right", "Armature/Skeleton3D:Ctrl_Pinky2_Left", "Armature/Skeleton3D:Ctrl_Pinky2_Right", "Armature/Skeleton3D:Ctrl_Pinky3_Left", "Armature/Skeleton3D:Ctrl_Pinky3_Right", "Armature/Skeleton3D:Ctrl_Ring1_Left", "Armature/Skeleton3D:Ctrl_Ring1_Right", "Armature/Skeleton3D:Ctrl_Ring2_Left", "Armature/Skeleton3D:Ctrl_Ring2_Right", "Armature/Skeleton3D:Ctrl_Ring3_Left", "Armature/Skeleton3D:Ctrl_Ring3_Right", "Armature/Skeleton3D:Ctrl_Thumb1_Left", "Armature/Skeleton3D:Ctrl_Thumb1_Right", "Armature/Skeleton3D:Ctrl_Thumb2_Left", "Armature/Skeleton3D:Ctrl_Thumb2_Right", "Armature/Skeleton3D:Ctrl_Thumb3_Left", "Armature/Skeleton3D:Ctrl_Thumb3_Right", "Armature/Skeleton3D:mixamorig_Head", "Armature/Skeleton3D:mixamorig_Hips", "Armature/Skeleton3D:mixamorig_LeftArm", "Armature/Skeleton3D:mixamorig_LeftFoot", "Armature/Skeleton3D:mixamorig_LeftForeArm", "Armature/Skeleton3D:mixamorig_LeftHand", "Armature/Skeleton3D:mixamorig_LeftHandIndex1", "Armature/Skeleton3D:mixamorig_LeftHandIndex2", "Armature/Skeleton3D:mixamorig_LeftHandIndex3", "Armature/Skeleton3D:mixamorig_LeftHandMiddle1", "Armature/Skeleton3D:mixamorig_LeftHandMiddle2", "Armature/Skeleton3D:mixamorig_LeftHandMiddle3", "Armature/Skeleton3D:mixamorig_LeftHandPinky1", "Armature/Skeleton3D:mixamorig_LeftHandPinky2", "Armature/Skeleton3D:mixamorig_LeftHandPinky3", "Armature/Skeleton3D:mixamorig_LeftHandRing1", "Armature/Skeleton3D:mixamorig_LeftHandRing2", "Armature/Skeleton3D:mixamorig_LeftHandRing3", "Armature/Skeleton3D:mixamorig_LeftHandThumb1", "Armature/Skeleton3D:mixamorig_LeftHandThumb2", "Armature/Skeleton3D:mixamorig_LeftHandThumb3", "Armature/Skeleton3D:mixamorig_LeftLeg", "Armature/Skeleton3D:mixamorig_LeftShoulder", "Armature/Skeleton3D:mixamorig_LeftToeBase", "Armature/Skeleton3D:mixamorig_LeftUpLeg", "Armature/Skeleton3D:mixamorig_Neck", "Armature/Skeleton3D:mixamorig_RightArm", "Armature/Skeleton3D:mixamorig_RightFoot", "Armature/Skeleton3D:mixamorig_RightForeArm", "Armature/Skeleton3D:mixamorig_RightHand", "Armature/Skeleton3D:mixamorig_RightHandIndex1", "Armature/Skeleton3D:mixamorig_RightHandIndex2", "Armature/Skeleton3D:mixamorig_RightHandIndex3", "Armature/Skeleton3D:mixamorig_RightHandMiddle1", "Armature/Skeleton3D:mixamorig_RightHandMiddle2", "Armature/Skeleton3D:mixamorig_RightHandMiddle3", "Armature/Skeleton3D:mixamorig_RightHandPinky1", "Armature/Skeleton3D:mixamorig_RightHandPinky2", "Armature/Skeleton3D:mixamorig_RightHandPinky3", "Armature/Skeleton3D:mixamorig_RightHandRing1", "Armature/Skeleton3D:mixamorig_RightHandRing2", "Armature/Skeleton3D:mixamorig_RightHandRing3", "Armature/Skeleton3D:mixamorig_RightHandThumb1", "Armature/Skeleton3D:mixamorig_RightHandThumb2", "Armature/Skeleton3D:mixamorig_RightHandThumb3", "Armature/Skeleton3D:mixamorig_RightLeg", "Armature/Skeleton3D:mixamorig_RightShoulder", "Armature/Skeleton3D:mixamorig_RightToeBase", "Armature/Skeleton3D:mixamorig_RightUpLeg", "Armature/Skeleton3D:mixamorig_Spine", "Armature/Skeleton3D:mixamorig_Spine1", "Armature/Skeleton3D:mixamorig_Spine2"]
+fadein_time = 0.3
 fadeout_time = 0.3
 
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_xisrv"]
-graph_offset = Vector2(-531.2472, 384.887)
-nodes/output/position = Vector2(620, 0)
-nodes/Idle/node = SubResource("AnimationNodeAnimation_udr1j")
-nodes/Idle/position = Vector2(-360, 100)
-nodes/Run/node = SubResource("AnimationNodeAnimation_le4a2")
-nodes/Run/position = Vector2(-360, 360)
-nodes/SlashAttack/node = SubResource("AnimationNodeAnimation_dq30u")
-nodes/SlashAttack/position = Vector2(-360, 620)
-nodes/BlendRun/node = SubResource("AnimationNodeBlend2_le4a2")
-nodes/BlendRun/position = Vector2(-120, 60)
-nodes/SlashShot/node = SubResource("AnimationNodeOneShot_udr1j")
-nodes/SlashShot/position = Vector2(140, 40)
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_cingf"]
+graph_offset = Vector2(-261.06555, 903.56177)
+nodes/output/position = Vector2(1440, 900)
+nodes/Idle/node = SubResource("AnimationNodeAnimation_yr380")
+nodes/Idle/position = Vector2(-340, 1080)
+nodes/Run/node = SubResource("AnimationNodeAnimation_4g1os")
+nodes/Run/position = Vector2(-340, 1620)
+nodes/SlashAttack/node = SubResource("AnimationNodeAnimation_cingf")
+nodes/SlashAttack/position = Vector2(-340, 1880)
+nodes/SlashAttackMirror/node = SubResource("AnimationNodeAnimation_udr1j")
+nodes/SlashAttackMirror/position = Vector2(-340, 2140)
+nodes/CastMagick/node = SubResource("AnimationNodeAnimation_le4a2")
+nodes/CastMagick/position = Vector2(-340, 820)
+nodes/LeonKick/node = SubResource("AnimationNodeAnimation_dq30u")
+nodes/LeonKick/position = Vector2(-340, 1340)
 nodes/SpinAttack/node = SubResource("AnimationNodeAnimation_f0xgq")
-nodes/SpinAttack/position = Vector2(-360, 900)
-nodes/SpinShot/node = SubResource("AnimationNodeOneShot_le4a2")
-nodes/SpinShot/position = Vector2(380, 0)
-nodes/SlashTimeScale/node = SubResource("AnimationNodeTimeScale_udr1j")
-nodes/SlashTimeScale/position = Vector2(-120, 600)
-node_connections = [&"output", 0, &"SpinShot", &"BlendRun", 0, &"Idle", &"BlendRun", 1, &"Run", &"SlashShot", 0, &"BlendRun", &"SlashShot", 1, &"SlashTimeScale", &"SpinShot", 0, &"SlashShot", &"SpinShot", 1, &"SpinAttack", &"SlashTimeScale", 0, &"SlashAttack"]
+nodes/SpinAttack/position = Vector2(-340, 2400)
+nodes/BlendRun/node = SubResource("AnimationNodeBlend2_cingf")
+nodes/BlendRun/position = Vector2(-40, 1060)
+nodes/SlashShot/node = SubResource("AnimationNodeOneShot_f0xgq")
+nodes/SlashShot/position = Vector2(200, 1020)
+nodes/SlashMirrorShot/node = SubResource("AnimationNodeOneShot_cingf")
+nodes/SlashMirrorShot/position = Vector2(440, 980)
+nodes/CastShot/node = SubResource("AnimationNodeOneShot_udr1j")
+nodes/CastShot/position = Vector2(700, 960)
+nodes/LeonShot/node = SubResource("AnimationNodeOneShot_le4a2")
+nodes/LeonShot/position = Vector2(940, 920)
+nodes/SpinShot/node = SubResource("AnimationNodeOneShot_dq30u")
+nodes/SpinShot/position = Vector2(1180, 880)
+node_connections = [&"output", 0, &"SpinShot", &"BlendRun", 0, &"Idle", &"BlendRun", 1, &"Run", &"SlashShot", 0, &"BlendRun", &"SlashShot", 1, &"SlashAttack", &"SlashMirrorShot", 0, &"SlashShot", &"SlashMirrorShot", 1, &"SlashAttackMirror", &"CastShot", 0, &"SlashMirrorShot", &"CastShot", 1, &"CastMagick", &"LeonShot", 0, &"CastShot", &"LeonShot", 1, &"LeonKick", &"SpinShot", 0, &"LeonShot", &"SpinShot", 1, &"SpinAttack"]
 
-[node name="main_character_model" unique_id=1005630152 instance=ExtResource("1_cingf")]
+[node name="main_character_model" unique_id=1751672782 instance=ExtResource("1_cingf")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 
-[node name="Skeleton3D" parent="Armature" parent_id_path=PackedInt32Array(1750181770) index="0" unique_id=1321044854]
-bones/0/position = Vector3(0.29071692, 1.0030826, -0.11639801)
+[node name="Skeleton3D" parent="Armature" parent_id_path=PackedInt32Array(143418019) index="0" unique_id=1355924453]
+bones/0/position = Vector3(0.28199935, 1.0037512, -0.12420905)
 bones/0/rotation = Quaternion(-0.7071069, -6.3179106e-09, 6.3384897e-09, 0.70710665)
-bones/1/position = Vector3(-0.27163163, 0.9267118, -0.04805112)
+bones/1/position = Vector3(-0.2877147, 0.92859477, -0.06514898)
 bones/1/rotation = Quaternion(-0.7071069, -6.3179106e-09, 6.3384897e-09, 0.70710665)
 bones/2/position = Vector3(0.18507257, 0.10670537, 0.2047542)
-bones/2/rotation = Quaternion(0.015514411, 0.70634747, 0.70705473, -0.030103248)
-bones/4/position = Vector3(-1.8327002e-07, 3.2152056e-07, -3.13034e-06)
-bones/4/rotation = Quaternion(-0.2859021, 0.094326, -0.028277796, 0.9531857)
-bones/6/rotation = Quaternion(0.28242236, -0.10725397, 0.03179392, 0.9527452)
-bones/7/position = Vector3(2.3099958e-08, -1.7072547e-06, 1.134016e-06)
-bones/7/rotation = Quaternion(0.0026651097, -0.0023793294, -0.012415028, 0.99991655)
+bones/2/rotation = Quaternion(0.015048552, 0.7064237, 0.70696884, -0.030563971)
+bones/4/position = Vector3(-1.8272307e-07, 3.256422e-07, -3.1240877e-06)
+bones/4/rotation = Quaternion(-0.2859022, 0.09432603, -0.028277796, 0.95318574)
+bones/6/rotation = Quaternion(0.28242245, -0.107254006, 0.031793915, 0.9527452)
+bones/7/position = Vector3(2.3099958e-08, -1.6774505e-06, 1.1338414e-06)
+bones/7/rotation = Quaternion(0.0027420018, -0.0023838908, -0.012890612, 0.9999104)
 bones/15/rotation = Quaternion(-0.09845129, -6.401331e-09, 0.99514186, 5.773171e-10)
-bones/16/rotation = Quaternion(0.0026713116, -0.0023781548, -0.01241493, 0.99991655)
+bones/16/rotation = Quaternion(0.0027472822, -0.0023827488, -0.012890584, 0.9999103)
 bones/18/position = Vector3(-0.20187226, 0.107465886, -0.21021882)
-bones/18/rotation = Quaternion(-0.26157957, 0.65000117, 0.66030294, 0.27032322)
-bones/20/position = Vector3(5.4299136e-07, -6.03767e-07, -3.0080287e-06)
-bones/20/rotation = Quaternion(-0.28120452, -0.093836345, 0.027639275, 0.95464915)
-bones/22/rotation = Quaternion(0.2776173, 0.110600896, -0.03219485, 0.95376074)
-bones/23/rotation = Quaternion(0.010693995, -0.00020545267, 0.010767915, 0.99988484)
+bones/18/rotation = Quaternion(-0.26393273, 0.64900136, 0.6613545, 0.2678564)
+bones/20/position = Vector3(5.159353e-07, -6.316375e-07, -3.009999e-06)
+bones/20/rotation = Quaternion(-0.28120446, -0.093836345, 0.02763927, 0.95464915)
+bones/22/rotation = Quaternion(0.27761725, 0.110600926, -0.032194957, 0.95376074)
+bones/23/rotation = Quaternion(0.011770974, 3.5904635e-05, 0.010720865, 0.99987334)
 bones/31/rotation = Quaternion(0.09781784, -6.662388e-09, 0.9952043, -8.963296e-08)
-bones/32/rotation = Quaternion(0.010698405, -0.00020539487, 0.010767491, 0.99988484)
-bones/34/position = Vector3(0.053732872, 0.94112325, 0.2380119)
-bones/34/rotation = Quaternion(-0.7631807, 0.42499068, 0.48673368, 0.005335279)
-bones/35/position = Vector3(-0.10370225, 1.030187, 0.3331522)
-bones/35/rotation = Quaternion(0.62753356, 0.56086004, 0.50302994, 0.19646533)
-bones/36/position = Vector3(0.030056685, 0.7166269, 0.7292133)
+bones/32/rotation = Quaternion(0.011775158, 3.5966925e-05, 0.010720516, 0.9998733)
+bones/34/position = Vector3(0.03603673, 0.9404706, 0.22376043)
+bones/34/rotation = Quaternion(-0.7654462, 0.42498648, 0.48308203, 0.0105104)
+bones/35/position = Vector3(-0.122261524, 1.029601, 0.3180699)
+bones/35/rotation = Quaternion(0.62580717, 0.55746335, 0.5078701, 0.19916835)
+bones/36/position = Vector3(0.021684676, 0.7213871, 0.7170958)
 bones/36/rotation = Quaternion(-0.7071069, -4.0436947e-07, 1.518125e-07, 0.70710665)
-bones/37/position = Vector3(-0.48755804, 0.5217668, 0.44472212)
+bones/37/position = Vector3(-0.5012282, 0.52263796, 0.4440839)
 bones/37/rotation = Quaternion(-0.7071069, -3.0605824e-07, -3.304971e-07, 0.70710665)
-bones/39/position = Vector3(0.008309869, 1.0287495, -0.04466212)
-bones/39/rotation = Quaternion(0.042074393, -0.14113307, -0.0056559467, 0.98908)
+bones/39/position = Vector3(-0.0076712356, 1.0272514, -0.057176027)
+bones/39/rotation = Quaternion(0.037847504, -0.1382014, -0.006917853, 0.98965657)
 bones/40/rotation = Quaternion(1, -2.0236665e-10, -5.116197e-08, -1.939366e-09)
 bones/41/rotation = Quaternion(0.046031334, 0.99891424, -0.007170097, -0.00033147493)
 bones/51/rotation = Quaternion(1, 3.215022e-10, -7.5527005e-08, -1.931451e-09)
-bones/52/rotation = Quaternion(0.080781765, 0.9437219, -0.31840667, 0.038478572)
-bones/53/rotation = Quaternion(-0.3383021, -5.5751155e-08, -2.606216e-07, 0.9410376)
-bones/54/rotation = Quaternion(-0.0857014, 0.97599655, -0.16658074, -0.11107138)
-bones/55/rotation = Quaternion(-0.35002726, -2.9379112e-07, 4.746144e-08, 0.93673956)
-bones/56/rotation = Quaternion(0.12435752, 0.035460226, 0.00831618, 0.9915688)
-bones/57/rotation = Quaternion(0.032045007, 0.011347255, -0.0051772343, 0.9994086)
-bones/58/rotation = Quaternion(0.03198581, 0.011982499, -0.0050733383, 0.99940366)
-bones/59/position = Vector3(0.2031125, 0.0816459, 0.042249467)
-bones/62/position = Vector3(-0.19421062, 0.10307339, 0.0674429)
-bones/65/rotation = Quaternion(-0.034400854, 0.0099931825, 0.019988485, 0.9991583)
-bones/66/rotation = Quaternion(-0.12330565, 0.06338422, -0.036579184, 0.98966676)
-bones/67/rotation = Quaternion(-0.6434999, -0.4028978, 0.40948915, -0.5058656)
-bones/68/rotation = Quaternion(0.60890114, -0.10056311, 0.18596528, 0.76455444)
-bones/69/rotation = Quaternion(6.806566e-08, -2.832735e-07, 0.36872327, 0.9295392)
-bones/70/rotation = Quaternion(0.64531493, -0.41080248, 0.29923177, 0.5703249)
-bones/71/rotation = Quaternion(0.5875869, 0.18282881, -0.21062732, 0.75957316)
-bones/72/rotation = Quaternion(-1.8232741e-07, 3.3475996e-07, -0.49914166, 0.86652046)
-bones/73/position = Vector3(0.00786284, 1.0287495, -0.044742987)
-bones/73/rotation = Quaternion(0.042044718, -0.13623138, -0.0058740014, 0.989767)
-bones/74/rotation = Quaternion(0.038296543, 0.31848675, 0.9436962, -0.08085254)
-bones/75/rotation = Quaternion(-0.33830205, -6.1001636e-08, -2.5006014e-07, 0.9410376)
-bones/76/rotation = Quaternion(0.5111733, -0.036715258, 0.054542962, 0.85695916)
-bones/76/scale = Vector3(1.0000103, 0.9999999, 0.99999964)
-bones/77/rotation = Quaternion(0.28634435, -0.10592096, 0.019576708, 0.95205283)
-bones/79/rotation = Quaternion(-0.1110713, 0.16658075, 0.97599655, 0.085701406)
-bones/80/rotation = Quaternion(-0.34970358, -3.0267992e-07, 4.4237833e-08, 0.9368605)
-bones/81/rotation = Quaternion(0.6371106, 0.06972618, -0.02332647, 0.76725763)
-bones/82/rotation = Quaternion(0.28897, 0.107058704, -0.023161441, 0.9510512)
-bones/84/rotation = Quaternion(0.12435752, 0.035460256, 0.008316178, 0.9915688)
-bones/85/rotation = Quaternion(0.032045007, 0.011347255, -0.0051772343, 0.9994086)
-bones/86/rotation = Quaternion(0.03198581, 0.011982499, -0.0050733383, 0.99940366)
-bones/87/rotation = Quaternion(-0.64348453, -0.40288123, 0.40950805, -0.505883)
-bones/88/rotation = Quaternion(0.60890114, -0.10056308, 0.18596524, 0.76455444)
-bones/89/rotation = Quaternion(6.472694e-08, -2.6734787e-07, 0.36873963, 0.92953277)
-bones/90/rotation = Quaternion(0.13408324, -0.08690798, 0.06513279, 0.9850007)
+bones/52/rotation = Quaternion(0.0901583, 0.9442733, -0.31461322, 0.035185184)
+bones/53/rotation = Quaternion(-0.33090746, -7.642275e-08, -2.6601023e-07, 0.9436633)
+bones/54/rotation = Quaternion(-0.07704596, 0.97526455, -0.17155491, -0.11615556)
+bones/55/rotation = Quaternion(-0.36248243, -2.9408142e-07, 4.6507708e-08, 0.9319907)
+bones/56/rotation = Quaternion(0.12119083, 0.030571437, 0.009469953, 0.9921132)
+bones/57/rotation = Quaternion(0.031811725, 0.010406952, -0.0049960655, 0.9994272)
+bones/58/rotation = Quaternion(0.03168902, 0.011082624, -0.0048854086, 0.9994244)
+bones/59/position = Vector3(0.20300932, 0.08245941, 0.04294526)
+bones/62/position = Vector3(-0.1937589, 0.102850445, 0.06823306)
+bones/65/rotation = Quaternion(-0.029888727, 0.010801778, 0.019915476, 0.9992965)
+bones/66/rotation = Quaternion(-0.12025069, 0.064697966, -0.03658591, 0.98995733)
+bones/67/rotation = Quaternion(-0.6440289, -0.4043862, 0.40472957, -0.50783145)
+bones/68/rotation = Quaternion(0.6075761, -0.09911877, 0.1880745, 0.76528096)
+bones/69/rotation = Quaternion(7.341854e-08, -2.2779366e-07, 0.36205888, 0.9321553)
+bones/70/rotation = Quaternion(0.6470149, -0.40826648, 0.29732138, 0.5712182)
+bones/71/rotation = Quaternion(0.5880318, 0.18482052, -0.2094796, 0.75906414)
+bones/72/rotation = Quaternion(-1.9255546e-07, 3.6046666e-07, -0.4898125, 0.87182784)
+bones/73/position = Vector3(-0.008242603, 1.0272514, -0.05709645)
+bones/73/rotation = Quaternion(0.037812453, -0.13325147, -0.0071070055, 0.9903352)
+bones/74/rotation = Quaternion(0.035185277, 0.3146132, 0.9442733, -0.09015833)
+bones/75/rotation = Quaternion(-0.33090743, -8.614736e-08, -2.5518244e-07, 0.9436633)
+bones/76/rotation = Quaternion(0.503034, -0.036988072, 0.04691752, 0.8621992)
+bones/76/scale = Vector3(1.0000103, 0.99999976, 0.99999964)
+bones/77/rotation = Quaternion(0.28646755, -0.10578785, 0.019130373, 0.95203966)
+bones/79/rotation = Quaternion(-0.11615547, 0.17155492, 0.97526455, 0.07704594)
+bones/80/rotation = Quaternion(-0.36248237, -2.9895457e-07, 6.239862e-08, 0.9319907)
+bones/81/rotation = Quaternion(0.6404328, 0.06600507, -0.029354867, 0.76460934)
+bones/82/rotation = Quaternion(0.28999582, 0.10726596, -0.023258043, 0.9507132)
+bones/84/rotation = Quaternion(0.12125293, 0.030439408, 0.009425901, 0.9921101)
+bones/85/rotation = Quaternion(0.031811725, 0.010406952, -0.0049960655, 0.9994272)
+bones/86/rotation = Quaternion(0.03168902, 0.011082624, -0.0048854086, 0.9994244)
+bones/87/rotation = Quaternion(-0.6440191, -0.4044056, 0.4047448, -0.5078162)
+bones/88/rotation = Quaternion(0.60757613, -0.09911876, 0.18807454, 0.76528084)
+bones/89/rotation = Quaternion(7.683411e-08, -2.38535e-07, 0.3620588, 0.93215525)
+bones/90/rotation = Quaternion(0.13397451, -0.09624367, 0.06640385, 0.98406225)
 bones/91/rotation = Quaternion(0.6067909, -0.07033204, -0.009310225, 0.7916891)
 bones/92/rotation = Quaternion(0.39795628, -0.017981602, -0.01896102, 0.91703224)
 bones/93/rotation = Quaternion(0.63338166, -0.032488625, 0.028747374, 0.77262264)
@@ -152,12 +190,12 @@ bones/120/rotation = Quaternion(0.33755365, 0.029877681, -0.08983401, 0.9365334)
 bones/122/rotation = Quaternion(0.2508203, -0.014403707, 0.30610082, 0.9182505)
 bones/123/rotation = Quaternion(0.102853104, 0.09939581, -0.33361533, 0.9317954)
 bones/124/rotation = Quaternion(0.31696072, 0.44103235, -0.37229615, 0.7526101)
-bones/126/rotation = Quaternion(-0.034400854, 0.0099931825, 0.019988485, 0.9991583)
-bones/127/rotation = Quaternion(-0.12330565, 0.06338422, -0.036579184, 0.98966676)
-bones/129/rotation = Quaternion(0.6453149, -0.41080257, 0.29923177, 0.57032484)
-bones/130/rotation = Quaternion(0.58758694, 0.18282883, -0.21062727, 0.75957316)
-bones/131/rotation = Quaternion(-1.7788265e-07, 3.3155092e-07, -0.49914166, 0.86652046)
-bones/132/rotation = Quaternion(0.07980596, 0.13226454, -0.10781976, 0.98209584)
+bones/126/rotation = Quaternion(-0.029888727, 0.010801778, 0.019915476, 0.9992965)
+bones/127/rotation = Quaternion(-0.12025069, 0.064697966, -0.03658591, 0.98995733)
+bones/129/rotation = Quaternion(0.6470149, -0.40826643, 0.29732138, 0.5712182)
+bones/130/rotation = Quaternion(0.5880318, 0.1848204, -0.20947951, 0.7590642)
+bones/131/rotation = Quaternion(-1.7881398e-07, 3.647293e-07, -0.48981237, 0.87182796)
+bones/132/rotation = Quaternion(0.07943668, 0.13527001, -0.10853846, 0.98163706)
 bones/133/rotation = Quaternion(0.25495106, -0.15015443, 0.0008100503, 0.9552241)
 bones/134/rotation = Quaternion(0.8329507, 0.0027899842, -0.006028223, 0.55330724)
 bones/135/rotation = Quaternion(0.2868168, -0.01016027, 0.010461215, 0.9578745)
@@ -189,22 +227,30 @@ bones/164/rotation = Quaternion(0.12769963, -0.16245417, -0.28509024, 0.9359621)
 bones/165/rotation = Quaternion(0.10723022, 0.1422142, 0.39300016, 0.9021241)
 bones/166/rotation = Quaternion(0.05504081, -0.04395752, 0.32392678, 0.94345623)
 
-[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="2" unique_id=1181495460]
-transform = Transform3D(-0.13599765, 0.50602347, 0.8517306, 0.90199107, -0.29235256, 0.31771314, 0.4097758, 0.8114617, -0.41666934, -0.103662215, 1.0306466, 0.3333406)
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="2" unique_id=1028973628]
+transform = Transform3D(-0.13660061, 0.49668533, 0.8571136, 0.90037644, -0.29856738, 0.3165112, 0.41311252, 0.8149608, -0.40641928, -0.12180233, 1.0299274, 0.3185563)
 bone_name = "mixamorig_RightHand"
 bone_idx = 132
 
 [node name="Sketchfab_Scene" parent="Armature/Skeleton3D/BoneAttachment3D" index="0" unique_id=719243271 instance=ExtResource("2_udr1j")]
-transform = Transform3D(0.80926627, -0.22439986, 0.13127355, 0.2186385, 0.8196683, 0.053299293, -0.14066009, -0.016979367, 0.8381083, 0.58355093, 0.23851544, -0.066695035)
+transform = Transform3D(0.6607819, -0.20179625, 0.11244975, 0.19999081, 0.6702548, 0.027609035, -0.115630426, 0.0060645044, 0.69035643, 0.4779619, 0.22409004, -0.061735958)
 
-[node name="AnimationTree" type="AnimationTree" parent="." index="2" unique_id=277643562]
-tree_root = SubResource("AnimationNodeBlendTree_xisrv")
+[node name="AnimationTree" type="AnimationTree" parent="." index="2" unique_id=1315657728]
+tree_root = SubResource("AnimationNodeBlendTree_cingf")
 anim_player = NodePath("../AnimationPlayer")
 parameters/BlendRun/blend_amount = 0.0
 parameters/SlashShot/active = false
 parameters/SlashShot/internal_active = false
 parameters/SlashShot/request = 0
+parameters/SlashMirrorShot/active = false
+parameters/SlashMirrorShot/internal_active = false
+parameters/SlashMirrorShot/request = 0
+parameters/CastShot/active = false
+parameters/CastShot/internal_active = false
+parameters/CastShot/request = 0
+parameters/LeonShot/active = false
+parameters/LeonShot/internal_active = false
+parameters/LeonShot/request = 0
 parameters/SpinShot/active = false
 parameters/SpinShot/internal_active = false
 parameters/SpinShot/request = 0
-parameters/SlashTimeScale/scale = 1.5

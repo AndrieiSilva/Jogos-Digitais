@@ -28,15 +28,24 @@ func _ready() -> void:
 	cam_gimbal.rotation.x = pitch_rad
 
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	_update_move_vector2()
 	_move_camera(delta)
 	_rotate_camera(delta)
 	
 
+var last_target_position: Vector3 = Vector3.ZERO
+var current_look_ahead: Vector3 = Vector3.ZERO
+
 func _move_camera(delta : float) -> void:
 	if target:
-		cam_pivot.global_position = target.global_position
+		var target_movement = target.global_position - last_target_position
+		var look_ahead_strength = 20
+		var target_look_ahead = target_movement * look_ahead_strength
+		current_look_ahead = current_look_ahead.lerp(target_look_ahead, 5.0 * delta)
+		var desired_position = target.global_position + current_look_ahead
+		cam_pivot.global_position = lerp(cam_pivot.global_position, desired_position, camera_data.cam_move_speed * delta)
+		last_target_position = target.global_position
 	else:
 		var forward : Vector3 = -cam.global_basis.z
 		forward.y = 0

@@ -23,6 +23,7 @@ height = 0.3
 
 [node name="Item" type="RigidBody3D" unique_id=164069729 node_paths=PackedStringArray("item_label", "particles", "model_node")]
 collision_layer = 4
+collision_mask = 33
 script = ExtResource("1_sbn5a")
 item_label = NodePath("ItemLabel")
 particles = NodePath("GPUParticles3D")

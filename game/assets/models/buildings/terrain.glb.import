@@ -42,7 +42,9 @@ materials/extract_path=""
 _subresources={
 "nodes": {
 "PATH:Plane": {
-"generate/physics": true
+"generate/physics": true,
+"physics/layer": 32,
+"physics/mask": 0
 }
 }
 }

@@ -1,6 +1,7 @@
 class_name PlayerInputHelper extends RefCounted
 
 static var last_collider_overlay : Node3D = null
+static var input_enabled : bool = true
 
 static func handle_player_overlay(viewport : Viewport, result : Dictionary) -> void:
 	if not result:
@@ -31,6 +32,9 @@ static func handle_player_overlay(viewport : Viewport, result : Dictionary) -> v
 
 
 static func handle_player_click(nav_agent : NavigationAgent3D, actor : Actor, viewport : Viewport, result : Dictionary) -> void:
+	if not input_enabled:
+		return
+	
 	actor = actor as PlayableActor
 	
 	if not result:
@@ -45,19 +49,16 @@ static func handle_player_click(nav_agent : NavigationAgent3D, actor : Actor, vi
 		actor.collect_item(collider)
 	elif collider is Interaction:
 		collider._interact()
-		
 	elif collider.get_parent().get_parent() is Interaction:
 		collider.get_parent().get_parent()._interact()
 		collider = collider as StaticBody3D
-		
 	elif collider is Enemy:
 		actor.current_enemy_target = collider
-		
 	else:
 		var target_pos : Vector3 = result.position
 		nav_agent.target_position = target_pos
 
-static func _calc_click_pos(click_pos : Vector2, actor : Actor, viewport : Viewport) -> Dictionary:
+static func calc_click_pos(click_pos : Vector2, actor : Actor, viewport : Viewport) -> Dictionary:
 	var space_state = actor.get_world_3d().direct_space_state
 	var cam : Camera3D = viewport.get_camera_3d()
 	var ray_lenght : float = 1000

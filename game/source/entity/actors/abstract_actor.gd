@@ -11,6 +11,8 @@ class_name Actor extends CharacterBody3D
 @export var actor_data : ActorData
 @export var current_weapon_data : ItemData
 
+var can_move : bool = true
+
 var current_state : String = ""
 var current_enemy_target : Actor = null
 

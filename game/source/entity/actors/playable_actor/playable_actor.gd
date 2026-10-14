@@ -13,7 +13,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	_on_move_requested()
 	await  get_tree().physics_frame
-	PlayerInputHelper.handle_player_overlay(get_viewport(), PlayerInputHelper._calc_click_pos(get_viewport().get_mouse_position(), self, get_viewport()))
+	PlayerInputHelper.handle_player_overlay(get_viewport(), PlayerInputHelper.calc_click_pos(get_viewport().get_mouse_position(), self, get_viewport()))
 
 func _on_move_requested() -> void:
 	if nav_agent.is_navigation_finished():
@@ -29,6 +29,8 @@ func collect_item(item : Item) -> void:
 	item.queue_free()
 
 func _on_velocity_computed(safe_velocity: Vector3) -> void:
-	velocity = safe_velocity
+	if not can_move:
+		return
 	
+	velocity = safe_velocity
 	move_and_slide()
