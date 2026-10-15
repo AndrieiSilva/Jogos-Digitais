@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://basj8lxsa3bye"]
+
+[ext_resource type="Script" uid="uid://ecxf56pqefqo" path="res://source/components/hit_and_hurt_box/hitbox_component.gd" id="1_kpbda"]
+
+[node name="HitboxComponent" type="Node" unique_id=1196280546]
+script = ExtResource("1_kpbda")

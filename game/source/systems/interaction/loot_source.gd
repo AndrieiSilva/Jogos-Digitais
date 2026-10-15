@@ -1,5 +1,7 @@
 class_name LootSource extends Interaction
 
+var alredy_looted : bool = false
+
 @export var item_fly_strenght : float = 3
 
 var meshes : Array[MeshInstance3D] = []
@@ -10,12 +12,13 @@ var min_coin : int
 var max_coin : int
 var min_equipment : int
 var max_equipment : int
-#----------------------------
-var rarity_array : Array[ItemData.Rarity] = [ItemData.Rarity.COMMON,
-											ItemData.Rarity.UNCOMMON,
-											ItemData.Rarity.RARE,
-											ItemData.Rarity.LEGENDARY,
-											]
+
+var rarity_array : Array[ItemData.Rarity] = [
+	ItemData.Rarity.COMMON,
+	ItemData.Rarity.UNCOMMON,
+	ItemData.Rarity.RARE,
+	ItemData.Rarity.LEGENDARY,
+]
 var rarity_weight_array : Array[float] = []
 
 @export var source_tier : LootTiers.Tiers = LootTiers.Tiers.BRONZE
@@ -64,25 +67,18 @@ func _setup_reward(tier : LootTiers.Tiers) -> void:
 	rarity_weight_array.append(tier_data[eligible_rarity_id].get(legendary_id, 0.0))
 
 func _interact() -> void:
+	if alredy_looted:
+		return
+	
 	var coin_qt : int = randi_range(min_coin, max_coin) 
 	for i : int in range(coin_qt):
-		_spawn_loot(ItemTracker.coin_itens)
+		_spawn_loot(ItemTracker.coin_itens, null)
 	
-	var itens_array : Array[ItemData] = []
 	var item_qt : int = randi_range(min_equipment, max_equipment) 
-	
 	for i : int in range(item_qt):
-		match _select_rarity():
-			ItemData.Rarity.COMMON:
-				itens_array = ItemTracker.equipments_common
-			ItemData.Rarity.UNCOMMON:
-				itens_array = ItemTracker.equipments_uncommon
-			ItemData.Rarity.RARE:
-				itens_array = ItemTracker.equipments_rare
-			ItemData.Rarity.LEGENDARY:
-				itens_array = ItemTracker.equipments_legendary
-		
-		_spawn_loot(itens_array)
+		var rolled_rarity : ItemData.Rarity = _select_rarity()
+		_spawn_loot(ItemTracker.equipment_itens, rolled_rarity)
+	alredy_looted = true
 
 
 func _select_rarity() -> ItemData.Rarity:
@@ -102,15 +98,25 @@ func _select_rarity() -> ItemData.Rarity:
 	
 	return ItemData.Rarity.COMMON
 
-func _spawn_loot(item_array : Array[ItemData]) -> void:
+func _spawn_loot(item_array : Array[ItemData], forced_rarity) -> void:
+	if item_array.is_empty():
+		return
+		
 	var total_weight : float = 0.0
 	for item in item_array:
 		total_weight += item.spawn_weight
 	
+	var selected_data : ItemData = _get_item_by_weight(total_weight, item_array)
 	
-		
 	var item : Item = item_packed_scene.instantiate()
-	item.item_data = _get_item_by_weight(total_weight, item_array)
+	
+	if forced_rarity != null:
+		var unique_data = selected_data.duplicate()
+		unique_data.rarity = forced_rarity
+		item.item_data = unique_data
+	else:
+		item.item_data = selected_data
+		
 	self.add_child(item)
 	
 

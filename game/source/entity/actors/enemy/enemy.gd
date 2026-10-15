@@ -1,4 +1,4 @@
-class_name Enemy extends Bot
+class_name Enemy extends Actor
 
 const OUTLINE_MAT = preload("uid://ca7yc1o6y3bbl")
 
@@ -7,7 +7,9 @@ var meshes : Array[MeshInstance3D] = []
 
 
 func _ready() -> void:
+	super._ready()
 	recursive_mesh_search(model_node)
+
 
 func set_outline_enabled(enabled : bool) -> void:
 	for mesh : MeshInstance3D in meshes:

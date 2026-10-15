@@ -2,13 +2,10 @@ class_name PlayableActor extends Actor
 
 signal move_requested(target : Vector3)
 
-
-
-
 func _ready() -> void:
+	super._ready()
 	nav_agent.velocity_computed.connect(_on_velocity_computed)
 	move_requested.connect(_on_move_requested)
-	_setup_state_tree_recursive(state_tree)
 
 func _process(delta: float) -> void:
 	_on_move_requested()

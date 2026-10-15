@@ -205,7 +205,7 @@ script = ExtResource("4_sy60i")
 [node name="wood_chest5" parent="Model/NavigationRegion3D/LootSource" unique_id=1635167285 instance=ExtResource("2_vqgms")]
 transform = Transform3D(1, 0, -5.563627e-08, 0, 1, 0, 5.563627e-08, 0, 1, 36, 0, 18)
 script = ExtResource("4_sy60i")
-source_tier = 2
+source_tier = 3
 
 [node name="wood_chest6" parent="Model/NavigationRegion3D/LootSource" unique_id=452271571 instance=ExtResource("2_vqgms")]
 transform = Transform3D(1, 0, -5.563627e-08, 0, 1, 0, 5.563627e-08, 0, 1, 36, 0, -18)

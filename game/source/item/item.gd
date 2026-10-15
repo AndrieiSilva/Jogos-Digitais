@@ -1,7 +1,13 @@
 class_name Item extends RigidBody3D
 
-const MAX_ITENS : int = 10000
+const MAX_ITENS : int = 1000
+
+const ITEM_MAT = preload("uid://dnbdr1jbbsg6d")
 const OUTLINE_MAT = preload("uid://ca7yc1o6y3bbl")
+const BRONZE_COIN = preload("uid://druluy16d6maa")
+const SILVER_COIN = preload("uid://dq4736j7h30pl")
+const GOLD_COIN = preload("uid://bk8vqy1v48i1e")
+
 
 @export var item_label : Label3D
 @export var particles : GPUParticles3D
@@ -29,11 +35,10 @@ func _apply_force() -> void:
 func _ready() -> void:
 	position.y += 1
 	_apply_force()
-	_control_item_limit()
 	_load_model()
 	_set_effects()
 	
-	if "coin" in item_data.name.to_lower():
+	if item_data is CurrencyData:
 		is_auto_collected = true
 		collision_layer = 0
 
@@ -58,40 +63,16 @@ func recursive_mesh_search(node : Node3D) -> void:
 
 func _process(delta: float) -> void:
 	item_label.global_position = self.global_position + Vector3(0, 1, 0)
-	particles.global_position = self.global_position
-	_auto_collect_control(delta)
-	
-var cool : float = 20.0
-func _auto_collect_control(delta : float) -> void:
-	if not is_auto_collected:
-		return
-	
-	cool -= delta
-	if cool <= 0:
-		if self in current_itens:
-			current_itens.erase(self)
-			current_itens_count -= 1
-			
-			hide()
-			set_process(false)
-			set_physics_process(false)
-			call_deferred("queue_free")
+	if particles:
+		particles.global_position = self.global_position
 
-func _control_item_limit() -> void:
-	current_itens_count += 1
-	current_itens.append(self)
-	
-	if current_itens_count > MAX_ITENS:
-		var item : Item = current_itens.pop_front()
-		item.call_deferred("queue_free")
-		current_itens_count -= 1
 
 func _set_effects() -> void:
-	item_label.text = ""
-	particles.emitting = false
-	if "coin" in item_data.name.to_lower():
+	if item_data is CurrencyData:
+		item_label.text = ""
 		return
 	
+	_create_gpu_particles()
 	item_label.text = item_data.name.to_upper()
 	particles.emitting = true
 	
@@ -117,11 +98,45 @@ func _set_effects() -> void:
 	else:
 		printerr("no mat")
 
+func _create_gpu_particles() -> void:
+	var particles_new = GPUParticles3D.new()
+	particles_new.amount = 8
+	particles_new.lifetime = 2
+	particles_new.one_shot = false
+	particles_new.explosiveness = 0.0
+	particles_new.top_level = true
+	
+	var process_material = ParticleProcessMaterial.new()
+	process_material.gravity = Vector3(0, 9.8, 0)
+	process_material.direction = Vector3(0, 1, 0)
+	process_material.spread = 45.0
+	process_material.initial_velocity_min = 2.0
+	process_material.initial_velocity_max = 5.0
+	particles_new.process_material = process_material
+	
+	var box_mesh = BoxMesh.new()
+	box_mesh.size = Vector3(0.1, 0.1, 0.1)
+	box_mesh.material = ITEM_MAT
+	particles_new.draw_pass_1 = box_mesh
+	
+	add_child(particles_new)
+	particles_new.emitting = true
+	particles = particles_new
+
 
 func _load_model() -> void:
+	if item_data is CurrencyData:
+		var item_name : String = item_data.name.to_lower()
+		if "bronze" in item_name:
+			model_node.add_child(BRONZE_COIN.instantiate())
+		elif "silver" in item_name:
+			model_node.add_child(SILVER_COIN.instantiate())
+		elif "gold" in item_name:
+			model_node.add_child(GOLD_COIN.instantiate())
+		return
+	
 	var path : String = ResourceUID.uid_to_path(item_data.model_uid)
 	ResourceLoader.load_threaded_request(path)
-	
 	while ResourceLoader.load_threaded_get_status(path) == ResourceLoader.THREAD_LOAD_IN_PROGRESS:
 		await get_tree().process_frame
 		

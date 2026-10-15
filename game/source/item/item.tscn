@@ -5,28 +5,11 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_uj30w"]
 size = Vector3(2.381836, 0.5, 0.5)
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_sbn5a"]
-emission_shape = 1
-emission_sphere_radius = 0.5
-gravity = Vector3(0, 9.8, 0)
-turbulence_enabled = true
-turbulence_noise_strength = 0.1
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uj30w"]
-shading_mode = 0
-
-[sub_resource type="SphereMesh" id="SphereMesh_sbn5a"]
-resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_uj30w")
-radius = 0.05
-height = 0.3
-
-[node name="Item" type="RigidBody3D" unique_id=164069729 node_paths=PackedStringArray("item_label", "particles", "model_node")]
+[node name="Item" type="RigidBody3D" unique_id=164069729 node_paths=PackedStringArray("item_label", "model_node")]
 collision_layer = 4
 collision_mask = 33
 script = ExtResource("1_sbn5a")
 item_label = NodePath("ItemLabel")
-particles = NodePath("GPUParticles3D")
 model_node = NodePath("Model")
 metadata/_custom_type_script = "uid://dgar2rjcg4xj0"
 
@@ -37,14 +20,5 @@ shape = SubResource("BoxShape3D_uj30w")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 top_level = true
 billboard = 1
-
-[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=68098659]
-top_level = true
-amount = 32
-speed_scale = 0.75
-explosiveness = 0.5
-fixed_fps = 60
-process_material = SubResource("ParticleProcessMaterial_sbn5a")
-draw_pass_1 = SubResource("SphereMesh_sbn5a")
 
 [node name="Model" type="Node3D" parent="." unique_id=1896374762]

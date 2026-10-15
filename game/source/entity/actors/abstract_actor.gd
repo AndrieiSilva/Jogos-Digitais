@@ -1,3 +1,4 @@
+@abstract
 class_name Actor extends CharacterBody3D
 
 @export var character_animated_model : AnimatedModel
@@ -9,12 +10,19 @@ class_name Actor extends CharacterBody3D
 @export var state_chart : StateChart
 
 @export var actor_data : ActorData
-@export var current_weapon_data : ItemData
+@export var current_weapon_data : WeaponData
+
+var hitbox : Hitbox = null
+var hurtbox : Hurtbox = null
 
 var can_move : bool = true
 
-var current_state : String = ""
 var current_enemy_target : Actor = null
+
+func _ready() -> void:
+	actor_data = actor_data.duplicate()
+	_setup_state_tree_recursive(state_tree)
+
 
 func _setup_state_tree_recursive(node : Node) -> void:
 	if node is ActorState:

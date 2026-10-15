@@ -10,9 +10,4 @@ enum Rarity {COMMON, UNCOMMON, RARE, LEGENDARY}
 @export var model_uid : String
 
 @export_group("Spawn")
-@export var spawn_weight : float = 0
-
-@export_group("Stats")
-@export var damage : float = 1
-@export var speed : float = 1
-@export var range : float = 1
+@export var spawn_weight : float = 1

@@ -3,8 +3,7 @@
 [ext_resource type="Script" uid="uid://csil3pc5hdnm8" path="res://source/entity/actors/playable_actor/playable_actor.gd" id="1_mo5sk"]
 [ext_resource type="Resource" uid="uid://d3yxifcfgqlnd" path="res://data/resource/actor/player_data.tres" id="2_k3okx"]
 [ext_resource type="PackedScene" uid="uid://dxigubauv62bp" path="res://assets/models_scene/characters/main_character_model_scene.tscn" id="2_trq00"]
-[ext_resource type="Script" uid="uid://bw2qrysbqse7t" path="res://source/helper/animated_model.gd" id="3_7vf3l"]
-[ext_resource type="Resource" uid="uid://dk5eutii26fu3" path="res://data/resource/itens/long_sword_common.tres" id="3_xhtks"]
+[ext_resource type="Resource" uid="uid://csc7nn43e806v" path="res://data/resource/itens/weapon/long_sword.tres" id="3_ewth7"]
 [ext_resource type="Script" uid="uid://couw105c3bde4" path="res://addons/godot_state_charts/state_chart.gd" id="4_6x4ys"]
 [ext_resource type="Script" uid="uid://jk2jm1g6q853" path="res://addons/godot_state_charts/compound_state.gd" id="5_c55ws"]
 [ext_resource type="Script" uid="uid://cytafq8i1y8qm" path="res://addons/godot_state_charts/atomic_state.gd" id="7_gyodb"]
@@ -31,7 +30,7 @@ nav_agent = NodePath("NavigationAgent3D")
 state_tree = NodePath("StateTree")
 state_chart = NodePath("StateChart")
 actor_data = ExtResource("2_k3okx")
-current_weapon_data = ExtResource("3_xhtks")
+current_weapon_data = ExtResource("3_ewth7")
 metadata/_custom_type_script = "uid://csil3pc5hdnm8"
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=454473930]
@@ -48,7 +47,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_mo5sk")
 
 [node name="main_character_model" parent="." unique_id=1751672782 instance=ExtResource("2_trq00")]
-script = ExtResource("3_7vf3l")
 
 [node name="StateChart" type="Node" parent="." unique_id=1725022016]
 script = ExtResource("4_6x4ys")
@@ -171,18 +169,22 @@ script = ExtResource("14_omcrx")
 
 [node name="StateChartDebugger" parent="." unique_id=2090795940 instance=ExtResource("14_ewth7")]
 anchors_preset = -1
-anchor_right = 0.38541666
-anchor_bottom = 0.7268519
+anchor_right = 0.2717014
+anchor_bottom = 0.5370371
 offset_bottom = -3.0517578e-05
 initial_node_to_watch = NodePath("../StateChart")
 metadata/_edit_use_anchors_ = true
 
 [connection signal="state_entered" from="StateChart/Root/Alive/Movement/Idle" to="StateTree/Root/Alive/Movement/Idle" method="_on_idle_state_entered"]
+[connection signal="state_exited" from="StateChart/Root/Alive/Movement/Idle" to="StateTree/Root/Alive/Movement/Idle" method="_on_idle_state_exited"]
 [connection signal="state_physics_processing" from="StateChart/Root/Alive/Movement/Idle" to="StateTree/Root/Alive/Movement/Idle" method="_on_idle_state_physics_processing"]
+[connection signal="state_unhandled_input" from="StateChart/Root/Alive/Movement/Idle" to="StateTree/Root/Alive/Movement/Idle" method="_on_idle_state_unhandled_input"]
 [connection signal="state_entered" from="StateChart/Root/Alive/Movement/Run" to="StateTree/Root/Alive/Movement/Run" method="_on_run_state_entered"]
 [connection signal="state_physics_processing" from="StateChart/Root/Alive/Movement/Run" to="StateTree/Root/Alive/Movement/Run" method="_on_run_state_physics_processing"]
+[connection signal="state_unhandled_input" from="StateChart/Root/Alive/Movement/Run" to="StateTree/Root/Alive/Movement/Run" method="_on_run_state_unhandled_input"]
 [connection signal="state_entered" from="StateChart/Root/Alive/Movement/Follow" to="StateTree/Root/Alive/Movement/Follow" method="_on_follow_state_entered"]
 [connection signal="state_physics_processing" from="StateChart/Root/Alive/Movement/Follow" to="StateTree/Root/Alive/Movement/Follow" method="_on_follow_state_physics_processing"]
+[connection signal="state_unhandled_input" from="StateChart/Root/Alive/Movement/Follow" to="StateTree/Root/Alive/Movement/Follow" method="_on_follow_state_unhandled_input"]
 [connection signal="state_entered" from="StateChart/Root/Alive/Attack/BaseAttack" to="StateTree/Root/Alive/Attack/BaseAttack" method="_on_base_attack_state_entered"]
 [connection signal="state_exited" from="StateChart/Root/Alive/Attack/BaseAttack" to="StateTree/Root/Alive/Attack/BaseAttack" method="_on_base_attack_state_exited"]
 [connection signal="state_physics_processing" from="StateChart/Root/Alive/Attack/BaseAttack" to="StateTree/Root/Alive/Attack/BaseAttack" method="_on_base_attack_state_physics_processing"]

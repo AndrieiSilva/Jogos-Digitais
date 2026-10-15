@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CurrencyData" format=3 uid="uid://cy6bi782uhn1p"]
+
+[ext_resource type="Script" uid="uid://bkdqatngcpnq7" path="res://data/resource/itens/currency/currency_data.gd" id="1_rikg5"]
+
+[resource]
+script = ExtResource("1_rikg5")
+name = "Bronze Coin"
+model_uid = "uid://druluy16d6maa"
+spawn_weight = 1.0
+metadata/_custom_type_script = "uid://bkdqatngcpnq7"

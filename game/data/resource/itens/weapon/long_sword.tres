@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="WeaponData" format=3 uid="uid://csc7nn43e806v"]
+
+[ext_resource type="Script" uid="uid://bmgue3yw3objy" path="res://data/resource/itens/weapon/weapon_data.gd" id="1_8v5se"]
+
+[resource]
+script = ExtResource("1_8v5se")
+damage = 5.0
+range = 1.7
+name = "Long Sword"
+model_uid = "uid://dbi7vhkhp22eg"
+metadata/_custom_type_script = "uid://bmgue3yw3objy"

@@ -1,11 +1,12 @@
 class_name SpinAttackState extends PlayerState
 
 @export var base_advance_distance : float = 8
+var actors_hit_array : Array[Actor] = []
 
 func _transition_to() -> void:
 	var player : AnimationTree = actor.character_animated_model.anim_tree
 	var one_shot_active = player.get("parameters/SpinShot/active")
-	if not one_shot_active or actor.nav_agent.is_navigation_finished():
+	if not one_shot_active:
 		state_chart.send_event(States["idle"])
 
 
@@ -46,10 +47,24 @@ func add_forward_offset_to_nav(direction: Vector3) -> void:
 	actor.nav_agent.target_position = current_target + (move_direction * base_advance_distance)
 
 
+func _on_area_entered(area : Area3D) -> void:
+	if area is Hurtbox:
+		if area.actor == actor:
+			return
+		
+		if area.actor in actors_hit_array:
+			return
+		
+		actors_hit_array.append(area.actor)
+		area.receive_damage(actor.current_weapon_data.damage)
+
+
 func _on_spin_attack_state_entered() -> void:
+	if not actor.hitbox.area_entered.is_connected(_on_area_entered):
+		actor.hitbox.area_entered.connect(_on_area_entered)
+	
 	PlayerInputHelper.input_enabled = false
 	actor.nav_agent.target_position = actor.position
-	actor.current_state = States["baseAttack"]
 	var player : AnimationTree = actor.character_animated_model.anim_tree
 	var one_shot_active = player.get("parameters/SpinShot/active")
 	if not one_shot_active:
@@ -64,4 +79,8 @@ func _on_spin_attack_state_physics_processing(delta: float) -> void:
 
 
 func _on_spin_attack_state_exited() -> void:
+	actor.nav_agent.target_position = actor.position
 	PlayerInputHelper.input_enabled = true
+	if actor.hitbox.area_entered.is_connected(_on_area_entered):
+		actor.hitbox.area_entered.disconnect(_on_area_entered)
+	actors_hit_array.clear()

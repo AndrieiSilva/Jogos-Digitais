@@ -1,40 +1,16 @@
 class_name RunState extends PlayerState
 
-var click_pressed : bool = true
-
-func _unhandled_input(event: InputEvent) -> void:
-	if actor.current_state != States["run"]:
-		return
-	
-	if Input.is_action_pressed("primary_action"):
-		click_pressed = true
-	elif Input.is_action_just_released("primary_action"):
-		click_pressed = false
-
-
-func handle_input() -> void:
-	if not click_pressed:
-		return
-	
-	if Input.is_action_pressed("primary_action"):
-		await get_tree().physics_frame
-		PlayerInputHelper.handle_player_click(nav_agent, actor, get_viewport(), PlayerInputHelper.calc_click_pos(get_viewport().get_mouse_position(), actor, get_viewport()))
-
-
 func _transition_to() -> void:
 	if actor.current_enemy_target:
 		if actor.position.distance_to(actor.current_enemy_target.position) > actor.current_weapon_data.range:
-			click_pressed = false
 			state_chart.send_event(States["follow"])
 		else:
-			click_pressed = false
 			state_chart.send_event(States["baseAttack"])
 	
 	if Input.is_action_just_pressed("spin_attack"):
 		state_chart.send_event(States["spinAttack"])
 	
 	if actor.velocity.is_zero_approx():
-		click_pressed = false
 		state_chart.send_event(States["idle"])
 	elif not actor.velocity.is_zero_approx():
 		return
@@ -42,7 +18,7 @@ func _transition_to() -> void:
 func _state_action(delta : float) -> void:
 	lerped_look(delta)
 	animate(delta)
-	handle_input()
+
 
 func lerped_look(delta : float) -> void:
 	var look_dir : Vector3 = (actor.velocity * Vector3(1, 0, 1))
@@ -55,7 +31,7 @@ func lerped_look(delta : float) -> void:
 		actor.global_transform.basis = actor.global_transform.basis.slerp(temp_transform.basis, rotation_speed * delta)
 
 func _on_run_state_entered() -> void:
-	actor.current_state = States["run"]
+	pass
 
 func animate(delta : float) -> void:
 	var player : AnimationTree = actor.character_animated_model.anim_tree
@@ -67,3 +43,18 @@ func animate(delta : float) -> void:
 func _on_run_state_physics_processing(delta: float) -> void:
 	_transition_to()
 	_state_action(delta)
+	input()
+
+
+var is_primary_button_pressed : bool = false
+
+func input() -> void:
+	if Input.is_action_pressed("primary_action"):
+		await get_tree().physics_frame
+		PlayerInputHelper.handle_player_click(nav_agent, actor, get_viewport(), PlayerInputHelper.calc_click_pos(get_viewport().get_mouse_position(), actor, get_viewport()))
+
+func _on_run_state_unhandled_input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("primary_action"):
+		is_primary_button_pressed = true
+	elif Input.is_action_just_released("primary_action"):
+		is_primary_button_pressed = false

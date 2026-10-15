@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dq4736j7h30pl"
-path="res://.godot/imported/silver_coin.glb-5417f0b913e7f1613fdd7a369ee97ba5.scn"
+uid="uid://rx4jy8kl5rsn"
+path="res://.godot/imported/leather_boots.glb-720a48b86f418df9eb2af306606ed918.scn"
 
 [deps]
 
-source_file="res://assets/models/itens/silver_coin.glb"
-dest_files=["res://.godot/imported/silver_coin.glb-5417f0b913e7f1613fdd7a369ee97ba5.scn"]
+source_file="res://assets/models/itens/armors/leather_boots.glb"
+dest_files=["res://.godot/imported/leather_boots.glb-720a48b86f418df9eb2af306606ed918.scn"]
 
 [params]
 
@@ -26,7 +26,7 @@ nodes/use_node_type_suffixes=true
 meshes/ensure_tangents=true
 meshes/generate_lods=true
 meshes/create_shadow_meshes=true
-meshes/light_baking=1
+meshes/light_baking=2
 meshes/lightmap_texel_size=0.2
 meshes/force_disable_compression=false
 skins/use_named_skins=true
@@ -41,5 +41,5 @@ materials/extract_format=0
 materials/extract_path=""
 _subresources={}
 gltf/naming_version=2
-gltf/embedded_image_handling=1
+gltf/embedded_image_handling=3
 gltf/texture_map_mode=1

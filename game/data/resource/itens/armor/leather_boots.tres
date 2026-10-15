@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ArmorData" format=3 uid="uid://lr2vt8tspcr5"]
+
+[ext_resource type="Script" uid="uid://dulw1e52hs5d8" path="res://data/resource/itens/armor/armor_data.gd" id="1_tghnt"]
+
+[resource]
+script = ExtResource("1_tghnt")
+name = "Leather Boots"
+model_uid = "uid://rx4jy8kl5rsn"
+metadata/_custom_type_script = "uid://dulw1e52hs5d8"

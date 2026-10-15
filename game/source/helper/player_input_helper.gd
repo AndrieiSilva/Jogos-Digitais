@@ -44,7 +44,6 @@ static func handle_player_click(nav_agent : NavigationAgent3D, actor : Actor, vi
 	if not collider is Enemy:
 		actor.current_enemy_target = null
 	
-	
 	if collider is Item:
 		actor.collect_item(collider)
 	elif collider is Interaction:
@@ -57,6 +56,7 @@ static func handle_player_click(nav_agent : NavigationAgent3D, actor : Actor, vi
 	else:
 		var target_pos : Vector3 = result.position
 		nav_agent.target_position = target_pos
+
 
 static func calc_click_pos(click_pos : Vector2, actor : Actor, viewport : Viewport) -> Dictionary:
 	var space_state = actor.get_world_3d().direct_space_state

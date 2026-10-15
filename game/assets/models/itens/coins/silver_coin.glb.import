@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://druluy16d6maa"
-path="res://.godot/imported/bronze_coin.glb-fe2ae36e8fd372840ebf27f0749d614c.scn"
+uid="uid://dq4736j7h30pl"
+path="res://.godot/imported/silver_coin.glb-8ebfcd1f9b99e1a9e54a9fa900e41246.scn"
 
 [deps]
 
-source_file="res://assets/models/itens/bronze_coin.glb"
-dest_files=["res://.godot/imported/bronze_coin.glb-fe2ae36e8fd372840ebf27f0749d614c.scn"]
+source_file="res://assets/models/itens/coins/silver_coin.glb"
+dest_files=["res://.godot/imported/silver_coin.glb-8ebfcd1f9b99e1a9e54a9fa900e41246.scn"]
 
 [params]
 
