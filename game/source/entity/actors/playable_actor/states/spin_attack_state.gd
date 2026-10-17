@@ -1,12 +1,15 @@
 class_name SpinAttackState extends PlayerState
 
 @export var base_advance_distance : float = 8
+@export var move_speed_mult : float = 10
+
 var actors_hit_array : Array[Actor] = []
+var dest_reached : bool = false
 
 func _transition_to() -> void:
 	var player : AnimationTree = actor.character_animated_model.anim_tree
 	var one_shot_active = player.get("parameters/SpinShot/active")
-	if not one_shot_active:
+	if not one_shot_active or dest_reached:
 		state_chart.send_event(States["idle"])
 
 
@@ -60,8 +63,9 @@ func _on_area_entered(area : Area3D) -> void:
 
 
 func _on_spin_attack_state_entered() -> void:
-	if not actor.hitbox.area_entered.is_connected(_on_area_entered):
-		actor.hitbox.area_entered.connect(_on_area_entered)
+	actor.actor_data.move_speed_mult = move_speed_mult
+	if not actor.area_hitbox.area_entered.is_connected(_on_area_entered):
+		actor.area_hitbox.area_entered.connect(_on_area_entered)
 	
 	PlayerInputHelper.input_enabled = false
 	actor.nav_agent.target_position = actor.position
@@ -71,6 +75,16 @@ func _on_spin_attack_state_entered() -> void:
 		player.set("parameters/SpinShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 	
 	add_forward_offset_to_nav(-actor.global_basis.z)
+	if not nav_agent.navigation_finished.is_connected(_on_dest_reached):
+		nav_agent.navigation_finished.connect(_on_dest_reached)
+	
+	var areas_in_hitbox : Array[Area3D] = actor.area_hitbox.get_overlapping_areas()
+	if not areas_in_hitbox.is_empty():
+		for area : Area3D in areas_in_hitbox:
+			_on_area_entered(area)
+
+func _on_dest_reached() -> void:
+	dest_reached = true
 
 
 func _on_spin_attack_state_physics_processing(delta: float) -> void:
@@ -79,8 +93,12 @@ func _on_spin_attack_state_physics_processing(delta: float) -> void:
 
 
 func _on_spin_attack_state_exited() -> void:
+	actor.actor_data.move_speed_mult = 1
 	actor.nav_agent.target_position = actor.position
 	PlayerInputHelper.input_enabled = true
-	if actor.hitbox.area_entered.is_connected(_on_area_entered):
-		actor.hitbox.area_entered.disconnect(_on_area_entered)
+	dest_reached = false
+	if actor.area_hitbox.area_entered.is_connected(_on_area_entered):
+		actor.area_hitbox.area_entered.disconnect(_on_area_entered)
+	if nav_agent.navigation_finished.is_connected(_on_dest_reached):
+		nav_agent.navigation_finished.disconnect(_on_dest_reached)
 	actors_hit_array.clear()

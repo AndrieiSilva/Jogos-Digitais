@@ -14,11 +14,12 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xisrv"]
 radius = 0.3
 
-[node name="Enemy" type="CharacterBody3D" unique_id=235059105 node_paths=PackedStringArray("model_node", "character_animated_model", "nav_agent", "state_tree", "state_chart")]
+[node name="Enemy" type="CharacterBody3D" unique_id=235059105 node_paths=PackedStringArray("model_node", "life_label", "character_animated_model", "nav_agent", "state_tree", "state_chart")]
 collision_layer = 16
 collision_mask = 51
 script = ExtResource("1_mog23")
 model_node = NodePath("Model")
+life_label = NodePath("HealthLabel")
 character_animated_model = NodePath("Model/main_character_model")
 nav_agent = NodePath("NavigationAgent3D")
 state_tree = NodePath("StateTree")
@@ -79,6 +80,11 @@ script = ExtResource("8_8kqk8")
 
 [node name="Dead" type="Node" parent="StateTree/Root" unique_id=1632392918]
 script = ExtResource("9_ij7nb")
+
+[node name="HealthLabel" type="Label3D" parent="." unique_id=68998791]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+billboard = 1
+text = "HEALTH"
 
 [connection signal="state_entered" from="StateChart/Root/Alive/Movement/Idle" to="StateTree/Root/Alive/Movement/Idle" method="_on_idle_state_entered"]
 [connection signal="state_exited" from="StateChart/Root/Alive/Movement/Idle" to="StateTree/Root/Alive/Movement/Idle" method="_on_idle_state_exited"]

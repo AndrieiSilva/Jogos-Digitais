@@ -19,7 +19,7 @@ func _on_move_requested() -> void:
 	var current_pos : Vector3 = global_transform.origin
 	var target_pos : Vector3 = nav_agent.get_next_path_position()
 	
-	var new_velocity : Vector3 = (target_pos - current_pos).normalized() * actor_data.move_speed
+	var new_velocity : Vector3 = (target_pos - current_pos).normalized() * actor_data.move_speed * actor_data.move_speed_mult
 	nav_agent.velocity = new_velocity
 
 func collect_item(item : Item) -> void:

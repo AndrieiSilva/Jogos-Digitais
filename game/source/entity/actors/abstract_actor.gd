@@ -13,6 +13,7 @@ class_name Actor extends CharacterBody3D
 @export var current_weapon_data : WeaponData
 
 var hitbox : Hitbox = null
+var area_hitbox : AreaHitbox = null
 var hurtbox : Hurtbox = null
 
 var can_move : bool = true

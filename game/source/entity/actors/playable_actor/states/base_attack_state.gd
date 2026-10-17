@@ -13,7 +13,7 @@ func _transition_to() -> void:
 	else:
 		one_shot_active = player.get("parameters/SlashMirrorShot/active")
 	
-	if not one_shot_active or enemy_hit:
+	if not one_shot_active:
 		actor.current_enemy_target = null
 		#is_attack_mirrored = not is_attack_mirrored
 		state_chart.send_event(States["idle"])
@@ -42,23 +42,6 @@ func animate(delta : float) -> void:
 	run_val = lerpf(run_val, 0, actor.anim_lerp_speed * delta)
 	player["parameters/BlendRun/blend_amount"] = run_val
 
-func _process(delta: float) -> void:
-	sync_player_skeleton_pos(delta)
-
-func sync_player_skeleton_pos(delta: float) -> void:
-	var skeleton: Skeleton3D = actor.character_animated_model.skeleton
-	if not skeleton:
-		return
-		
-	var idx: int = skeleton.find_bone("mixamorig_Hips")
-	if idx == -1:
-		return
-	
-	var hip_pose: Transform3D = skeleton.get_bone_pose(idx)
-	
-	hip_pose.origin = Vector3(0.0, hip_pose.origin.y, 0.0)
-	skeleton.set_bone_pose(idx, hip_pose)
-
 
 func _on_base_attack_state_entered() -> void:
 	if not actor.hitbox.area_entered.is_connected(_on_area_entered):
@@ -78,17 +61,24 @@ func _on_base_attack_state_entered() -> void:
 			player.set("parameters/SlashShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 		else:
 			player.set("parameters/SlashMirrorShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+	
+	var areas_in_hitbox : Array[Area3D] = actor.area_hitbox.get_overlapping_areas()
+	if not areas_in_hitbox.is_empty():
+		for area : Area3D in areas_in_hitbox:
+			_on_area_entered(area)
 
 
 func _on_area_entered(area : Area3D) -> void:
 	if area is Hurtbox:
-		if area.actor == actor:
+		if area.actor == actor or area.actor != actor.current_enemy_target:
 			return
 		
 		if not attacked_once:
 			attacked_once = true
 			area.receive_damage(actor.current_weapon_data.damage)
 			enemy_hit = true
+			if actor.hitbox.area_entered.is_connected(_on_area_entered):
+				actor.hitbox.area_entered.disconnect(_on_area_entered)
 
 
 func _on_base_attack_state_physics_processing(delta: float) -> void:

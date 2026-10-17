@@ -4,8 +4,7 @@
 
 [resource]
 script = ExtResource("1_8v5se")
-damage = 5.0
-range = 1.7
+range = 1.5
 name = "Long Sword"
 model_uid = "uid://dbi7vhkhp22eg"
 metadata/_custom_type_script = "uid://bmgue3yw3objy"

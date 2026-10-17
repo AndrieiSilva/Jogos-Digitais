@@ -2,7 +2,8 @@ class_name Enemy extends Actor
 
 const OUTLINE_MAT = preload("uid://ca7yc1o6y3bbl")
 
-@export var model_node : Node3D
+@export var model_node : Node3D = null
+@export var life_label : Label3D = null
 var meshes : Array[MeshInstance3D] = []
 
 
@@ -10,6 +11,8 @@ func _ready() -> void:
 	super._ready()
 	recursive_mesh_search(model_node)
 
+func _process(delta: float) -> void:
+	life_label.text = "HEALTH: " + str(actor_data.current_health)
 
 func set_outline_enabled(enabled : bool) -> void:
 	for mesh : MeshInstance3D in meshes:
