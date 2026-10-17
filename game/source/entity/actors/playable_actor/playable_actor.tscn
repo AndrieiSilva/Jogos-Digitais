@@ -25,7 +25,7 @@ collision_layer = 2
 collision_mask = 51
 script = ExtResource("1_mo5sk")
 character_animated_model = NodePath("main_character_model")
-anim_lerp_speed = 5.0
+anim_lerp_speed = 3.0
 nav_agent = NodePath("NavigationAgent3D")
 state_tree = NodePath("StateTree")
 state_chart = NodePath("StateChart")
@@ -136,6 +136,12 @@ delay_in_seconds = "0.0"
 
 [node name="SpinAttack" type="Node" parent="StateChart/Root/Alive/Attack" unique_id=1018079151]
 script = ExtResource("7_gyodb")
+
+[node name="onRun" type="Node" parent="StateChart/Root/Alive/Attack" unique_id=44786251]
+script = ExtResource("8_atmrn")
+to = NodePath("../../Movement/Run")
+event = &"onRun"
+delay_in_seconds = "0.0"
 
 [node name="Dead" type="Node" parent="StateChart/Root" unique_id=2101878865]
 script = ExtResource("7_gyodb")

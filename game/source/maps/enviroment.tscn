@@ -17,8 +17,10 @@ ssr_enabled = true
 ssao_enabled = true
 ssil_enabled = true
 sdfgi_use_occlusion = true
+sdfgi_bounce_feedback = 0.05
 glow_enabled = true
 volumetric_fog_enabled = true
+volumetric_fog_density = 0.03
 adjustment_enabled = true
 
 [node name="Enviroment" type="Node" unique_id=1362415731]
@@ -26,9 +28,8 @@ adjustment_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1827767326]
 environment = SubResource("Environment_n68i4")
 
-[node name="BakedSun" type="DirectionalLight3D" parent="." unique_id=1045914840]
-transform = Transform3D(-0.8659585, -0.29944953, 0.40055728, 0.35224435, 0.20336828, 0.91354525, -0.3550215, 0.93218625, -0.07062906, 0, 22.767365, 0)
-light_color = Color(0.7858197, 0.6863281, 0.71886885, 1)
-light_bake_mode = 1
+[node name="Sun" type="DirectionalLight3D" parent="." unique_id=1045914840]
+transform = Transform3D(-0.74015945, -0.22681946, 0.63302207, 0.55667055, 0.32139376, 0.76604426, -0.3772033, 0.9193796, -0.111618884, 0, 22.767365, 0)
+light_color = Color(1, 0.88235295, 0.7058824, 1)
 shadow_enabled = true
 directional_shadow_blend_splits = true

@@ -20,55 +20,16 @@ metadata/_custom_type_script = "uid://c0vmpa50xon71"
 [node name="Actors" type="Node" parent="." unique_id=1884806875]
 
 [node name="PlayableActor" parent="Actors" unique_id=1210677002 instance=ExtResource("3_scdwq")]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 26.405132, 0.10000014, 20.738022)
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 45.39176, 0.10000014, -2.1894836)
 
-[node name="Dummy2" parent="Actors" unique_id=1665763024 instance=ExtResource("4_sdsp4")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 30.692661, 0, 19.167875)
+[node name="Enemy" parent="Actors" unique_id=235059105 instance=ExtResource("4_sdsp4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.299393, 0, 21.666044)
 
-[node name="Dummy3" parent="Actors" unique_id=584283957 instance=ExtResource("4_sdsp4")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 30.692661, 0, 23.167875)
+[node name="Enemy2" parent="Actors" unique_id=1514368341 instance=ExtResource("4_sdsp4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.299393, 0, 21.666044)
 
-[node name="Dummy4" parent="Actors" unique_id=1467411785 instance=ExtResource("4_sdsp4")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 32.69266, 0, 23.167875)
-
-[node name="Dummy6" parent="Actors" unique_id=2089446426 instance=ExtResource("4_sdsp4")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 32.69266, 0, 19.167875)
-
-[node name="Dummy5" parent="Actors" unique_id=235059105 instance=ExtResource("4_sdsp4")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 59.69266, 0, 15.167875)
-
-[node name="Dummy7" parent="Actors" unique_id=611932068 instance=ExtResource("4_sdsp4")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 55.69266, 0, 15.167875)
-
-[node name="Dummy8" parent="Actors" unique_id=1870011920 instance=ExtResource("4_sdsp4")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 59.69266, 0, 7.1678753)
-
-[node name="Dummy9" parent="Actors" unique_id=1211314981 instance=ExtResource("4_sdsp4")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 55.69266, 0, 7.1678753)
-
-[node name="Dummy10" parent="Actors" unique_id=765301297 instance=ExtResource("4_sdsp4")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 59.69266, 0, -1.8321247)
-
-[node name="Dummy11" parent="Actors" unique_id=2041866658 instance=ExtResource("4_sdsp4")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 55.69266, 0, -1.8321247)
-
-[node name="Dummy12" parent="Actors" unique_id=921525105 instance=ExtResource("4_sdsp4")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 59.69266, 0, 45.167877)
-
-[node name="Dummy13" parent="Actors" unique_id=1307051818 instance=ExtResource("4_sdsp4")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 55.69266, 0, 45.167877)
-
-[node name="Dummy14" parent="Actors" unique_id=1928185645 instance=ExtResource("4_sdsp4")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 59.69266, 0, 37.167877)
-
-[node name="Dummy15" parent="Actors" unique_id=933130709 instance=ExtResource("4_sdsp4")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 55.69266, 0, 37.167877)
-
-[node name="Dummy16" parent="Actors" unique_id=385496417 instance=ExtResource("4_sdsp4")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 59.69266, 0, 28.167875)
-
-[node name="Dummy17" parent="Actors" unique_id=1272364231 instance=ExtResource("4_sdsp4")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 55.69266, 0, 28.167875)
+[node name="Enemy3" parent="Actors" unique_id=864945943 instance=ExtResource("4_sdsp4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.299393, 0, 21.666044)
 
 [node name="Cameras" type="Node" parent="." unique_id=610777951]
 
