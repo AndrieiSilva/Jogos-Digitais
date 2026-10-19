@@ -20,16 +20,16 @@ metadata/_custom_type_script = "uid://c0vmpa50xon71"
 [node name="Actors" type="Node" parent="." unique_id=1884806875]
 
 [node name="PlayableActor" parent="Actors" unique_id=1210677002 instance=ExtResource("3_scdwq")]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 45.39176, 0.10000014, -2.1894836)
+transform = Transform3D(1, 0, 1.7484555e-07, 0, 1, 0, -1.7484555e-07, 0, 1, 45.39176, 0.10000014, -2.1894836)
 
 [node name="Enemy" parent="Actors" unique_id=235059105 instance=ExtResource("4_sdsp4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.299393, 0, 21.666044)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 45.299393, 0, -8.333956)
 
-[node name="Enemy2" parent="Actors" unique_id=1514368341 instance=ExtResource("4_sdsp4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.299393, 0, 21.666044)
+[node name="Enemy2" parent="Actors" unique_id=624718704 instance=ExtResource("4_sdsp4")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 47.299393, 0, -8.333956)
 
-[node name="Enemy3" parent="Actors" unique_id=864945943 instance=ExtResource("4_sdsp4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.299393, 0, 21.666044)
+[node name="Enemy3" parent="Actors" unique_id=1105088509 instance=ExtResource("4_sdsp4")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 49.299393, 0, -8.333956)
 
 [node name="Cameras" type="Node" parent="." unique_id=610777951]
 

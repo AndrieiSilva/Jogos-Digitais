@@ -10,6 +10,9 @@ func _transition_to() -> void:
 	if Input.is_action_just_pressed("spin_attack"):
 		state_chart.send_event(States["spinAttack"])
 	
+	if Input.is_action_just_pressed("leon_kick"):
+		state_chart.send_event(States["leonKick"])
+	
 	if actor.velocity.is_zero_approx():
 		pass
 	elif not actor.velocity.is_zero_approx():

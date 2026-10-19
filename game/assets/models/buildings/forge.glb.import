@@ -44,7 +44,8 @@ _subresources={
 "PATH:Forge": {
 "generate/physics": true,
 "mesh_instance/cast_shadow": 2,
-"physics/shape_type": 1
+"physics/layer": 256,
+"physics/mask": 0
 }
 }
 }

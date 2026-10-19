@@ -13,6 +13,12 @@ func _ready() -> void:
 	if owner.owner is Actor:
 		actor = owner.owner
 
-func receive_damage(damage : float) -> void:
+func receive_damage(damage : float, source : Node3D) -> void:
 	actor.actor_data.current_health -= damage
-	model.particles.restart()
+	var direction : Vector3 = (source.global_position - actor.global_position).normalized()
+	direction = Vector3(-direction.x, direction.y, -direction.z)
+	model.blood_particles.look_at(direction + actor.global_position)
+	model.blood_particles.restart()
+
+func push_back(force : float, direction : Vector3) -> void:
+	actor.apply_push_back(force, direction)

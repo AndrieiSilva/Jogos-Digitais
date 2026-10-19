@@ -12,6 +12,10 @@ class_name Actor extends CharacterBody3D
 @export var actor_data : ActorData
 @export var current_weapon_data : WeaponData
 
+signal move_requested(target : Vector3)
+
+var push_velocity : Vector3 = Vector3.ZERO
+
 var hitbox : Hitbox = null
 var area_hitbox : AreaHitbox = null
 var hurtbox : Hurtbox = null
@@ -23,6 +27,8 @@ var current_enemy_target : Actor = null
 func _ready() -> void:
 	actor_data = actor_data.duplicate()
 	_setup_state_tree_recursive(state_tree)
+	nav_agent.velocity_computed.connect(_on_velocity_computed)
+	move_requested.connect(_on_move_requested)
 
 
 func _setup_state_tree_recursive(node : Node) -> void:
@@ -34,3 +40,23 @@ func _setup_state_tree_recursive(node : Node) -> void:
 	
 	for child : Node in node.get_children():
 		_setup_state_tree_recursive(child)
+
+func apply_push_back(force: float, direction: Vector3) -> void:
+	push_velocity = direction.normalized() * force
+
+func _on_move_requested() -> void:
+	if nav_agent.is_navigation_finished():
+		return
+	
+	var current_pos : Vector3 = global_transform.origin
+	var target_pos : Vector3 = nav_agent.get_next_path_position()
+	
+	var new_velocity : Vector3 = (target_pos - current_pos).normalized() * actor_data.move_speed * actor_data.move_speed_mult
+	nav_agent.velocity = new_velocity
+
+func _on_velocity_computed(safe_velocity: Vector3) -> void:
+	if not can_move:
+		return
+	
+	velocity = safe_velocity
+	move_and_slide()

@@ -6,14 +6,17 @@ func _transition_to() -> void:
 			state_chart.send_event(States["follow"])
 		else:
 			state_chart.send_event(States["baseAttack"])
+		return
 	
 	if Input.is_action_just_pressed("spin_attack"):
 		state_chart.send_event(States["spinAttack"])
+		return
+	
+	if Input.is_action_just_pressed("leon_kick"):
+		state_chart.send_event(States["leonKick"])
 	
 	if actor.velocity.is_zero_approx():
 		state_chart.send_event(States["idle"])
-	elif not actor.velocity.is_zero_approx():
-		return
 
 func _state_action(delta : float) -> void:
 	lerped_look(delta)

@@ -2,6 +2,7 @@ class_name SpinAttackState extends PlayerState
 
 @export var base_advance_distance : float = 8
 @export var move_speed_mult : float = 10
+@export var damage_mult : float = 2
 
 var actors_hit_array : Array[Actor] = []
 var dest_reached : bool = false
@@ -9,7 +10,7 @@ var dest_reached : bool = false
 func _transition_to() -> void:
 	var player : AnimationTree = actor.character_animated_model.anim_tree
 	var one_shot_active = player.get("parameters/SpinShot/active")
-	if not one_shot_active or dest_reached:
+	if not one_shot_active:
 		state_chart.send_event(States["idle"])
 
 
@@ -22,25 +23,6 @@ func animate(delta : float) -> void:
 	var run_val : float = player.get("parameters/BlendRun/blend_amount")
 	run_val = lerpf(run_val, 0, actor.anim_lerp_speed * delta)
 	player["parameters/BlendRun/blend_amount"] = run_val
-
-
-func _process(delta: float) -> void:
-	sync_player_skeleton_pos(delta)
-
-func sync_player_skeleton_pos(delta: float) -> void:
-	var skeleton: Skeleton3D = actor.character_animated_model.skeleton
-	if not skeleton:
-		return
-		
-	var idx: int = skeleton.find_bone("mixamorig_Hips")
-	if idx == -1:
-		return
-	
-	var hip_pose: Transform3D = skeleton.get_bone_pose(idx)
-	
-	hip_pose.origin = Vector3(0.0, hip_pose.origin.y, 0.0)
-	skeleton.set_bone_pose(idx, hip_pose)
-
 
 func add_forward_offset_to_nav(direction: Vector3) -> void:
 	var move_direction : Vector3 = direction.normalized()
@@ -59,10 +41,13 @@ func _on_area_entered(area : Area3D) -> void:
 			return
 		
 		actors_hit_array.append(area.actor)
-		area.receive_damage(actor.current_weapon_data.damage)
+		area.receive_damage(actor.current_weapon_data.damage * damage_mult, actor)
+		area.push_back(10, (area.actor.global_position - actor.global_position).normalized())
 
 
 func _on_spin_attack_state_entered() -> void:
+	actor.character_animated_model.weapon_trails_particles.restart()
+	actor.character_animated_model.weapon_trails_particles.visible = true
 	actor.actor_data.move_speed_mult = move_speed_mult
 	if not actor.area_hitbox.area_entered.is_connected(_on_area_entered):
 		actor.area_hitbox.area_entered.connect(_on_area_entered)
@@ -71,8 +56,9 @@ func _on_spin_attack_state_entered() -> void:
 	actor.nav_agent.target_position = actor.position
 	var player : AnimationTree = actor.character_animated_model.anim_tree
 	var one_shot_active = player.get("parameters/SpinShot/active")
-	if not one_shot_active:
-		player.set("parameters/SpinShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+	#if not one_shot_active:
+	player.set("parameters/SpinShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+		
 	
 	add_forward_offset_to_nav(-actor.global_basis.z)
 	if not nav_agent.navigation_finished.is_connected(_on_dest_reached):
@@ -93,6 +79,8 @@ func _on_spin_attack_state_physics_processing(delta: float) -> void:
 
 
 func _on_spin_attack_state_exited() -> void:
+	actor.character_animated_model.weapon_trails_particles.visible = false
+	actor.character_animated_model.weapon_trails_particles.restart()
 	actor.actor_data.move_speed_mult = 1
 	actor.nav_agent.target_position = actor.position
 	PlayerInputHelper.input_enabled = true

@@ -46,6 +46,13 @@ _subresources={
 "use_external/fallback_path": "",
 "use_external/path": ""
 }
+},
+"nodes": {
+"PATH:House": {
+"generate/physics": true,
+"physics/layer": 256,
+"physics/mask": 0
+}
 }
 }
 gltf/naming_version=2

@@ -6,5 +6,6 @@ const States : Dictionary = {
 	"run" = "onRun",
 	"baseAttack" = "onBaseAttack",
 	"follow" = "onFollow",
-	"spinAttack" = "onSpinAttack"
+	"spinAttack" = "onSpinAttack",
+	"leonKick" = "onLeonKick"
 }

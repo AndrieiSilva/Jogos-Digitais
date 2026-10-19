@@ -66,6 +66,8 @@ static func calc_click_pos(click_pos : Vector2, actor : Actor, viewport : Viewpo
 	var ray_normal : Vector3 = cam.project_ray_normal(click_pos) * ray_lenght
 	var ray_end : Vector3 = ray_origin + ray_normal
 	var query : PhysicsRayQueryParameters3D = PhysicsRayQueryParameters3D.create(ray_origin, ray_end)
+	var layer_to_ignore = 9
+	query.collision_mask &= ~(1 << (layer_to_ignore - 1))
 	var result : Dictionary = space_state.intersect_ray(query)
 	
 	return result

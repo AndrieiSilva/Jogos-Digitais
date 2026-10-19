@@ -14,18 +14,43 @@
 [ext_resource type="Script" uid="uid://dg32q366ol6en" path="res://source/entity/actors/playable_actor/states/base_attack_state.gd" id="11_k3okx"]
 [ext_resource type="PackedScene" uid="uid://bcwkugn6v3oy7" path="res://addons/godot_state_charts/utilities/state_chart_debugger.tscn" id="14_ewth7"]
 [ext_resource type="Script" uid="uid://cts77mkgnk5iq" path="res://source/entity/actors/playable_actor/states/spin_attack_state.gd" id="14_omcrx"]
+[ext_resource type="Script" uid="uid://bcv10ahotegve" path="res://source/entity/actors/playable_actor/states/leon_kick_state.gd" id="14_y1sab"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_xisrv"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mo5sk"]
 radius = 0.3
 
-[node name="PlayableActor" type="CharacterBody3D" unique_id=1210677002 node_paths=PackedStringArray("character_animated_model", "nav_agent", "state_tree", "state_chart")]
+[sub_resource type="GDScript" id="GDScript_omcrx"]
+script/source = "extends Node
+
+@export var actor : Actor
+
+func _process(delta: float) -> void:
+	sync_player_skeleton_pos(delta)
+
+func sync_player_skeleton_pos(delta: float) -> void:
+	
+	var skeleton: Skeleton3D = actor.character_animated_model.skeleton
+	if not skeleton:
+		return
+		
+	var idx: int = skeleton.find_bone(\"mixamorig_Hips\")
+	if idx == -1:
+		return
+	
+	var hip_pose: Transform3D = skeleton.get_bone_pose(idx)
+	
+	hip_pose.origin = Vector3(0.0, hip_pose.origin.y, 0.0)
+	skeleton.set_bone_pose(idx, hip_pose)
+"
+
+[node name="PlayableActor" type="CharacterBody3D" unique_id=1210677002 node_paths=PackedStringArray("life_label", "character_animated_model", "nav_agent", "state_tree", "state_chart")]
 collision_layer = 2
-collision_mask = 51
+collision_mask = 307
 script = ExtResource("1_mo5sk")
+life_label = NodePath("HealthLabel")
 character_animated_model = NodePath("main_character_model")
-anim_lerp_speed = 3.0
 nav_agent = NodePath("NavigationAgent3D")
 state_tree = NodePath("StateTree")
 state_chart = NodePath("StateChart")
@@ -36,17 +61,27 @@ metadata/_custom_type_script = "uid://csil3pc5hdnm8"
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=454473930]
 path_height_offset = 1.0
 avoidance_enabled = true
+avoidance_mask = 2
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=915522029]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 visible = false
 mesh = SubResource("CapsuleMesh_xisrv")
 
+[node name="HealthLabel" type="Label3D" parent="." unique_id=653880664]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+billboard = 1
+text = "HEALTH"
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2125873884]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_mo5sk")
 
 [node name="main_character_model" parent="." unique_id=1751672782 instance=ExtResource("2_trq00")]
+
+[node name="BoneSync" type="Node" parent="." unique_id=747477420 node_paths=PackedStringArray("actor")]
+script = SubResource("GDScript_omcrx")
+actor = NodePath("..")
 
 [node name="StateChart" type="Node" parent="." unique_id=1725022016]
 script = ExtResource("4_6x4ys")
@@ -121,6 +156,12 @@ to = NodePath("../../Attack/SpinAttack")
 event = &"onSpinAttack"
 delay_in_seconds = "0.0"
 
+[node name="onLeonKick" type="Node" parent="StateChart/Root/Alive/Movement" unique_id=2016896019]
+script = ExtResource("8_atmrn")
+to = NodePath("../../Attack/LeonKick")
+event = &"onLeonKick"
+delay_in_seconds = "0.0"
+
 [node name="Attack" type="Node" parent="StateChart/Root/Alive" unique_id=2095535834]
 script = ExtResource("5_c55ws")
 initial_state = NodePath("BaseAttack")
@@ -142,6 +183,9 @@ script = ExtResource("8_atmrn")
 to = NodePath("../../Movement/Run")
 event = &"onRun"
 delay_in_seconds = "0.0"
+
+[node name="LeonKick" type="Node" parent="StateChart/Root/Alive/Attack" unique_id=1496293309]
+script = ExtResource("7_gyodb")
 
 [node name="Dead" type="Node" parent="StateChart/Root" unique_id=2101878865]
 script = ExtResource("7_gyodb")
@@ -171,7 +215,11 @@ script = ExtResource("11_k3okx")
 [node name="SpinAttack" type="Node" parent="StateTree/Root/Alive/Attack" unique_id=131119917]
 script = ExtResource("14_omcrx")
 base_advance_distance = 10.0
-move_speed_mult = 1.3
+move_speed_mult = 1.5
+damage_mult = 1.0
+
+[node name="LeonKick" type="Node" parent="StateTree/Root/Alive/Attack" unique_id=1749231281]
+script = ExtResource("14_y1sab")
 
 [node name="Dead" type="Node" parent="StateTree/Root" unique_id=896993185]
 
@@ -199,3 +247,6 @@ metadata/_edit_use_anchors_ = true
 [connection signal="state_entered" from="StateChart/Root/Alive/Attack/SpinAttack" to="StateTree/Root/Alive/Attack/SpinAttack" method="_on_spin_attack_state_entered"]
 [connection signal="state_exited" from="StateChart/Root/Alive/Attack/SpinAttack" to="StateTree/Root/Alive/Attack/SpinAttack" method="_on_spin_attack_state_exited"]
 [connection signal="state_physics_processing" from="StateChart/Root/Alive/Attack/SpinAttack" to="StateTree/Root/Alive/Attack/SpinAttack" method="_on_spin_attack_state_physics_processing"]
+[connection signal="state_entered" from="StateChart/Root/Alive/Attack/LeonKick" to="StateTree/Root/Alive/Attack/LeonKick" method="_on_leon_kick_state_entered"]
+[connection signal="state_exited" from="StateChart/Root/Alive/Attack/LeonKick" to="StateTree/Root/Alive/Attack/LeonKick" method="_on_leon_kick_state_exited"]
+[connection signal="state_physics_processing" from="StateChart/Root/Alive/Attack/LeonKick" to="StateTree/Root/Alive/Attack/LeonKick" method="_on_leon_kick_state_physics_processing"]

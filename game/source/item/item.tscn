@@ -3,11 +3,11 @@
 [ext_resource type="Script" uid="uid://dgar2rjcg4xj0" path="res://source/item/item.gd" id="1_sbn5a"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uj30w"]
-size = Vector3(2.381836, 0.5, 0.5)
+size = Vector3(2.381836, 0.20117188, 0.5)
 
 [node name="Item" type="RigidBody3D" unique_id=164069729 node_paths=PackedStringArray("item_label", "model_node")]
 collision_layer = 4
-collision_mask = 33
+collision_mask = 289
 script = ExtResource("1_sbn5a")
 item_label = NodePath("ItemLabel")
 model_node = NodePath("Model")

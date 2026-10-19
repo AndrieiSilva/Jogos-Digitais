@@ -44,6 +44,8 @@ func animate(delta : float) -> void:
 
 
 func _on_base_attack_state_entered() -> void:
+	actor.character_animated_model.weapon_trails_particles.restart()
+	actor.character_animated_model.weapon_trails_particles.visible = true
 	if not actor.hitbox.area_entered.is_connected(_on_area_entered):
 		actor.hitbox.area_entered.connect(_on_area_entered)
 	
@@ -75,7 +77,7 @@ func _on_area_entered(area : Area3D) -> void:
 		
 		if not attacked_once:
 			attacked_once = true
-			area.receive_damage(actor.current_weapon_data.damage)
+			area.receive_damage(actor.current_weapon_data.damage, actor)
 			enemy_hit = true
 			if actor.hitbox.area_entered.is_connected(_on_area_entered):
 				actor.hitbox.area_entered.disconnect(_on_area_entered)
@@ -87,6 +89,7 @@ func _on_base_attack_state_physics_processing(delta: float) -> void:
 
 
 func _on_base_attack_state_exited() -> void:
+	actor.character_animated_model.weapon_trails_particles.visible = false
 	is_attack_mirrored = not is_attack_mirrored
 	if actor.hitbox.area_entered.is_connected(_on_area_entered):
 		actor.hitbox.area_entered.disconnect(_on_area_entered)
