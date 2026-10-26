@@ -1,5 +1,11 @@
 [gd_resource type="AnimationNodeBlendTree" format=3 uid="uid://c26w3y0o0xw5f"]
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_70d71"]
+animation = &"front_kick"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8heov"]
+animation = &"slash_attack_round"
+
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_cingf"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_le4a2"]
@@ -8,6 +14,10 @@ animation = &"cast_magick"
 [sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_udr1j"]
 filter_enabled = true
 filters = ["Armature/Skeleton3D:Ctrl_Index1_Left", "Armature/Skeleton3D:Ctrl_Index1_Right", "Armature/Skeleton3D:Ctrl_Index2_Left", "Armature/Skeleton3D:Ctrl_Index2_Right", "Armature/Skeleton3D:Ctrl_Index3_Left", "Armature/Skeleton3D:Ctrl_Index3_Right", "Armature/Skeleton3D:Ctrl_Middle1_Left", "Armature/Skeleton3D:Ctrl_Middle1_Right", "Armature/Skeleton3D:Ctrl_Middle2_Left", "Armature/Skeleton3D:Ctrl_Middle2_Right", "Armature/Skeleton3D:Ctrl_Middle3_Left", "Armature/Skeleton3D:Ctrl_Middle3_Right", "Armature/Skeleton3D:Ctrl_Pinky1_Left", "Armature/Skeleton3D:Ctrl_Pinky1_Right", "Armature/Skeleton3D:Ctrl_Pinky2_Left", "Armature/Skeleton3D:Ctrl_Pinky2_Right", "Armature/Skeleton3D:Ctrl_Pinky3_Left", "Armature/Skeleton3D:Ctrl_Pinky3_Right", "Armature/Skeleton3D:Ctrl_Ring1_Left", "Armature/Skeleton3D:Ctrl_Ring1_Right", "Armature/Skeleton3D:Ctrl_Ring2_Left", "Armature/Skeleton3D:Ctrl_Ring2_Right", "Armature/Skeleton3D:Ctrl_Ring3_Left", "Armature/Skeleton3D:Ctrl_Ring3_Right", "Armature/Skeleton3D:Ctrl_Thumb1_Left", "Armature/Skeleton3D:Ctrl_Thumb1_Right", "Armature/Skeleton3D:Ctrl_Thumb2_Left", "Armature/Skeleton3D:Ctrl_Thumb2_Right", "Armature/Skeleton3D:Ctrl_Thumb3_Left", "Armature/Skeleton3D:Ctrl_Thumb3_Right", "Armature/Skeleton3D:mixamorig_Head", "Armature/Skeleton3D:mixamorig_Hips", "Armature/Skeleton3D:mixamorig_LeftArm", "Armature/Skeleton3D:mixamorig_LeftFoot", "Armature/Skeleton3D:mixamorig_LeftForeArm", "Armature/Skeleton3D:mixamorig_LeftHand", "Armature/Skeleton3D:mixamorig_LeftHandIndex1", "Armature/Skeleton3D:mixamorig_LeftHandIndex2", "Armature/Skeleton3D:mixamorig_LeftHandIndex3", "Armature/Skeleton3D:mixamorig_LeftHandMiddle1", "Armature/Skeleton3D:mixamorig_LeftHandMiddle2", "Armature/Skeleton3D:mixamorig_LeftHandMiddle3", "Armature/Skeleton3D:mixamorig_LeftHandPinky1", "Armature/Skeleton3D:mixamorig_LeftHandPinky2", "Armature/Skeleton3D:mixamorig_LeftHandPinky3", "Armature/Skeleton3D:mixamorig_LeftHandRing1", "Armature/Skeleton3D:mixamorig_LeftHandRing2", "Armature/Skeleton3D:mixamorig_LeftHandRing3", "Armature/Skeleton3D:mixamorig_LeftHandThumb1", "Armature/Skeleton3D:mixamorig_LeftHandThumb2", "Armature/Skeleton3D:mixamorig_LeftHandThumb3", "Armature/Skeleton3D:mixamorig_LeftLeg", "Armature/Skeleton3D:mixamorig_LeftShoulder", "Armature/Skeleton3D:mixamorig_LeftToeBase", "Armature/Skeleton3D:mixamorig_LeftUpLeg", "Armature/Skeleton3D:mixamorig_Neck", "Armature/Skeleton3D:mixamorig_RightArm", "Armature/Skeleton3D:mixamorig_RightFoot", "Armature/Skeleton3D:mixamorig_RightForeArm", "Armature/Skeleton3D:mixamorig_RightHand", "Armature/Skeleton3D:mixamorig_RightHandIndex1", "Armature/Skeleton3D:mixamorig_RightHandIndex2", "Armature/Skeleton3D:mixamorig_RightHandIndex3", "Armature/Skeleton3D:mixamorig_RightHandMiddle1", "Armature/Skeleton3D:mixamorig_RightHandMiddle2", "Armature/Skeleton3D:mixamorig_RightHandMiddle3", "Armature/Skeleton3D:mixamorig_RightHandPinky1", "Armature/Skeleton3D:mixamorig_RightHandPinky2", "Armature/Skeleton3D:mixamorig_RightHandPinky3", "Armature/Skeleton3D:mixamorig_RightHandRing1", "Armature/Skeleton3D:mixamorig_RightHandRing2", "Armature/Skeleton3D:mixamorig_RightHandRing3", "Armature/Skeleton3D:mixamorig_RightHandThumb1", "Armature/Skeleton3D:mixamorig_RightHandThumb2", "Armature/Skeleton3D:mixamorig_RightHandThumb3", "Armature/Skeleton3D:mixamorig_RightLeg", "Armature/Skeleton3D:mixamorig_RightShoulder", "Armature/Skeleton3D:mixamorig_RightToeBase", "Armature/Skeleton3D:mixamorig_RightUpLeg", "Armature/Skeleton3D:mixamorig_Spine", "Armature/Skeleton3D:mixamorig_Spine1", "Armature/Skeleton3D:mixamorig_Spine2"]
+fadein_time = 0.3
+fadeout_time = 0.3
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_vagiv"]
 fadein_time = 0.3
 fadeout_time = 0.3
 
@@ -38,6 +48,11 @@ filters = ["Armature/Skeleton3D:Ctrl_Index1_Left", "Armature/Skeleton3D:Ctrl_Ind
 fadein_time = 0.3
 fadeout_time = 0.3
 
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_nfpb6"]
+filters = [""]
+fadein_time = 0.3
+fadeout_time = 0.3
+
 [sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_f0xgq"]
 filter_enabled = true
 filters = ["Armature/Skeleton3D:Ctrl_Index1_Left", "Armature/Skeleton3D:Ctrl_Index1_Right", "Armature/Skeleton3D:Ctrl_Index2_Left", "Armature/Skeleton3D:Ctrl_Index2_Right", "Armature/Skeleton3D:Ctrl_Index3_Left", "Armature/Skeleton3D:Ctrl_Index3_Right", "Armature/Skeleton3D:Ctrl_Middle1_Left", "Armature/Skeleton3D:Ctrl_Middle1_Right", "Armature/Skeleton3D:Ctrl_Middle2_Left", "Armature/Skeleton3D:Ctrl_Middle2_Right", "Armature/Skeleton3D:Ctrl_Middle3_Left", "Armature/Skeleton3D:Ctrl_Middle3_Right", "Armature/Skeleton3D:Ctrl_Pinky1_Left", "Armature/Skeleton3D:Ctrl_Pinky1_Right", "Armature/Skeleton3D:Ctrl_Pinky2_Left", "Armature/Skeleton3D:Ctrl_Pinky2_Right", "Armature/Skeleton3D:Ctrl_Pinky3_Left", "Armature/Skeleton3D:Ctrl_Pinky3_Right", "Armature/Skeleton3D:Ctrl_Ring1_Left", "Armature/Skeleton3D:Ctrl_Ring1_Right", "Armature/Skeleton3D:Ctrl_Ring2_Left", "Armature/Skeleton3D:Ctrl_Ring2_Right", "Armature/Skeleton3D:Ctrl_Ring3_Left", "Armature/Skeleton3D:Ctrl_Ring3_Right", "Armature/Skeleton3D:Ctrl_Thumb1_Left", "Armature/Skeleton3D:Ctrl_Thumb1_Right", "Armature/Skeleton3D:Ctrl_Thumb2_Left", "Armature/Skeleton3D:Ctrl_Thumb2_Right", "Armature/Skeleton3D:Ctrl_Thumb3_Left", "Armature/Skeleton3D:Ctrl_Thumb3_Right", "Armature/Skeleton3D:mixamorig_Head", "Armature/Skeleton3D:mixamorig_LeftArm", "Armature/Skeleton3D:mixamorig_LeftForeArm", "Armature/Skeleton3D:mixamorig_LeftHand", "Armature/Skeleton3D:mixamorig_LeftHandIndex1", "Armature/Skeleton3D:mixamorig_LeftHandIndex2", "Armature/Skeleton3D:mixamorig_LeftHandIndex3", "Armature/Skeleton3D:mixamorig_LeftHandMiddle1", "Armature/Skeleton3D:mixamorig_LeftHandMiddle2", "Armature/Skeleton3D:mixamorig_LeftHandMiddle3", "Armature/Skeleton3D:mixamorig_LeftHandPinky1", "Armature/Skeleton3D:mixamorig_LeftHandPinky2", "Armature/Skeleton3D:mixamorig_LeftHandPinky3", "Armature/Skeleton3D:mixamorig_LeftHandRing1", "Armature/Skeleton3D:mixamorig_LeftHandRing2", "Armature/Skeleton3D:mixamorig_LeftHandRing3", "Armature/Skeleton3D:mixamorig_LeftHandThumb1", "Armature/Skeleton3D:mixamorig_LeftHandThumb2", "Armature/Skeleton3D:mixamorig_LeftHandThumb3", "Armature/Skeleton3D:mixamorig_LeftShoulder", "Armature/Skeleton3D:mixamorig_Neck", "Armature/Skeleton3D:mixamorig_RightArm", "Armature/Skeleton3D:mixamorig_RightForeArm", "Armature/Skeleton3D:mixamorig_RightHand", "Armature/Skeleton3D:mixamorig_RightHandIndex1", "Armature/Skeleton3D:mixamorig_RightHandIndex2", "Armature/Skeleton3D:mixamorig_RightHandIndex3", "Armature/Skeleton3D:mixamorig_RightHandMiddle1", "Armature/Skeleton3D:mixamorig_RightHandMiddle2", "Armature/Skeleton3D:mixamorig_RightHandMiddle3", "Armature/Skeleton3D:mixamorig_RightHandPinky1", "Armature/Skeleton3D:mixamorig_RightHandPinky2", "Armature/Skeleton3D:mixamorig_RightHandPinky3", "Armature/Skeleton3D:mixamorig_RightHandRing1", "Armature/Skeleton3D:mixamorig_RightHandRing2", "Armature/Skeleton3D:mixamorig_RightHandRing3", "Armature/Skeleton3D:mixamorig_RightHandThumb1", "Armature/Skeleton3D:mixamorig_RightHandThumb2", "Armature/Skeleton3D:mixamorig_RightHandThumb3", "Armature/Skeleton3D:mixamorig_RightShoulder", "Armature/Skeleton3D:mixamorig_Spine", "Armature/Skeleton3D:mixamorig_Spine1", "Armature/Skeleton3D:mixamorig_Spine2"]
@@ -58,43 +73,59 @@ fadeout_time = 0.3
 
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_sokmw"]
 
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_2wbl6"]
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_6gndf"]
+
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_f0xgq"]
 
 [resource]
-graph_offset = Vector2(-558.65295, 198.34705)
-nodes/output/position = Vector2(1440, 900)
+graph_offset = Vector2(-551.63116, 4397.2666)
+nodes/output/position = Vector2(1980, 3160)
 nodes/Idle/node = SubResource("AnimationNodeAnimation_yr380")
-nodes/Idle/position = Vector2(-340, 1080)
+nodes/Idle/position = Vector2(-340, 3420)
 nodes/Run/node = SubResource("AnimationNodeAnimation_4g1os")
-nodes/Run/position = Vector2(-340, 1620)
+nodes/Run/position = Vector2(-340, 3940)
 nodes/SlashAttack/node = SubResource("AnimationNodeAnimation_cingf")
-nodes/SlashAttack/position = Vector2(-340, 1880)
+nodes/SlashAttack/position = Vector2(-340, 4200)
 nodes/SlashAttackMirror/node = SubResource("AnimationNodeAnimation_udr1j")
-nodes/SlashAttackMirror/position = Vector2(-340, 2140)
+nodes/SlashAttackMirror/position = Vector2(-340, 5780)
 nodes/CastMagick/node = SubResource("AnimationNodeAnimation_le4a2")
-nodes/CastMagick/position = Vector2(-340, 820)
+nodes/CastMagick/position = Vector2(-340, 3140)
 nodes/LeonKick/node = SubResource("AnimationNodeAnimation_dq30u")
-nodes/LeonKick/position = Vector2(-340, 1340)
+nodes/LeonKick/position = Vector2(-640, 4860)
 nodes/SpinAttack/node = SubResource("AnimationNodeAnimation_f0xgq")
-nodes/SpinAttack/position = Vector2(-340, 2400)
+nodes/SpinAttack/position = Vector2(-340, 4460)
 nodes/BlendRun/node = SubResource("AnimationNodeBlend2_cingf")
-nodes/BlendRun/position = Vector2(-40, 1060)
+nodes/BlendRun/position = Vector2(-40, 3380)
 nodes/SlashShot/node = SubResource("AnimationNodeOneShot_f0xgq")
-nodes/SlashShot/position = Vector2(200, 1020)
+nodes/SlashShot/position = Vector2(200, 3340)
 nodes/SlashMirrorShot/node = SubResource("AnimationNodeOneShot_cingf")
-nodes/SlashMirrorShot/position = Vector2(440, 980)
+nodes/SlashMirrorShot/position = Vector2(440, 3320)
 nodes/CastShot/node = SubResource("AnimationNodeOneShot_udr1j")
-nodes/CastShot/position = Vector2(700, 960)
+nodes/CastShot/position = Vector2(700, 3280)
 nodes/LeonShot/node = SubResource("AnimationNodeOneShot_le4a2")
-nodes/LeonShot/position = Vector2(940, 920)
+nodes/LeonShot/position = Vector2(940, 3240)
 nodes/SpinShot/node = SubResource("AnimationNodeOneShot_dq30u")
-nodes/SpinShot/position = Vector2(1160, 920)
+nodes/SpinShot/position = Vector2(1200, 3220)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_f0xgq")
-nodes/TimeScale/position = Vector2(-60, 2340)
+nodes/TimeScale/position = Vector2(-40, 4440)
 "nodes/TimeScale 2/node" = SubResource("AnimationNodeTimeScale_4g1os")
-"nodes/TimeScale 2/position" = Vector2(-140, 1880)
+"nodes/TimeScale 2/position" = Vector2(-40, 4700)
 "nodes/TimeScale 3/node" = SubResource("AnimationNodeTimeScale_yr380")
-"nodes/TimeScale 3/position" = Vector2(-100, 2140)
+"nodes/TimeScale 3/position" = Vector2(-40, 5760)
 "nodes/TimeScale 4/node" = SubResource("AnimationNodeTimeScale_sokmw")
-"nodes/TimeScale 4/position" = Vector2(-180, 1340)
-node_connections = [&"output", 0, &"SpinShot", &"BlendRun", 0, &"Idle", &"BlendRun", 1, &"Run", &"SlashShot", 0, &"BlendRun", &"SlashShot", 1, &"TimeScale 2", &"SlashMirrorShot", 0, &"SlashShot", &"SlashMirrorShot", 1, &"TimeScale 3", &"CastShot", 0, &"SlashMirrorShot", &"CastShot", 1, &"CastMagick", &"LeonShot", 0, &"CastShot", &"LeonShot", 1, &"TimeScale 4", &"SpinShot", 0, &"LeonShot", &"SpinShot", 1, &"TimeScale", &"TimeScale", 0, &"SpinAttack", &"TimeScale 2", 0, &"SlashAttack", &"TimeScale 3", 0, &"SlashAttackMirror", &"TimeScale 4", 0, &"LeonKick"]
+"nodes/TimeScale 4/position" = Vector2(-40, 4960)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_8heov")
+nodes/Animation/position = Vector2(-340, 2620)
+"nodes/TimeScale 5/node" = SubResource("AnimationNodeTimeScale_2wbl6")
+"nodes/TimeScale 5/position" = Vector2(-40, 5220)
+nodes/SlashRoundShot/node = SubResource("AnimationNodeOneShot_nfpb6")
+nodes/SlashRoundShot/position = Vector2(1440, 3180)
+nodes/FrontKick/node = SubResource("AnimationNodeOneShot_vagiv")
+nodes/FrontKick/position = Vector2(1720, 3140)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_70d71")
+"nodes/Animation 2/position" = Vector2(-340, 2880)
+"nodes/TimeScale 6/node" = SubResource("AnimationNodeTimeScale_6gndf")
+"nodes/TimeScale 6/position" = Vector2(-40, 5480)
+node_connections = [&"output", 0, &"FrontKick", &"BlendRun", 0, &"Idle", &"BlendRun", 1, &"Run", &"SlashShot", 0, &"BlendRun", &"SlashShot", 1, &"TimeScale 2", &"SlashMirrorShot", 0, &"SlashShot", &"SlashMirrorShot", 1, &"TimeScale 3", &"CastShot", 0, &"SlashMirrorShot", &"CastShot", 1, &"CastMagick", &"LeonShot", 0, &"CastShot", &"LeonShot", 1, &"TimeScale 4", &"SpinShot", 0, &"LeonShot", &"SpinShot", 1, &"TimeScale", &"TimeScale", 0, &"SpinAttack", &"TimeScale 2", 0, &"SlashAttack", &"TimeScale 3", 0, &"SlashAttackMirror", &"TimeScale 4", 0, &"LeonKick", &"TimeScale 5", 0, &"Animation", &"SlashRoundShot", 0, &"SpinShot", &"SlashRoundShot", 1, &"TimeScale 5", &"FrontKick", 0, &"SlashRoundShot", &"FrontKick", 1, &"TimeScale 6", &"TimeScale 6", 0, &"Animation 2"]

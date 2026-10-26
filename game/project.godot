@@ -18,6 +18,7 @@ config/icon="res://assets/icons/icon.svg"
 [autoload]
 
 ItemTracker="*uid://bj80wogp3kghk"
+Bus="*uid://b3l351hx3rb5s"
 
 [display]
 
@@ -38,7 +39,7 @@ folder_colors={
 "res://assets/models/": "green",
 "res://assets/models_scene/": "yellow",
 "res://source/": "red",
-"res://source/entity/actors/playable_actor/": "purple"
+"res://source/game/entity/actors/playable_actor/": "purple"
 }
 
 [importer_defaults]

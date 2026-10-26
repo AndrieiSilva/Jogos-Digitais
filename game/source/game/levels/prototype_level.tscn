@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://duyklnjexivg2"]
+
+[ext_resource type="PackedScene" uid="uid://srkuul614xex" path="res://source/game/maps/prototype_map/prototype_map.tscn" id="1_nanlv"]
+[ext_resource type="PackedScene" uid="uid://bqwaxo3od8ou7" path="res://source/game/entity/actors/playable_actor/playable_actor.tscn" id="2_43bwc"]
+[ext_resource type="PackedScene" uid="uid://fa1ku65wjwod" path="res://source/game/components/camera/cam_component.tscn" id="3_43bwc"]
+[ext_resource type="PackedScene" uid="uid://cfloadrub4c14" path="res://source/game/entity/actors/enemy/enemy.tscn" id="3_sh06i"]
+[ext_resource type="Resource" uid="uid://g7uvol5l3yg" path="res://data/resource/camera/base_camera.tres" id="4_5yqyc"]
+
+[node name="PrototypeLevel" type="Node" unique_id=1761940327]
+
+[node name="World" type="Node" parent="." unique_id=125253095]
+
+[node name="CurrentMap" type="Node" parent="World" unique_id=1447765665]
+
+[node name="PrototypeMap" parent="World/CurrentMap" unique_id=244975850 instance=ExtResource("1_nanlv")]
+
+[node name="Actors" type="Node" parent="." unique_id=971907881]
+
+[node name="PlayableActor" parent="Actors" unique_id=1210677002 instance=ExtResource("2_43bwc")]
+
+[node name="Enemy" parent="Actors" unique_id=235059105 instance=ExtResource("3_sh06i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -15)
+
+[node name="Enemy2" parent="Actors" unique_id=1177952321 instance=ExtResource("3_sh06i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -15)
+
+[node name="Enemy3" parent="Actors" unique_id=623635458 instance=ExtResource("3_sh06i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -15)
+
+[node name="Cameras" type="Node" parent="." unique_id=2043555959]
+
+[node name="CameraPivot" type="Node3D" parent="Cameras" unique_id=1035410251]
+
+[node name="CameraGimbal" type="Node3D" parent="Cameras/CameraPivot" unique_id=1369592930]
+
+[node name="Camera3D" type="Camera3D" parent="Cameras/CameraPivot/CameraGimbal" unique_id=1786697959]
+projection = 1
+fov = 50.0
+
+[node name="Components" type="Node" parent="." unique_id=1708767126]
+
+[node name="PlayableActorCameraComponent" parent="Components" unique_id=1258061076 node_paths=PackedStringArray("cam", "cam_gimbal", "cam_pivot", "target") instance=ExtResource("3_43bwc")]
+cam = NodePath("../../Cameras/CameraPivot/CameraGimbal/Camera3D")
+cam_gimbal = NodePath("../../Cameras/CameraPivot/CameraGimbal")
+cam_pivot = NodePath("../../Cameras/CameraPivot")
+target = NodePath("../../Actors/PlayableActor")
+camera_data = ExtResource("4_5yqyc")

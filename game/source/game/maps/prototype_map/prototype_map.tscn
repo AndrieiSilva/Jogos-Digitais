@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://srkuul614xex"]
+
+[ext_resource type="PackedScene" uid="uid://cgc0piqcgcnyi" path="res://source/game/maps/enviroment.tscn" id="1_5xue5"]
+[ext_resource type="PackedScene" uid="uid://br3b7yd7ocv6" path="res://assets/models/buildings/terrain.glb" id="2_vbbkl"]
+[ext_resource type="PackedScene" uid="uid://dw5mw2np57wyp" path="res://assets/models/props/wood_chest.glb" id="3_vimfr"]
+[ext_resource type="Script" uid="uid://c8rv2st3vxki4" path="res://source/core/systems/interaction/loot_source.gd" id="4_rnwiu"]
+[ext_resource type="VoxelGIData" uid="uid://dpywscr7phqtr" path="res://data/gi/prototype_map/prototype_voxel_gi_data.tres" id="17_2d3kp"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_xisrv"]
+vertices = PackedVector3Array(-74.24905, 0.48523617, -74.236046, -74.24905, 0.48523617, 74.263954, 74.25095, 0.48523617, 74.263954, 74.25095, 0.48523617, -74.236046)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+agent_radius = 0.75
+
+[node name="PrototypeMap" type="Node" unique_id=244975850]
+
+[node name="Enviroment" parent="." unique_id=1362415731 instance=ExtResource("1_5xue5")]
+
+[node name="Model" type="Node" parent="." unique_id=653506784]
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="Model" unique_id=1063666634]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0009508133, 0.014763832, -0.01395607)
+navigation_mesh = SubResource("NavigationMesh_xisrv")
+
+[node name="Floor" type="Node" parent="Model/NavigationRegion3D" unique_id=1362004551]
+
+[node name="terrain" parent="Model/NavigationRegion3D/Floor" unique_id=300006571 instance=ExtResource("2_vbbkl")]
+
+[node name="Props" type="Node" parent="Model/NavigationRegion3D" unique_id=2006739406]
+
+[node name="wood_chest" parent="Model/NavigationRegion3D/Props" unique_id=899707386 instance=ExtResource("3_vimfr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
+script = ExtResource("4_rnwiu")
+source_tier = 3
+
+[node name="Buildings" type="Node" parent="Model/NavigationRegion3D" unique_id=877999491]
+
+[node name="VoxelGI" type="VoxelGI" parent="." unique_id=1884462610]
+subdiv = 0
+size = Vector3(150, 20, 150)
+data = ExtResource("17_2d3kp")

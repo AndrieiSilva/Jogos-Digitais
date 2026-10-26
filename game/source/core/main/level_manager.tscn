@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://drng4k7jthcc8"]
+
+[ext_resource type="Script" uid="uid://c0vmpa50xon71" path="res://source/core/main/level_manager.gd" id="1_fr5ec"]
+[ext_resource type="PackedScene" uid="uid://duyklnjexivg2" path="res://source/game/levels/prototype_level.tscn" id="2_xxj3u"]
+
+[node name="LevelManager" type="Node" unique_id=145092760]
+script = ExtResource("1_fr5ec")
+metadata/_custom_type_script = "uid://c0vmpa50xon71"
+
+[node name="Level" type="Node" parent="." unique_id=782343269]
+
+[node name="PrototypeLevel" parent="Level" unique_id=1761940327 instance=ExtResource("2_xxj3u")]
+
+[node name="Components" type="Node" parent="." unique_id=414114676]

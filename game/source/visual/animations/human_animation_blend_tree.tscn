@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://dc4qailt3hjbl"]
+
+[ext_resource type="AnimationNodeBlendTree" uid="uid://c26w3y0o0xw5f" path="res://data/resource/animation/characters_blend_tree.tres" id="1_vjaq1"]
+
+[node name="AnimationTree" type="AnimationTree" unique_id=1514229804]
+tree_root = ExtResource("1_vjaq1")
+anim_player = NodePath("../AnimationPlayer")
+parameters/BlendRun/blend_amount = 0.0
+parameters/SlashShot/active = false
+parameters/SlashShot/internal_active = false
+parameters/SlashShot/request = 0
+parameters/SlashMirrorShot/active = false
+parameters/SlashMirrorShot/internal_active = false
+parameters/SlashMirrorShot/request = 0
+parameters/CastShot/active = false
+parameters/CastShot/internal_active = false
+parameters/CastShot/request = 0
+parameters/LeonShot/active = false
+parameters/LeonShot/internal_active = false
+parameters/LeonShot/request = 0
+parameters/SpinShot/active = false
+parameters/SpinShot/internal_active = false
+parameters/SpinShot/request = 0
+parameters/TimeScale/scale = 1.0
+"parameters/TimeScale 2/scale" = 1.7000000000000028
+"parameters/TimeScale 3/scale" = 1.7000000000000028
+"parameters/TimeScale 4/scale" = 1.0

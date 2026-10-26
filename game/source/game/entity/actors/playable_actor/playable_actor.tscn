@@ -1,0 +1,252 @@
+[gd_scene format=3 uid="uid://bqwaxo3od8ou7"]
+
+[ext_resource type="Script" uid="uid://csil3pc5hdnm8" path="res://source/game/entity/actors/playable_actor/playable_actor.gd" id="1_mo5sk"]
+[ext_resource type="Resource" uid="uid://d3yxifcfgqlnd" path="res://data/resource/actor/player_data.tres" id="2_k3okx"]
+[ext_resource type="Resource" uid="uid://csc7nn43e806v" path="res://data/resource/itens/weapon/long_sword.tres" id="3_ewth7"]
+[ext_resource type="Script" uid="uid://couw105c3bde4" path="res://addons/godot_state_charts/state_chart.gd" id="4_6x4ys"]
+[ext_resource type="Script" uid="uid://jk2jm1g6q853" path="res://addons/godot_state_charts/compound_state.gd" id="5_c55ws"]
+[ext_resource type="Script" uid="uid://cytafq8i1y8qm" path="res://addons/godot_state_charts/atomic_state.gd" id="7_gyodb"]
+[ext_resource type="Script" uid="uid://cf1nsco3w0mf6" path="res://addons/godot_state_charts/transition.gd" id="8_atmrn"]
+[ext_resource type="Script" uid="uid://bfpx8efh76267" path="res://source/game/entity/actors/playable_actor/states/idle_state.gd" id="9_y0x11"]
+[ext_resource type="Script" uid="uid://dphyg4egcth2x" path="res://source/game/entity/actors/playable_actor/states/run_state.gd" id="10_fclbw"]
+[ext_resource type="Script" uid="uid://cykfd5a6hdv0o" path="res://source/game/entity/actors/playable_actor/states/follow_state.gd" id="10_k3okx"]
+[ext_resource type="Script" uid="uid://dg32q366ol6en" path="res://source/game/entity/actors/playable_actor/states/base_attack_state.gd" id="11_k3okx"]
+[ext_resource type="PackedScene" uid="uid://bcwkugn6v3oy7" path="res://addons/godot_state_charts/utilities/state_chart_debugger.tscn" id="14_ewth7"]
+[ext_resource type="Script" uid="uid://cts77mkgnk5iq" path="res://source/game/entity/actors/playable_actor/states/spin_attack_state.gd" id="14_omcrx"]
+[ext_resource type="Script" uid="uid://bcv10ahotegve" path="res://source/game/entity/actors/playable_actor/states/leon_kick_state.gd" id="14_y1sab"]
+[ext_resource type="PackedScene" uid="uid://d305pwe6jv6b4" path="res://assets/models_scene/characters/main_character_scene.tscn" id="15_g622e"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_xisrv"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mo5sk"]
+radius = 0.3
+
+[sub_resource type="GDScript" id="GDScript_omcrx"]
+script/source = "extends Node
+
+@export var actor : Actor
+
+func _process(delta: float) -> void:
+	sync_player_skeleton_pos(delta)
+
+func sync_player_skeleton_pos(delta: float) -> void:
+	
+	var skeleton: Skeleton3D = actor.character_animated_model.skeleton
+	if not skeleton:
+		return
+		
+	var idx: int = skeleton.find_bone(\"mixamorig_Hips\")
+	if idx == -1:
+		return
+	
+	var hip_pose: Transform3D = skeleton.get_bone_pose(idx)
+	
+	hip_pose.origin = Vector3(0.0, hip_pose.origin.y, 0.0)
+	skeleton.set_bone_pose(idx, hip_pose)
+"
+
+[node name="PlayableActor" type="CharacterBody3D" unique_id=1210677002 node_paths=PackedStringArray("life_label", "character_animated_model", "nav_agent", "state_tree", "state_chart")]
+collision_layer = 2
+collision_mask = 307
+script = ExtResource("1_mo5sk")
+life_label = NodePath("HealthLabel")
+character_animated_model = NodePath("main_character_model")
+nav_agent = NodePath("NavigationAgent3D")
+state_tree = NodePath("StateTree")
+state_chart = NodePath("StateChart")
+actor_data = ExtResource("2_k3okx")
+current_weapon_data = ExtResource("3_ewth7")
+metadata/_custom_type_script = "uid://csil3pc5hdnm8"
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=454473930]
+path_height_offset = 1.0
+avoidance_enabled = true
+avoidance_mask = 2
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=915522029]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
+mesh = SubResource("CapsuleMesh_xisrv")
+
+[node name="HealthLabel" type="Label3D" parent="." unique_id=653880664]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+billboard = 1
+text = "HEALTH"
+
+[node name="main_character_model" parent="." unique_id=855398954 instance=ExtResource("15_g622e")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2125873884]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_mo5sk")
+
+[node name="BoneSync" type="Node" parent="." unique_id=747477420 node_paths=PackedStringArray("actor")]
+script = SubResource("GDScript_omcrx")
+actor = NodePath("..")
+
+[node name="StateChart" type="Node" parent="." unique_id=1725022016]
+script = ExtResource("4_6x4ys")
+metadata/_custom_type_script = "uid://couw105c3bde4"
+
+[node name="Root" type="Node" parent="StateChart" unique_id=32964574]
+script = ExtResource("5_c55ws")
+initial_state = NodePath("Alive")
+
+[node name="Alive" type="Node" parent="StateChart/Root" unique_id=2059637370]
+script = ExtResource("5_c55ws")
+initial_state = NodePath("Movement")
+
+[node name="Movement" type="Node" parent="StateChart/Root/Alive" unique_id=460049438]
+script = ExtResource("5_c55ws")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateChart/Root/Alive/Movement" unique_id=1675375837]
+script = ExtResource("7_gyodb")
+
+[node name="onRun" type="Node" parent="StateChart/Root/Alive/Movement/Idle" unique_id=221263602]
+script = ExtResource("8_atmrn")
+to = NodePath("../../Run")
+event = &"onRun"
+delay_in_seconds = "0.0"
+
+[node name="onFollow" type="Node" parent="StateChart/Root/Alive/Movement/Idle" unique_id=678708736]
+script = ExtResource("8_atmrn")
+to = NodePath("../../Follow")
+event = &"onFollow"
+delay_in_seconds = "0.0"
+
+[node name="Run" type="Node" parent="StateChart/Root/Alive/Movement" unique_id=2061543345]
+script = ExtResource("7_gyodb")
+
+[node name="onIdle" type="Node" parent="StateChart/Root/Alive/Movement/Run" unique_id=1205216783]
+script = ExtResource("8_atmrn")
+to = NodePath("../../Idle")
+event = &"onIdle"
+delay_in_seconds = "0.0"
+
+[node name="onFollow" type="Node" parent="StateChart/Root/Alive/Movement/Run" unique_id=468646150]
+script = ExtResource("8_atmrn")
+to = NodePath("../../Follow")
+event = &"onFollow"
+delay_in_seconds = "0.0"
+
+[node name="Follow" type="Node" parent="StateChart/Root/Alive/Movement" unique_id=1950921160]
+script = ExtResource("7_gyodb")
+
+[node name="onIdle" type="Node" parent="StateChart/Root/Alive/Movement/Follow" unique_id=371783477]
+script = ExtResource("8_atmrn")
+to = NodePath("../../Idle")
+event = &"onIdle"
+delay_in_seconds = "0.0"
+
+[node name="onRun" type="Node" parent="StateChart/Root/Alive/Movement/Follow" unique_id=30557404]
+script = ExtResource("8_atmrn")
+to = NodePath("../../Run")
+event = &"onRun"
+delay_in_seconds = "0.0"
+
+[node name="onBaseAttack" type="Node" parent="StateChart/Root/Alive/Movement" unique_id=1544108015]
+script = ExtResource("8_atmrn")
+to = NodePath("../../Attack/BaseAttack")
+event = &"onBaseAttack"
+delay_in_seconds = "0.0"
+
+[node name="onSpinAttack" type="Node" parent="StateChart/Root/Alive/Movement" unique_id=1470990407]
+script = ExtResource("8_atmrn")
+to = NodePath("../../Attack/SpinAttack")
+event = &"onSpinAttack"
+delay_in_seconds = "0.0"
+
+[node name="onLeonKick" type="Node" parent="StateChart/Root/Alive/Movement" unique_id=2016896019]
+script = ExtResource("8_atmrn")
+to = NodePath("../../Attack/LeonKick")
+event = &"onLeonKick"
+delay_in_seconds = "0.0"
+
+[node name="Attack" type="Node" parent="StateChart/Root/Alive" unique_id=2095535834]
+script = ExtResource("5_c55ws")
+initial_state = NodePath("BaseAttack")
+
+[node name="BaseAttack" type="Node" parent="StateChart/Root/Alive/Attack" unique_id=1572823942]
+script = ExtResource("7_gyodb")
+
+[node name="onIdle" type="Node" parent="StateChart/Root/Alive/Attack" unique_id=1524852087]
+script = ExtResource("8_atmrn")
+to = NodePath("../../Movement/Idle")
+event = &"onIdle"
+delay_in_seconds = "0.0"
+
+[node name="SpinAttack" type="Node" parent="StateChart/Root/Alive/Attack" unique_id=1018079151]
+script = ExtResource("7_gyodb")
+
+[node name="onRun" type="Node" parent="StateChart/Root/Alive/Attack" unique_id=44786251]
+script = ExtResource("8_atmrn")
+to = NodePath("../../Movement/Run")
+event = &"onRun"
+delay_in_seconds = "0.0"
+
+[node name="LeonKick" type="Node" parent="StateChart/Root/Alive/Attack" unique_id=1496293309]
+script = ExtResource("7_gyodb")
+
+[node name="Dead" type="Node" parent="StateChart/Root" unique_id=2101878865]
+script = ExtResource("7_gyodb")
+
+[node name="StateTree" type="Node" parent="." unique_id=1114551261]
+
+[node name="Root" type="Node" parent="StateTree" unique_id=1972400938]
+
+[node name="Alive" type="Node" parent="StateTree/Root" unique_id=1591496958]
+
+[node name="Movement" type="Node" parent="StateTree/Root/Alive" unique_id=624030056]
+
+[node name="Idle" type="Node" parent="StateTree/Root/Alive/Movement" unique_id=199114442]
+script = ExtResource("9_y0x11")
+
+[node name="Run" type="Node" parent="StateTree/Root/Alive/Movement" unique_id=809226122]
+script = ExtResource("10_fclbw")
+
+[node name="Follow" type="Node" parent="StateTree/Root/Alive/Movement" unique_id=1539814492]
+script = ExtResource("10_k3okx")
+
+[node name="Attack" type="Node" parent="StateTree/Root/Alive" unique_id=858838853]
+
+[node name="BaseAttack" type="Node" parent="StateTree/Root/Alive/Attack" unique_id=467913338]
+script = ExtResource("11_k3okx")
+
+[node name="SpinAttack" type="Node" parent="StateTree/Root/Alive/Attack" unique_id=131119917]
+script = ExtResource("14_omcrx")
+base_advance_distance = 10.0
+move_speed_mult = 1.5
+damage_mult = 1.0
+
+[node name="LeonKick" type="Node" parent="StateTree/Root/Alive/Attack" unique_id=1749231281]
+script = ExtResource("14_y1sab")
+
+[node name="Dead" type="Node" parent="StateTree/Root" unique_id=896993185]
+
+[node name="StateChartDebugger" parent="." unique_id=2090795940 instance=ExtResource("14_ewth7")]
+anchors_preset = -1
+anchor_right = 0.2717014
+anchor_bottom = 0.5370371
+offset_bottom = -3.0517578e-05
+initial_node_to_watch = NodePath("../StateChart")
+metadata/_edit_use_anchors_ = true
+
+[connection signal="state_entered" from="StateChart/Root/Alive/Movement/Idle" to="StateTree/Root/Alive/Movement/Idle" method="_on_idle_state_entered"]
+[connection signal="state_exited" from="StateChart/Root/Alive/Movement/Idle" to="StateTree/Root/Alive/Movement/Idle" method="_on_idle_state_exited"]
+[connection signal="state_physics_processing" from="StateChart/Root/Alive/Movement/Idle" to="StateTree/Root/Alive/Movement/Idle" method="_on_idle_state_physics_processing"]
+[connection signal="state_unhandled_input" from="StateChart/Root/Alive/Movement/Idle" to="StateTree/Root/Alive/Movement/Idle" method="_on_idle_state_unhandled_input"]
+[connection signal="state_entered" from="StateChart/Root/Alive/Movement/Run" to="StateTree/Root/Alive/Movement/Run" method="_on_run_state_entered"]
+[connection signal="state_physics_processing" from="StateChart/Root/Alive/Movement/Run" to="StateTree/Root/Alive/Movement/Run" method="_on_run_state_physics_processing"]
+[connection signal="state_unhandled_input" from="StateChart/Root/Alive/Movement/Run" to="StateTree/Root/Alive/Movement/Run" method="_on_run_state_unhandled_input"]
+[connection signal="state_entered" from="StateChart/Root/Alive/Movement/Follow" to="StateTree/Root/Alive/Movement/Follow" method="_on_follow_state_entered"]
+[connection signal="state_physics_processing" from="StateChart/Root/Alive/Movement/Follow" to="StateTree/Root/Alive/Movement/Follow" method="_on_follow_state_physics_processing"]
+[connection signal="state_unhandled_input" from="StateChart/Root/Alive/Movement/Follow" to="StateTree/Root/Alive/Movement/Follow" method="_on_follow_state_unhandled_input"]
+[connection signal="state_entered" from="StateChart/Root/Alive/Attack/BaseAttack" to="StateTree/Root/Alive/Attack/BaseAttack" method="_on_base_attack_state_entered"]
+[connection signal="state_exited" from="StateChart/Root/Alive/Attack/BaseAttack" to="StateTree/Root/Alive/Attack/BaseAttack" method="_on_base_attack_state_exited"]
+[connection signal="state_physics_processing" from="StateChart/Root/Alive/Attack/BaseAttack" to="StateTree/Root/Alive/Attack/BaseAttack" method="_on_base_attack_state_physics_processing"]
+[connection signal="state_entered" from="StateChart/Root/Alive/Attack/SpinAttack" to="StateTree/Root/Alive/Attack/SpinAttack" method="_on_spin_attack_state_entered"]
+[connection signal="state_exited" from="StateChart/Root/Alive/Attack/SpinAttack" to="StateTree/Root/Alive/Attack/SpinAttack" method="_on_spin_attack_state_exited"]
+[connection signal="state_physics_processing" from="StateChart/Root/Alive/Attack/SpinAttack" to="StateTree/Root/Alive/Attack/SpinAttack" method="_on_spin_attack_state_physics_processing"]
+[connection signal="state_entered" from="StateChart/Root/Alive/Attack/LeonKick" to="StateTree/Root/Alive/Attack/LeonKick" method="_on_leon_kick_state_entered"]
+[connection signal="state_exited" from="StateChart/Root/Alive/Attack/LeonKick" to="StateTree/Root/Alive/Attack/LeonKick" method="_on_leon_kick_state_exited"]
+[connection signal="state_physics_processing" from="StateChart/Root/Alive/Attack/LeonKick" to="StateTree/Root/Alive/Attack/LeonKick" method="_on_leon_kick_state_physics_processing"]

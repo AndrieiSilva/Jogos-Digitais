@@ -1,0 +1,163 @@
+[gd_scene format=3 uid="uid://d305pwe6jv6b4"]
+
+[ext_resource type="PackedScene" uid="uid://cleie12dw2aje" path="res://assets/models/characters/main_character_model.glb" id="1_ytlta"]
+[ext_resource type="Script" uid="uid://bw2qrysbqse7t" path="res://source/core/helper/animated_model.gd" id="2_doirf"]
+[ext_resource type="PackedScene" uid="uid://dbi7vhkhp22eg" path="res://assets/models/itens/weapons/long_sword.glb" id="2_isf68"]
+[ext_resource type="PackedScene" uid="uid://bbssdjij5xxd0" path="res://source/visual/fx/trail_particles.tscn" id="3_c04ig"]
+[ext_resource type="PackedScene" uid="uid://bw1fxcn6mr0fv" path="res://source/visual/fx/blood_particles.tscn" id="4_1xt8g"]
+[ext_resource type="Script" uid="uid://ecxf56pqefqo" path="res://source/core/systems/hit/hitbox.gd" id="4_qhqhk"]
+[ext_resource type="PackedScene" uid="uid://dc4qailt3hjbl" path="res://source/visual/animations/human_animation_blend_tree.tscn" id="5_vxgmw"]
+[ext_resource type="Script" uid="uid://dpxbmj6csga4a" path="res://source/core/systems/hit/hurtbox.gd" id="6_cepos"]
+[ext_resource type="Script" uid="uid://dyitinewlsrmy" path="res://source/core/systems/hit/area_hitbox.gd" id="8_rdqgc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xisrv"]
+size = Vector3(2.2340088, 0.27929688, 0.25585938)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_m4r0q"]
+radius = 0.3
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m4r0q"]
+size = Vector3(1, 2.3095703, 0.9589844)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_xisrv"]
+radius = 2.0
+
+[node name="main_character_model" unique_id=855398954 node_paths=PackedStringArray("anim_tree", "skeleton", "blood_particles", "weapon_trails_particles", "foot_trails_particles") instance=ExtResource("1_ytlta")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+script = ExtResource("2_doirf")
+anim_tree = NodePath("AnimationTree")
+skeleton = NodePath("Armature/Skeleton3D")
+blood_particles = NodePath("Armature/Skeleton3D/CharBA/BloodParticles")
+weapon_trails_particles = NodePath("Armature/Skeleton3D/WeaponBA/WeaponTrail")
+foot_trails_particles = NodePath("Armature/Skeleton3D/FootBA/FootTrail")
+
+[node name="Skeleton3D" parent="Armature" parent_id_path=PackedInt32Array(386827451) index="0" unique_id=1627377468]
+bones/0/position = Vector3(-0.0039466694, 1.0295475, -0.050627306)
+bones/0/rotation = Quaternion(0.041057426, -0.13603446, -0.0062391614, 0.98983335)
+bones/1/rotation = Quaternion(0.035112713, 0.31346914, 0.9449148, -0.08740802)
+bones/2/rotation = Quaternion(-0.32910413, -7.3108836e-08, -2.571615e-07, 0.94429374)
+bones/3/rotation = Quaternion(0.505555, -0.038974464, 0.050746854, 0.8604185)
+bones/3/scale = Vector3(1.0000104, 0.9999998, 0.99999964)
+bones/4/rotation = Quaternion(0.28546405, -0.10624739, 0.020378977, 0.9522639)
+bones/6/rotation = Quaternion(-0.113790706, 0.16776134, 0.97602993, 0.07920475)
+bones/7/rotation = Quaternion(-0.3522333, -2.845191e-07, 3.0850067e-08, 0.93591225)
+bones/8/rotation = Quaternion(0.6372821, 0.06756972, -0.026955668, 0.7671893)
+bones/9/rotation = Quaternion(0.29062653, 0.106622145, -0.022422522, 0.95061314)
+bones/11/rotation = Quaternion(0.120419905, 0.03285127, 0.006565856, 0.9921577)
+bones/12/rotation = Quaternion(0.03163895, 0.0106324935, -0.0049977843, 0.9994304)
+bones/13/rotation = Quaternion(0.03153657, 0.011184403, -0.004870276, 0.9994283)
+bones/14/rotation = Quaternion(-0.6436188, -0.40616405, 0.40297186, -0.50833005)
+bones/15/rotation = Quaternion(0.6090722, -0.1010554, 0.18482286, 0.76463026)
+bones/16/rotation = Quaternion(6.0070306e-08, -2.5966438e-07, 0.36687273, 0.9302712)
+bones/17/rotation = Quaternion(0.13015643, -0.09377897, 0.06940992, 0.98460513)
+bones/18/rotation = Quaternion(0.6067909, -0.07033204, -0.009310225, 0.7916891)
+bones/19/rotation = Quaternion(0.39795628, -0.017981602, -0.01896102, 0.91703224)
+bones/20/rotation = Quaternion(0.63338166, -0.032488625, 0.028747374, 0.77262264)
+bones/22/rotation = Quaternion(0.65957385, -0.062718846, -0.07572115, 0.74518114)
+bones/23/rotation = Quaternion(0.5939913, -8.679106e-05, 0.004227773, 0.80446035)
+bones/24/rotation = Quaternion(0.17311552, -0.010853309, 0.0046262774, 0.9848309)
+bones/26/rotation = Quaternion(0.69103235, -0.20505328, 0.0017871452, 0.6931265)
+bones/27/rotation = Quaternion(0.48573267, -0.00022478122, 0.014380018, 0.8739891)
+bones/28/rotation = Quaternion(0.2274504, -0.0014636661, -0.0011196171, 0.97378796)
+bones/30/rotation = Quaternion(0.6968534, -0.15667477, -0.06757823, 0.6966215)
+bones/31/rotation = Quaternion(0.4305153, -0.0035715874, -0.0063619358, 0.90255386)
+bones/32/rotation = Quaternion(0.33755365, 0.029877681, -0.08983401, 0.9365334)
+bones/34/rotation = Quaternion(0.2508203, -0.014403707, 0.30610082, 0.9182505)
+bones/35/rotation = Quaternion(0.102853104, 0.09939581, -0.33361533, 0.9317954)
+bones/36/rotation = Quaternion(0.31696072, 0.44103235, -0.37229615, 0.7526101)
+bones/38/rotation = Quaternion(-0.030640393, 0.010979905, 0.019484468, 0.9992803)
+bones/39/rotation = Quaternion(-0.120810166, 0.064522326, -0.036271743, 0.9899123)
+bones/41/rotation = Quaternion(0.64698255, -0.40839678, 0.29808554, 0.5707633)
+bones/42/rotation = Quaternion(0.58978033, 0.18494429, -0.21142021, 0.757137)
+bones/43/rotation = Quaternion(-1.77417e-07, 3.3702244e-07, -0.4913326, 0.87097204)
+bones/44/rotation = Quaternion(0.083486065, 0.13001712, -0.11113891, 0.9817198)
+bones/45/rotation = Quaternion(0.25495106, -0.15015443, 0.0008100503, 0.9552241)
+bones/46/rotation = Quaternion(0.8329507, 0.0027899842, -0.006028223, 0.55330724)
+bones/47/rotation = Quaternion(0.2868168, -0.01016027, 0.010461215, 0.9578745)
+bones/49/rotation = Quaternion(0.7681578, -0.04627317, 0.055368226, 0.6361815)
+bones/50/rotation = Quaternion(0.5076717, -3.9516162e-05, -0.0026627306, 0.8615465)
+bones/51/rotation = Quaternion(0.27098417, -0.016510054, 7.949713e-05, 0.9624423)
+bones/53/rotation = Quaternion(0.7375685, 0.045013994, 0.10694068, 0.6652295)
+bones/54/rotation = Quaternion(0.37335742, -0.0004539889, -0.0074083866, 0.92765796)
+bones/55/rotation = Quaternion(0.48292533, 0.002601617, -0.001392798, 0.8756566)
+bones/57/rotation = Quaternion(0.79466134, 0.0028991962, 0.054724175, 0.6045744)
+bones/58/rotation = Quaternion(0.3523523, -0.0047116657, -0.00030233827, 0.93585557)
+bones/59/rotation = Quaternion(0.43151712, -0.008109427, -0.0035419154, 0.9020614)
+bones/61/rotation = Quaternion(0.12769963, -0.16245417, -0.28509024, 0.9359621)
+bones/62/rotation = Quaternion(0.10723022, 0.1422142, 0.39300016, 0.9021241)
+bones/63/rotation = Quaternion(0.05504081, -0.04395752, 0.32392678, 0.94345623)
+
+[node name="WeaponBA" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="2" unique_id=1075749127]
+transform = Transform3D(-0.13501264, 0.5058598, 0.8519845, 0.90322423, -0.2906908, 0.31572825, 0.4073782, 0.8121605, -0.4176579, -0.1154497, 1.0323615, 0.326)
+bone_name = "mixamorig_RightHand"
+bone_idx = 44
+
+[node name="LongSword" parent="Armature/Skeleton3D/WeaponBA" index="0" unique_id=402927576 instance=ExtResource("2_isf68")]
+transform = Transform3D(0.6607819, -0.2017966, 0.11244955, 0.19999085, 0.6702547, 0.02760924, -0.11563044, 0.006064571, 0.6903565, 0.4779619, 0.22409004, -0.061735958)
+
+[node name="SwordHitBox" type="Area3D" parent="Armature/Skeleton3D/WeaponBA/LongSword" index="1" unique_id=1599678433]
+collision_layer = 64
+collision_mask = 128
+script = ExtResource("4_qhqhk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/WeaponBA/LongSword/SwordHitBox" index="0" unique_id=1285398063]
+transform = Transform3D(1, 0, 2.9802322e-07, -2.9802322e-08, 1, -8.940697e-08, 1.4901161e-08, 0, 0.99999964, 0.08868408, -4.172325e-07, 1.1920929e-07)
+shape = SubResource("BoxShape3D_xisrv")
+
+[node name="WeaponTrail" parent="Armature/Skeleton3D/WeaponBA" index="1" unique_id=912996545 instance=ExtResource("3_c04ig")]
+transform = Transform3D(0.99997824, 0.0032102466, -0.0057318658, -0.0032718778, 0.9999366, -0.010755748, 0.005696818, 0.010774136, 0.99992555, 0.7257165, 0.31141812, -0.08848581)
+emitting = false
+
+[node name="FootBA" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="3" unique_id=1816772261]
+transform = Transform3D(-0.77601135, -0.5864004, -0.2322515, 0.17436598, -0.5533402, 0.8145004, -0.60613745, 0.5915649, 0.53164685, -0.20272031, 0.10742167, -0.21010831)
+bone_name = "mixamorig_RightFoot"
+bone_idx = 8
+
+[node name="FootHitBox" type="Area3D" parent="Armature/Skeleton3D/FootBA" index="0" unique_id=878756180]
+collision_layer = 64
+collision_mask = 128
+script = ExtResource("4_qhqhk")
+hit_box_type = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/FootBA/FootHitBox" index="0" unique_id=553258852]
+transform = Transform3D(1, 7.1525574e-07, 5.9604645e-08, 2.9802322e-08, 1, 2.9802322e-08, 0, 3.5762787e-07, 0.9999999, 0, 0, 0)
+shape = SubResource("SphereShape3D_m4r0q")
+
+[node name="FootTrail" parent="Armature/Skeleton3D/FootBA" index="1" unique_id=796426294 instance=ExtResource("3_c04ig")]
+emitting = false
+
+[node name="CharBA" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="4" unique_id=690259173]
+transform = Transform3D(0.9629114, 0.0011810092, -0.2698152, -0.023521908, 0.99655074, -0.079582535, 0.26879054, 0.082977496, 0.95961785, -0.0039466694, 1.0295475, -0.050627306)
+bone_name = "mixamorig_Hips"
+bone_idx = 0
+
+[node name="HurtBox" type="Area3D" parent="Armature/Skeleton3D/CharBA" index="0" unique_id=1226031978]
+collision_layer = 128
+collision_mask = 64
+script = ExtResource("6_cepos")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/CharBA/HurtBox" index="0" unique_id=1218755460]
+transform = Transform3D(0.9999962, -3.7252903e-08, -3.2782555e-07, 2.1420419e-07, 0.99999213, -6.03497e-07, -2.503395e-06, 8.940697e-08, 0.9999852, 0, 0, 0)
+shape = SubResource("BoxShape3D_m4r0q")
+
+[node name="BloodParticles" parent="Armature/Skeleton3D/CharBA" index="1" unique_id=257010362 instance=ExtResource("4_1xt8g")]
+transform = Transform3D(0.9622825, -0.024036981, 0.27098826, 0.0017362721, 0.9966114, 0.08223509, -0.27204672, -0.07866287, 0.9590635, 0.030412082, 0.28221524, 0.122345045)
+
+[node name="AreaHitBox" type="Area3D" parent="Armature/Skeleton3D" index="5" unique_id=1532152277]
+collision_layer = 64
+collision_mask = 128
+script = ExtResource("8_rdqgc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/AreaHitBox" index="0" unique_id=1199125771]
+shape = SubResource("SphereShape3D_xisrv")
+
+[node name="AnimationTree" parent="." index="2" unique_id=1514229804 instance=ExtResource("5_vxgmw")]
+"parameters/TimeScale 4/scale" = 1.7000000000000028
+"parameters/TimeScale 5/scale" = 1.7000000000000028
+parameters/SlashRoundShot/active = false
+parameters/SlashRoundShot/internal_active = false
+parameters/SlashRoundShot/request = 0
+parameters/FrontKick/active = false
+parameters/FrontKick/internal_active = false
+parameters/FrontKick/request = 0
+"parameters/TimeScale 6/scale" = 1.0

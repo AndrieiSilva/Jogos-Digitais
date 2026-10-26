@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://bvwv876rletlv"]
+
+[ext_resource type="PackedScene" uid="uid://cc25i23d2h6gs" path="res://source/ui/gui/hud/habilities_bar/habilities_bar.tscn" id="1_31b8k"]
+[ext_resource type="PackedScene" uid="uid://duo2ik5ku85fg" path="res://source/ui/gui/hud/quest_panel/quest_panel.tscn" id="2_8icnc"]
+
+[node name="Hud" type="Control" unique_id=972312980]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1865297618]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+metadata/_edit_use_anchors_ = true
+
+[node name="HabilitiesBar" parent="MarginContainer" unique_id=1735330938 instance=ExtResource("1_31b8k")]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="QuestPanel" parent="MarginContainer" unique_id=1614183714 instance=ExtResource("2_8icnc")]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
