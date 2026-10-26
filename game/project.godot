@@ -116,6 +116,7 @@ leon_kick={
 3d_physics/layer_7="hitbox"
 3d_physics/layer_8="hurtbox"
 3d_physics/layer_9="building"
+3d_physics/layer_10="PhysicalBones"
 avoidance/layer_1="player"
 avoidance/layer_2="enemy"
 

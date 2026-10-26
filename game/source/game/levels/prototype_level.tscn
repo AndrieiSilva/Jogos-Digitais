@@ -27,6 +27,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -15)
 [node name="Enemy3" parent="Actors" unique_id=623635458 instance=ExtResource("3_sh06i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -15)
 
+[node name="Enemy4" parent="Actors" unique_id=840739745 instance=ExtResource("3_sh06i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12)
+
+[node name="Enemy5" parent="Actors" unique_id=465635122 instance=ExtResource("3_sh06i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -12)
+
+[node name="Enemy6" parent="Actors" unique_id=1269157879 instance=ExtResource("3_sh06i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -12)
+
 [node name="Cameras" type="Node" parent="." unique_id=2043555959]
 
 [node name="CameraPivot" type="Node3D" parent="Cameras" unique_id=1035410251]

@@ -6,11 +6,15 @@ class_name Actor extends CharacterBody3D
 
 @export var nav_agent : NavigationAgent3D
 
+@export var collision_shape : CollisionShape3D
+
 @export var state_tree : Node
 @export var state_chart : StateChart
 
 @export var actor_data : ActorData
 @export var current_weapon_data : WeaponData
+
+@export var life_label : Label3D = null
 
 signal move_requested(target : Vector3)
 
@@ -20,8 +24,7 @@ var hitbox : Hitbox = null
 var area_hitbox : AreaHitbox = null
 var foot_hitbox : Hitbox = null
 var hurtbox : Hurtbox = null
-
-var can_move : bool = true
+var is_dead : bool = false
 
 var current_enemy_target : Actor = null
 
@@ -57,8 +60,6 @@ func _on_move_requested() -> void:
 	nav_agent.velocity = new_velocity
 
 func _on_velocity_computed(safe_velocity: Vector3) -> void:
-	if not can_move:
-		return
 	
 	velocity = safe_velocity
 	move_and_slide()

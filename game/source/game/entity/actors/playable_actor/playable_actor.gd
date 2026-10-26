@@ -1,8 +1,5 @@
 class_name PlayableActor extends Actor
 
-@export var life_label : Label3D = null
-
-
 func _ready() -> void:
 	super._ready()
 	Bus.playable_actor_entered_level.emit(self)

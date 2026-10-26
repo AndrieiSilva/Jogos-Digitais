@@ -12,6 +12,7 @@ func _ready() -> void:
 	
 	if owner.owner is Actor:
 		actor = owner.owner
+		actor.hurtbox = self
 
 func receive_damage(damage : float, source : Node3D) -> void:
 	actor.actor_data.current_health -= damage

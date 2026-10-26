@@ -80,7 +80,7 @@ fadeout_time = 0.3
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_f0xgq"]
 
 [resource]
-graph_offset = Vector2(-551.63116, 4397.2666)
+graph_offset = Vector2(-443.85132, 1465.5728)
 nodes/output/position = Vector2(1980, 3160)
 nodes/Idle/node = SubResource("AnimationNodeAnimation_yr380")
 nodes/Idle/position = Vector2(-340, 3420)
