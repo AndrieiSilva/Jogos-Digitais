@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bvwv876rletlv"]
 
-[ext_resource type="PackedScene" uid="uid://cc25i23d2h6gs" path="res://source/ui/gui/hud/habilities_bar/habilities_bar.tscn" id="1_31b8k"]
-[ext_resource type="PackedScene" uid="uid://duo2ik5ku85fg" path="res://source/ui/gui/hud/quest_panel/quest_panel.tscn" id="2_8icnc"]
+[ext_resource type="PackedScene" uid="uid://cc25i23d2h6gs" path="res://source/ui/hud/habilities_bar/habilities_bar.tscn" id="1_31b8k"]
+[ext_resource type="PackedScene" uid="uid://duo2ik5ku85fg" path="res://source/ui/hud/quest_panel/quest_panel.tscn" id="2_8icnc"]
 
 [node name="Hud" type="Control" unique_id=972312980]
 layout_mode = 3

@@ -4,6 +4,7 @@
 [ext_resource type="Resource" uid="uid://d3yxifcfgqlnd" path="res://data/resource/actor/player_data.tres" id="2_k3okx"]
 [ext_resource type="Resource" uid="uid://csc7nn43e806v" path="res://data/resource/itens/weapon/long_sword.tres" id="3_ewth7"]
 [ext_resource type="Script" uid="uid://couw105c3bde4" path="res://addons/godot_state_charts/state_chart.gd" id="4_6x4ys"]
+[ext_resource type="PackedScene" uid="uid://d305pwe6jv6b4" path="res://assets/models_scene/characters/main_character_scene.tscn" id="4_i472p"]
 [ext_resource type="Script" uid="uid://jk2jm1g6q853" path="res://addons/godot_state_charts/compound_state.gd" id="5_c55ws"]
 [ext_resource type="Script" uid="uid://cytafq8i1y8qm" path="res://addons/godot_state_charts/atomic_state.gd" id="7_gyodb"]
 [ext_resource type="Script" uid="uid://cf1nsco3w0mf6" path="res://addons/godot_state_charts/transition.gd" id="8_atmrn"]
@@ -11,10 +12,8 @@
 [ext_resource type="Script" uid="uid://dphyg4egcth2x" path="res://source/game/entity/actors/playable_actor/states/run_state.gd" id="10_fclbw"]
 [ext_resource type="Script" uid="uid://cykfd5a6hdv0o" path="res://source/game/entity/actors/playable_actor/states/follow_state.gd" id="10_k3okx"]
 [ext_resource type="Script" uid="uid://dg32q366ol6en" path="res://source/game/entity/actors/playable_actor/states/base_attack_state.gd" id="11_k3okx"]
-[ext_resource type="PackedScene" uid="uid://bcwkugn6v3oy7" path="res://addons/godot_state_charts/utilities/state_chart_debugger.tscn" id="14_ewth7"]
 [ext_resource type="Script" uid="uid://cts77mkgnk5iq" path="res://source/game/entity/actors/playable_actor/states/spin_attack_state.gd" id="14_omcrx"]
 [ext_resource type="Script" uid="uid://bcv10ahotegve" path="res://source/game/entity/actors/playable_actor/states/leon_kick_state.gd" id="14_y1sab"]
-[ext_resource type="PackedScene" uid="uid://d305pwe6jv6b4" path="res://assets/models_scene/characters/main_character_scene.tscn" id="15_g622e"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_xisrv"]
 
@@ -29,8 +28,7 @@ script/source = "extends Node
 func _process(delta: float) -> void:
 	sync_player_skeleton_pos(delta)
 
-func sync_player_skeleton_pos(delta: float) -> void:
-	
+func sync_player_skeleton_pos(_delta: float) -> void:
 	var skeleton: Skeleton3D = actor.character_animated_model.skeleton
 	if not skeleton:
 		return
@@ -45,17 +43,17 @@ func sync_player_skeleton_pos(delta: float) -> void:
 	skeleton.set_bone_pose(idx, hip_pose)
 "
 
-[node name="PlayableActor" type="CharacterBody3D" unique_id=1210677002 node_paths=PackedStringArray("life_label", "character_animated_model", "nav_agent", "state_tree", "state_chart")]
+[node name="PlayableActor" type="CharacterBody3D" unique_id=1210677002 node_paths=PackedStringArray("model_node", "nav_agent", "state_tree", "state_chart", "life_label")]
 collision_layer = 2
 collision_mask = 307
 script = ExtResource("1_mo5sk")
-life_label = NodePath("HealthLabel")
-character_animated_model = NodePath("main_character_model")
+model_node = NodePath("Model")
 nav_agent = NodePath("NavigationAgent3D")
 state_tree = NodePath("StateTree")
 state_chart = NodePath("StateChart")
 actor_data = ExtResource("2_k3okx")
 current_weapon_data = ExtResource("3_ewth7")
+life_label = NodePath("HealthLabel")
 metadata/_custom_type_script = "uid://csil3pc5hdnm8"
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=454473930]
@@ -63,17 +61,20 @@ path_height_offset = 1.0
 avoidance_enabled = true
 avoidance_mask = 2
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=915522029]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-visible = false
-mesh = SubResource("CapsuleMesh_xisrv")
-
 [node name="HealthLabel" type="Label3D" parent="." unique_id=653880664]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 billboard = 1
 text = "HEALTH"
 
-[node name="main_character_model" parent="." unique_id=855398954 instance=ExtResource("15_g622e")]
+[node name="Model" type="Node3D" parent="." unique_id=1501213582]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Model" unique_id=915522029]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
+mesh = SubResource("CapsuleMesh_xisrv")
+
+[node name="main_character_model" parent="Model" unique_id=855398954 node_paths=PackedStringArray("actor") instance=ExtResource("4_i472p")]
+actor = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2125873884]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -223,22 +224,16 @@ script = ExtResource("14_y1sab")
 
 [node name="Dead" type="Node" parent="StateTree/Root" unique_id=896993185]
 
-[node name="StateChartDebugger" parent="." unique_id=2090795940 instance=ExtResource("14_ewth7")]
-anchors_preset = -1
-anchor_right = 0.2717014
-anchor_bottom = 0.5370371
-offset_bottom = -3.0517578e-05
-initial_node_to_watch = NodePath("../StateChart")
-metadata/_edit_use_anchors_ = true
-
 [connection signal="state_entered" from="StateChart/Root/Alive/Movement/Idle" to="StateTree/Root/Alive/Movement/Idle" method="_on_idle_state_entered"]
 [connection signal="state_exited" from="StateChart/Root/Alive/Movement/Idle" to="StateTree/Root/Alive/Movement/Idle" method="_on_idle_state_exited"]
 [connection signal="state_physics_processing" from="StateChart/Root/Alive/Movement/Idle" to="StateTree/Root/Alive/Movement/Idle" method="_on_idle_state_physics_processing"]
 [connection signal="state_unhandled_input" from="StateChart/Root/Alive/Movement/Idle" to="StateTree/Root/Alive/Movement/Idle" method="_on_idle_state_unhandled_input"]
 [connection signal="state_entered" from="StateChart/Root/Alive/Movement/Run" to="StateTree/Root/Alive/Movement/Run" method="_on_run_state_entered"]
+[connection signal="state_exited" from="StateChart/Root/Alive/Movement/Run" to="StateTree/Root/Alive/Movement/Run" method="_on_run_state_exited"]
 [connection signal="state_physics_processing" from="StateChart/Root/Alive/Movement/Run" to="StateTree/Root/Alive/Movement/Run" method="_on_run_state_physics_processing"]
 [connection signal="state_unhandled_input" from="StateChart/Root/Alive/Movement/Run" to="StateTree/Root/Alive/Movement/Run" method="_on_run_state_unhandled_input"]
 [connection signal="state_entered" from="StateChart/Root/Alive/Movement/Follow" to="StateTree/Root/Alive/Movement/Follow" method="_on_follow_state_entered"]
+[connection signal="state_exited" from="StateChart/Root/Alive/Movement/Follow" to="StateTree/Root/Alive/Movement/Follow" method="_on_follow_state_exited"]
 [connection signal="state_physics_processing" from="StateChart/Root/Alive/Movement/Follow" to="StateTree/Root/Alive/Movement/Follow" method="_on_follow_state_physics_processing"]
 [connection signal="state_unhandled_input" from="StateChart/Root/Alive/Movement/Follow" to="StateTree/Root/Alive/Movement/Follow" method="_on_follow_state_unhandled_input"]
 [connection signal="state_entered" from="StateChart/Root/Alive/Attack/BaseAttack" to="StateTree/Root/Alive/Attack/BaseAttack" method="_on_base_attack_state_entered"]

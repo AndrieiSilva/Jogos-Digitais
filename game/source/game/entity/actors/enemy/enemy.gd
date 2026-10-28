@@ -9,10 +9,14 @@ var meshes : Array[MeshInstance3D] = []
 
 func _ready() -> void:
 	super._ready()
+	for child : Node in model_node.get_children():
+		if child is AnimatedModel:
+			character_animated_model = child
+			break
 	recursive_mesh_search(model_node)
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if is_dead:
 		return
 	

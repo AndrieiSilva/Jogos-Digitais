@@ -47,6 +47,11 @@ func _on_follow_state_physics_processing(delta: float) -> void:
 	_state_action(delta)
 	input()
 
+
+func _on_follow_state_exited() -> void:
+	is_primary_button_pressed = false
+
+
 var is_primary_button_pressed : bool = false
 
 func input() -> void:
@@ -56,7 +61,7 @@ func input() -> void:
 		PlayerInputHelper.handle_player_click(nav_agent, actor, get_viewport(), PlayerInputHelper.calc_click_pos(get_viewport().get_mouse_position(), actor, get_viewport()))
 
 
-func _on_follow_state_unhandled_input(event: InputEvent) -> void:
+func _on_follow_state_unhandled_input(_event: InputEvent) -> void:
 	if Input.is_action_pressed("primary_action"):
 		is_primary_button_pressed = true
 	elif Input.is_action_just_released("primary_action"):

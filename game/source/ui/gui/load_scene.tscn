@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://fhu30ch4x2st"]
+
+[ext_resource type="Script" uid="uid://o6f70xn6opvv" path="res://source/ui/gui/load_scene.gd" id="1_5yyh5"]
+
+[node name="LoadScene" type="Control" unique_id=1216681217 node_paths=PackedStringArray("load_label")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5yyh5")
+load_label = NodePath("PanelContainer/LoadLabel")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=2087423660]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Background" type="Panel" parent="PanelContainer" unique_id=636041266]
+layout_mode = 2
+
+[node name="LoadLabel" type="Label" parent="PanelContainer" unique_id=1124269967]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 64
+text = "..."
+uppercase = true

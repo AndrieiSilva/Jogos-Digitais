@@ -21,12 +21,11 @@ radius = 0.3
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_xisrv"]
 radius = 10.0
 
-[node name="Enemy" type="CharacterBody3D" unique_id=235059105 node_paths=PackedStringArray("model_node", "character_animated_model", "nav_agent", "collision_shape", "state_tree", "state_chart", "life_label")]
+[node name="Enemy" type="CharacterBody3D" unique_id=235059105 node_paths=PackedStringArray("model_node", "nav_agent", "collision_shape", "state_tree", "state_chart", "life_label")]
 collision_layer = 16
 collision_mask = 307
 script = ExtResource("1_mog23")
 model_node = NodePath("Model")
-character_animated_model = NodePath("Model/main_character_model")
 nav_agent = NodePath("NavigationAgent3D")
 collision_shape = NodePath("CollisionShape3D")
 state_tree = NodePath("StateTree")
@@ -49,7 +48,8 @@ shape = SubResource("CapsuleShape3D_xisrv")
 
 [node name="Model" type="Node3D" parent="." unique_id=1503045443]
 
-[node name="main_character_model" parent="Model" unique_id=855398954 instance=ExtResource("4_l4jft")]
+[node name="main_character_model" parent="Model" unique_id=855398954 node_paths=PackedStringArray("actor") instance=ExtResource("4_l4jft")]
+actor = NodePath("../..")
 
 [node name="StateChart" type="Node" parent="." unique_id=1485309723]
 script = ExtResource("4_p1p54")

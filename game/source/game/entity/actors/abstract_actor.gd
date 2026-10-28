@@ -29,7 +29,6 @@ var is_dead : bool = false
 var current_enemy_target : Actor = null
 
 func _ready() -> void:
-	await Bus.level_manager_ready
 	actor_data = actor_data.duplicate()
 	_setup_state_tree_recursive(state_tree)
 	nav_agent.velocity_computed.connect(_on_velocity_computed)

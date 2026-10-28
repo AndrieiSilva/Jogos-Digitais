@@ -9,12 +9,8 @@ enum  HIT_BOX_TYPES {
 @export var hit_box_type : HIT_BOX_TYPES = HIT_BOX_TYPES.WEAPON
 
 func _ready() -> void:
-	if not owner.owner:
-		return
-	
-	if owner.owner is Actor:
-		actor = owner.owner
-		if hit_box_type == HIT_BOX_TYPES.WEAPON:
-			actor.hitbox = self
-		elif hit_box_type == HIT_BOX_TYPES.FOOT:
-			actor.foot_hitbox = self
+	actor = owner.actor
+	if hit_box_type == HIT_BOX_TYPES.WEAPON:
+		actor.hitbox = self
+	elif hit_box_type == HIT_BOX_TYPES.FOOT:
+		actor.foot_hitbox = self

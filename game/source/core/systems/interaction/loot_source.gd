@@ -45,7 +45,7 @@ func recursive_mesh_search(node : Node3D) -> void:
 		if child is Node3D:
 			recursive_mesh_search(child)
 
-func _setup_reward(tier : LootTiers.Tiers) -> void:
+func _setup_reward(_tier : LootTiers.Tiers) -> void:
 	var tier_data : Dictionary = LootTiers.TIER[source_tier]
 	var coins_id : String = "coins"
 	var equipment_id : String = "equipments"

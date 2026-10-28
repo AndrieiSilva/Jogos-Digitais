@@ -42,8 +42,6 @@ func _on_leon_kick_state_entered() -> void:
 	PlayerInputHelper.input_enabled = false
 	actor.nav_agent.target_position = actor.position
 	var player : AnimationTree = actor.character_animated_model.anim_tree
-	var one_shot_active = player.get("parameters/LeonShot/active")
-	#if not one_shot_active:
 	player.set("parameters/LeonShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 	
 	var areas_in_hitbox : Array[Area3D] = actor.area_hitbox.get_overlapping_areas()

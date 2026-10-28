@@ -11,9 +11,7 @@ var move_vector2 : Vector2 = Vector2.ZERO
 
 var rotation_target : float 
 
-func _ready() -> void:
-	Bus.playable_actor_entered_level.connect(_on_playable_actor_entered_level)
-	
+func _ready() -> void:	
 	if not cam or not cam_gimbal or not cam_pivot:
 		push_error("CamComponent: Set the goddam references!")
 		return
@@ -28,9 +26,6 @@ func _ready() -> void:
 	
 	var pitch_rad = -deg_to_rad(50)
 	cam_gimbal.rotation.x = pitch_rad
-
-func _on_playable_actor_entered_level(actor : Actor) -> void:
-	pass
 
 func _physics_process(delta: float) -> void:
 	_update_move_vector2()

@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dgar2rjcg4xj0" path="res://source/game/item/item.gd" id="1_sbn5a"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uj30w"]
-size = Vector3(2.381836, 0.20117188, 0.5)
+size = Vector3(1, 0.25, 1)
 
 [node name="Item" type="RigidBody3D" unique_id=164069729 node_paths=PackedStringArray("item_label", "model_node")]
 collision_layer = 4

@@ -7,8 +7,8 @@
 [ext_resource type="VoxelGIData" uid="uid://dpywscr7phqtr" path="res://data/gi/prototype_map/prototype_voxel_gi_data.tres" id="17_2d3kp"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_xisrv"]
-vertices = PackedVector3Array(-74.24905, 0.48523617, -74.236046, -74.24905, 0.48523617, 74.263954, 74.25095, 0.48523617, 74.263954, 74.25095, 0.48523617, -74.236046)
-polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+vertices = PackedVector3Array(-74.24905, 0.48523617, 0.013954163, -4.2490463, 0.48523617, 0.013954163, -3.7490463, 0.48523617, -1.2360458, -2.7490463, 0.48523617, -74.236046, -74.24905, 0.48523617, -74.236046, -2.7490463, 0.48523617, -1.2360458, -1.9990463, 0.48523617, -1.2360458, -1.4990463, 0.48523617, 0.013954163, 74.25095, 0.48523617, 0.013954163, 74.25095, 0.48523617, -74.236046, -3.7490463, 0.48523617, 1.2639542, -74.24905, 0.48523617, 74.263954, -2.7490463, 0.48523617, 74.263954, -2.7490463, 0.48523617, 1.2639542, -1.9990463, 0.48523617, 1.2639542, 74.25095, 0.48523617, 74.263954)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 4), PackedInt32Array(2, 4, 3), PackedInt32Array(3, 5, 2), PackedInt32Array(6, 5, 3), PackedInt32Array(6, 3, 7), PackedInt32Array(7, 3, 8), PackedInt32Array(8, 3, 9), PackedInt32Array(1, 10, 0), PackedInt32Array(0, 10, 11), PackedInt32Array(11, 10, 12), PackedInt32Array(10, 13, 12), PackedInt32Array(12, 13, 14), PackedInt32Array(14, 7, 12), PackedInt32Array(12, 7, 8), PackedInt32Array(12, 8, 15)]
 agent_radius = 0.75
 
 [node name="PrototypeMap" type="Node" unique_id=244975850]

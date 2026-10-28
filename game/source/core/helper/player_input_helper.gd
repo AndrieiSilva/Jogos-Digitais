@@ -1,9 +1,10 @@
 class_name PlayerInputHelper extends RefCounted
 
 static var last_collider_overlay : Node3D = null
+static var is_timer_input_enabled : bool = true
 static var input_enabled : bool = true
 
-static func handle_player_overlay(viewport : Viewport, result : Dictionary) -> void:
+static func handle_player_overlay(_viewport : Viewport, result : Dictionary) -> void:
 	if not result:
 		return
 	
@@ -30,13 +31,21 @@ static func handle_player_overlay(viewport : Viewport, result : Dictionary) -> v
 			elif last_collider_overlay.get_parent().get_parent().has_method("set_outline_enabled"):
 				last_collider_overlay.get_parent().get_parent().set_outline_enabled(true)
 
+static func create_timer(duration: float) -> void:
+	var tree := Engine.get_main_loop() as SceneTree
+	if tree:
+		var timer := tree.create_timer(duration)
+		
+		timer.timeout.connect(_on_timer_timeout)
 
-static func handle_player_click(nav_agent : NavigationAgent3D, actor : Actor, viewport : Viewport, result : Dictionary) -> void:
-	if not input_enabled or result.is_empty():
+static func _on_timer_timeout() -> void:
+	is_timer_input_enabled = true
+
+static func handle_player_click(nav_agent : NavigationAgent3D, actor : Actor, _viewport : Viewport, result : Dictionary) -> void:
+	if not input_enabled or not is_timer_input_enabled or result.is_empty():
 		return
 	
 	actor = actor as PlayableActor
-	
 	if not result:
 		return
 	var collider : Node3D = result.collider
@@ -56,6 +65,9 @@ static func handle_player_click(nav_agent : NavigationAgent3D, actor : Actor, vi
 	else:
 		var target_pos : Vector3 = result.position
 		nav_agent.target_position = target_pos
+	
+	create_timer(0.1)
+	is_timer_input_enabled = false
 
 
 static func calc_click_pos(click_pos : Vector2, actor : Actor, viewport : Viewport) -> Dictionary:

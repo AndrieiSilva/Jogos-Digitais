@@ -9,3 +9,5 @@ class_name AnimatedModel extends Node3D
 
 @export var walk_dust_particles : GPUParticles3D = null
 @export var physical_bone_simulator : PhysicalBoneSimulator3D = null
+
+@export var actor : Actor = null

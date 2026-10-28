@@ -55,10 +55,7 @@ func _on_spin_attack_state_entered() -> void:
 	PlayerInputHelper.input_enabled = false
 	actor.nav_agent.target_position = actor.position
 	var player : AnimationTree = actor.character_animated_model.anim_tree
-	var one_shot_active = player.get("parameters/SpinShot/active")
-	#if not one_shot_active:
 	player.set("parameters/SpinShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
-		
 	
 	add_forward_offset_to_nav(-actor.global_basis.z)
 	if not nav_agent.navigation_finished.is_connected(_on_dest_reached):

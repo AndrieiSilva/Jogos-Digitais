@@ -64,7 +64,7 @@ func recursive_mesh_search(node : Node3D) -> void:
 			recursive_mesh_search(child)
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	item_label.global_position = self.global_position + Vector3(0, 1, 0)
 	if particles:
 		particles.global_position = self.global_position
