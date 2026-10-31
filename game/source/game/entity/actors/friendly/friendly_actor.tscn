@@ -1,0 +1,116 @@
+[gd_scene format=3 uid="uid://bn0l3mpc1drbw"]
+
+[ext_resource type="Script" uid="uid://c51nfkdt7dknp" path="res://source/game/entity/actors/friendly/friendly_actor.gd" id="1_0bt7h"]
+[ext_resource type="Resource" uid="uid://csc7nn43e806v" path="res://data/resource/itens/weapon/long_sword.tres" id="2_58w46"]
+[ext_resource type="Resource" uid="uid://b63xvb5j1ylax" path="res://data/resource/actor/dummy_data.tres" id="2_o6qt6"]
+[ext_resource type="Script" uid="uid://couw105c3bde4" path="res://addons/godot_state_charts/state_chart.gd" id="5_7apro"]
+[ext_resource type="Script" uid="uid://jk2jm1g6q853" path="res://addons/godot_state_charts/compound_state.gd" id="6_xthkn"]
+[ext_resource type="Script" uid="uid://cytafq8i1y8qm" path="res://addons/godot_state_charts/atomic_state.gd" id="7_nu1do"]
+[ext_resource type="Script" uid="uid://cp1wt5atxxsw3" path="res://source/core/systems/detection/friendly_detection.gd" id="8_aprdc"]
+[ext_resource type="Script" uid="uid://cf1nsco3w0mf6" path="res://addons/godot_state_charts/transition.gd" id="8_e5urx"]
+[ext_resource type="Script" uid="uid://paajh8x2c834" path="res://source/game/entity/actors/friendly/states/idle_state.gd" id="8_qyh2x"]
+[ext_resource type="Script" uid="uid://bx2ubtevym3bx" path="res://source/game/entity/actors/friendly/states/talking_state.gd" id="9_ptjjv"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0d2dn"]
+radius = 0.3
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_qyh2x"]
+height = 1.8
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ovq7r"]
+height = 1.0
+radius = 5.0
+
+[node name="FriendlyActor" type="CharacterBody3D" unique_id=945289545 node_paths=PackedStringArray("detection_area", "talk_label", "nav_agent", "collision_shape", "state_tree", "state_chart")]
+script = ExtResource("1_0bt7h")
+detection_area = NodePath("DetectionArea")
+talk_label = NodePath("TalkLabel")
+nav_agent = NodePath("NavigationAgent3D")
+collision_shape = NodePath("CollisionShape3D")
+state_tree = NodePath("StateTree")
+state_chart = NodePath("StateChart")
+actor_data = ExtResource("2_o6qt6")
+current_weapon_data = ExtResource("2_58w46")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=138518823]
+path_height_offset = 1.0
+max_neighbors = 25
+avoidance_layers = 2
+avoidance_mask = 3
+avoidance_priority = 0.9
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1414350144]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_0d2dn")
+
+[node name="Model" type="Node3D" parent="." unique_id=263075598]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Model" unique_id=1446021467]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+mesh = SubResource("CapsuleMesh_qyh2x")
+
+[node name="StateChart" type="Node" parent="." unique_id=1676714354]
+script = ExtResource("5_7apro")
+metadata/_custom_type_script = "uid://couw105c3bde4"
+
+[node name="Root" type="Node" parent="StateChart" unique_id=1902991912]
+script = ExtResource("6_xthkn")
+initial_state = NodePath("Alive")
+
+[node name="Alive" type="Node" parent="StateChart/Root" unique_id=1892317262]
+script = ExtResource("6_xthkn")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateChart/Root/Alive" unique_id=811885282]
+script = ExtResource("7_nu1do")
+
+[node name="onTalking" type="Node" parent="StateChart/Root/Alive/Idle" unique_id=184172989]
+script = ExtResource("8_e5urx")
+to = NodePath("../../Talking")
+event = &"onTalk"
+delay_in_seconds = "0.0"
+
+[node name="Talking" type="Node" parent="StateChart/Root/Alive" unique_id=593529383]
+script = ExtResource("7_nu1do")
+
+[node name="onIdle" type="Node" parent="StateChart/Root/Alive" unique_id=1688708102]
+script = ExtResource("8_e5urx")
+to = NodePath("../Idle")
+event = &"onIdle"
+delay_in_seconds = "0.0"
+
+[node name="StateTree" type="Node" parent="." unique_id=86197704]
+
+[node name="Root" type="Node" parent="StateTree" unique_id=1875853445]
+
+[node name="Alive" type="Node" parent="StateTree/Root" unique_id=770631122]
+
+[node name="Idle" type="Node" parent="StateTree/Root/Alive" unique_id=1186396062]
+script = ExtResource("8_qyh2x")
+
+[node name="Talking" type="Node" parent="StateTree/Root/Alive" unique_id=1591367897 node_paths=PackedStringArray("talk_timer")]
+script = ExtResource("9_ptjjv")
+talk_timer = NodePath("TalkTimer")
+
+[node name="TalkTimer" type="Timer" parent="StateTree/Root/Alive/Talking" unique_id=2079381149]
+
+[node name="DetectionArea" type="Area3D" parent="." unique_id=1451636230]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("8_aprdc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionArea" unique_id=109220709]
+shape = SubResource("CylinderShape3D_ovq7r")
+
+[node name="TalkLabel" type="Label3D" parent="." unique_id=1433152244]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+billboard = 1
+autowrap_mode = 2
+width = 600.0
+
+[connection signal="state_entered" from="StateChart/Root/Alive/Idle" to="StateTree/Root/Alive/Idle" method="_on_idle_state_entered"]
+[connection signal="state_exited" from="StateChart/Root/Alive/Idle" to="StateTree/Root/Alive/Idle" method="_on_idle_state_exited"]
+[connection signal="state_physics_processing" from="StateChart/Root/Alive/Idle" to="StateTree/Root/Alive/Idle" method="_on_idle_state_physics_processing"]
+[connection signal="state_entered" from="StateChart/Root/Alive/Talking" to="StateTree/Root/Alive/Talking" method="_on_talking_state_entered"]
+[connection signal="state_exited" from="StateChart/Root/Alive/Talking" to="StateTree/Root/Alive/Talking" method="_on_talking_state_exited"]
+[connection signal="state_physics_processing" from="StateChart/Root/Alive/Talking" to="StateTree/Root/Alive/Talking" method="_on_talking_state_physics_processing"]

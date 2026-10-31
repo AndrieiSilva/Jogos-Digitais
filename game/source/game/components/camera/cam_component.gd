@@ -5,7 +5,6 @@ var move_vector2 : Vector2 = Vector2.ZERO
 @export var cam_gimbal : Node3D = null
 @export var cam_pivot : Node3D = null
 @export var target : Node3D = null
-
 @export var camera_data : CameraData = null
 
 
@@ -24,7 +23,7 @@ func _ready() -> void:
 	cam_pivot.rotation_degrees.y = camera_data.initial_cam_rot_degrees
 	rotation_target = camera_data.initial_cam_rot_degrees
 	
-	var pitch_rad = -deg_to_rad(50)
+	var pitch_rad = -deg_to_rad(60)
 	cam_gimbal.rotation.x = pitch_rad
 
 func _physics_process(delta: float) -> void:

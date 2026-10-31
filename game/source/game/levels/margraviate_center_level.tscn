@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://btv2qaesc73kk"]
+
+[ext_resource type="PackedScene" uid="uid://bt1gn08w5sulw" path="res://source/game/maps/margraviate_center_map/margraviate_center_map.tscn" id="1_vajrv"]
+[ext_resource type="PackedScene" uid="uid://bqwaxo3od8ou7" path="res://source/game/entity/actors/playable_actor/playable_actor.tscn" id="2_tps5a"]
+[ext_resource type="PackedScene" uid="uid://bn0l3mpc1drbw" path="res://source/game/entity/actors/friendly/friendly_actor.tscn" id="3_4fwjv"]
+[ext_resource type="PackedScene" uid="uid://fa1ku65wjwod" path="res://source/game/components/camera/cam_component.tscn" id="4_3k12i"]
+[ext_resource type="Resource" uid="uid://cur5mr0822slr" path="res://data/resource/actor/generics/generic_friendly_npc_2.tres" id="4_4um08"]
+[ext_resource type="Resource" uid="uid://pxh87hyagbbt" path="res://data/resource/actor/generics/generic_friendly_npc_1.tres" id="5_3k12i"]
+[ext_resource type="Resource" uid="uid://g7uvol5l3yg" path="res://data/resource/camera/base_camera.tres" id="5_5qa8q"]
+[ext_resource type="Resource" uid="uid://dg3tdhiy1bq0l" path="res://data/resource/actor/generics/generic_friendly_npc_3.tres" id="5_lyl6c"]
+
+[node name="MargraviateCenterLevel" type="Node" unique_id=1398054636]
+
+[node name="World" type="Node" parent="." unique_id=434143855]
+
+[node name="CurrentMap" type="Node" parent="World" unique_id=848662465]
+
+[node name="MargraviateCenterMap" parent="World/CurrentMap" unique_id=2030236855 instance=ExtResource("1_vajrv")]
+
+[node name="Actors" type="Node" parent="." unique_id=870474269]
+
+[node name="PlayableActor" parent="Actors" unique_id=1210677002 instance=ExtResource("2_tps5a")]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
+
+[node name="Welcomer" parent="Actors" unique_id=945289545 instance=ExtResource("3_4fwjv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+friendly_actor_tipe = 1
+
+[node name="FriendlyActor2" parent="Actors" unique_id=341098857 instance=ExtResource("3_4fwjv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -10)
+actor_data = ExtResource("4_4um08")
+
+[node name="FriendlyActor4" parent="Actors" unique_id=1530334885 instance=ExtResource("3_4fwjv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -17)
+actor_data = ExtResource("5_lyl6c")
+
+[node name="FriendlyActor3" parent="Actors" unique_id=879946730 instance=ExtResource("3_4fwjv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -10)
+actor_data = ExtResource("5_3k12i")
+
+[node name="FriendlyActor5" parent="Actors" unique_id=753219105 instance=ExtResource("3_4fwjv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44, 0, 7)
+actor_data = ExtResource("5_3k12i")
+
+[node name="FriendlyActor6" parent="Actors" unique_id=918425602 instance=ExtResource("3_4fwjv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40, 0, 8)
+actor_data = ExtResource("5_3k12i")
+
+[node name="FriendlyActor7" parent="Actors" unique_id=513238203 instance=ExtResource("3_4fwjv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43, 0, 11)
+actor_data = ExtResource("5_3k12i")
+
+[node name="FriendlyActor8" parent="Actors" unique_id=1983676737 instance=ExtResource("3_4fwjv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47, 0, -3)
+actor_data = ExtResource("5_3k12i")
+
+[node name="FriendlyActor9" parent="Actors" unique_id=1469960087 instance=ExtResource("3_4fwjv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45, 0, -1)
+actor_data = ExtResource("5_3k12i")
+
+[node name="FriendlyActor10" parent="Actors" unique_id=226131789 instance=ExtResource("3_4fwjv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49, 0, 0)
+actor_data = ExtResource("5_3k12i")
+
+[node name="Cameras" type="Node" parent="." unique_id=268594612]
+
+[node name="CameraPivot" type="Node3D" parent="Cameras" unique_id=2145239951]
+
+[node name="CameraGimbal" type="Node3D" parent="Cameras/CameraPivot" unique_id=2064452512]
+
+[node name="Camera3D" type="Camera3D" parent="Cameras/CameraPivot/CameraGimbal" unique_id=977320714]
+projection = 1
+fov = 50.0
+
+[node name="Components" type="Node" parent="." unique_id=1334646818]
+
+[node name="PlayableActorCameraComponent" parent="Components" unique_id=1258061076 node_paths=PackedStringArray("cam", "cam_gimbal", "cam_pivot", "target") instance=ExtResource("4_3k12i")]
+cam = NodePath("../../Cameras/CameraPivot/CameraGimbal/Camera3D")
+cam_gimbal = NodePath("../../Cameras/CameraPivot/CameraGimbal")
+cam_pivot = NodePath("../../Cameras/CameraPivot")
+target = NodePath("../../Actors/PlayableActor")
+camera_data = ExtResource("5_5qa8q")

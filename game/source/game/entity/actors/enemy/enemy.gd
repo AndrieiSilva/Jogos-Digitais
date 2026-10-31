@@ -3,7 +3,7 @@ class_name Enemy extends Actor
 const OUTLINE_MAT = preload("uid://ca7yc1o6y3bbl")
 
 @export var model_node : Node3D = null
-
+@export var life_label : Label3D = null
 var meshes : Array[MeshInstance3D] = []
 
 

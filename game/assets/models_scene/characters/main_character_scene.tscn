@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://d305pwe6jv6b4"]
 
 [ext_resource type="PackedScene" uid="uid://cleie12dw2aje" path="res://assets/models/characters/main_character_model.glb" id="1_ytlta"]
-[ext_resource type="Script" uid="uid://bw2qrysbqse7t" path="res://source/core/helper/animated_model.gd" id="2_doirf"]
+[ext_resource type="Script" uid="uid://bw2qrysbqse7t" path="res://source/core/systems/character_model/character_model.gd" id="2_doirf"]
 [ext_resource type="PackedScene" uid="uid://dbi7vhkhp22eg" path="res://assets/models/itens/weapons/long_sword.glb" id="2_isf68"]
 [ext_resource type="PackedScene" uid="uid://bbssdjij5xxd0" path="res://source/visual/fx/trail_particles.tscn" id="3_c04ig"]
 [ext_resource type="PackedScene" uid="uid://bw1fxcn6mr0fv" path="res://source/visual/fx/blood_particles.tscn" id="4_1xt8g"]

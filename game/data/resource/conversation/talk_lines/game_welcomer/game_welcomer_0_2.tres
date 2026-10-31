@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="TalkData" format=3 uid="uid://dpmwnypk1vp5w"]
+
+[ext_resource type="Script" uid="uid://dtdhg42o40j0r" path="res://data/resource/conversation/talk_data/talk_data.gd" id="1_mus3a"]
+
+[resource]
+script = ExtResource("1_mus3a")
+talk_text = "O Conde da Marca está esperando pela vossa presença, recomendo não deixá-lo esperando"
+metadata/_custom_type_script = "uid://dtdhg42o40j0r"

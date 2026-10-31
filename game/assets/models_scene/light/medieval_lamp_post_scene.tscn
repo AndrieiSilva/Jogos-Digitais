@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cr33vgi2q2xr8"]
+
+[ext_resource type="PackedScene" uid="uid://dd40nl42g2ida" path="res://assets/models/props/medieval_lamp_post.glb" id="1_11noe"]
+
+[node name="medieval_lamp_post" unique_id=1117010593 instance=ExtResource("1_11noe")]
+
+[node name="Lamppost_Rotten Wood_001_0" parent="." index="0" unique_id=1357278652]
+transform = Transform3D(0.008, 0, 0, 0, 0.008, 0, 0, 0, 0.008, 0.004875633, 5.393184, -1.5062089)
+
+[node name="Lamppost_Rusty metal_0" parent="." index="1" unique_id=11021989]
+transform = Transform3D(0.008, 0, 0, 0, 0.008, 0, 0, 0, 0.008, 0.004875633, 5.484434, -1.5062089)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." index="2" unique_id=1892348213]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.1, -1.85)
+light_color = Color(1, 0.78431374, 0.5882353, 1)
+light_energy = 2.0
+light_volumetric_fog_energy = 2.0
+shadow_enabled = true
+omni_range = 10.0

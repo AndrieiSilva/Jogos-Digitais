@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dj1iqj6cgpcix"]
+
+[ext_resource type="PackedScene" uid="uid://fm8gsckcgi1w" path="res://assets/models/props/bonfire.glb" id="1_pg0yd"]
+
+[node name="bonfire" unique_id=745291662 instance=ExtResource("1_pg0yd")]
+
+[node name="Koster_low_Koster1_0" parent="." index="0" unique_id=130149594]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." index="1" unique_id=937774260]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+light_color = Color(1, 0.78431374, 0.5882353, 1)
+light_energy = 2.0
+light_volumetric_fog_energy = 2.0
+shadow_enabled = true
+omni_range = 10.0

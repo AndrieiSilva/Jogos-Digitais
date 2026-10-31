@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="TalkData" format=3 uid="uid://c03p622lmscgj"]
+
+[ext_resource type="Script" uid="uid://dtdhg42o40j0r" path="res://data/resource/conversation/talk_data/talk_data.gd" id="1_d53hh"]
+
+[resource]
+script = ExtResource("1_d53hh")
+talk_text = "É uma honra o te-lo em nosso margraviato, Inquisidor"
+last_talk = true
+metadata/_custom_type_script = "uid://dtdhg42o40j0r"

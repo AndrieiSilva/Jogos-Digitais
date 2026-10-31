@@ -421,7 +421,7 @@ transparency = 1
 cull_mode = 2
 shading_mode = 0
 vertex_color_use_as_albedo = true
-albedo_color = Color(1, 1, 1, 0.0627451)
+albedo_color = Color(1, 1, 1, 0.007843138)
 use_particle_trails = true
 
 [sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_6pg5q"]
@@ -434,7 +434,6 @@ curve = SubResource("Curve_xd1xf")
 [node name="Trail" type="GPUParticles3D" unique_id=912996545]
 amount = 1
 lifetime = 999999.0
-fixed_fps = 60
 trail_enabled = true
 trail_lifetime = 0.5
 process_material = SubResource("ShaderMaterial_6pg5q")

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ActorData" format=3 uid="uid://dg3tdhiy1bq0l"]
+
+[ext_resource type="Script" uid="uid://bpqxk6lvd8o88" path="res://data/resource/actor/actor_data.gd" id="1_yg3gx"]
+
+[resource]
+script = ExtResource("1_yg3gx")
+name = "res://data/resource/conversation/talk_lines/generic_friendly_3/"
+talk_lines_file = "res://data/resource/conversation/talk_lines/generic_friendly_3/"
+metadata/_custom_type_script = "uid://bpqxk6lvd8o88"

@@ -39,6 +39,7 @@ folder_colors={
 "res://assets/models/": "green",
 "res://assets/models_scene/": "yellow",
 "res://source/": "red",
+"res://source/game/entity/actors/friendly/": "green",
 "res://source/game/entity/actors/playable_actor/": "purple"
 }
 
@@ -117,6 +118,7 @@ leon_kick={
 3d_physics/layer_8="hurtbox"
 3d_physics/layer_9="building"
 3d_physics/layer_10="PhysicalBones"
+3d_physics/layer_11="Passable"
 avoidance/layer_1="player"
 avoidance/layer_2="enemy"
 
@@ -131,6 +133,7 @@ pathfinding/max_threads=-1
 
 [rendering]
 
+rendering_device/d3d12/max_resource_descriptors=262144
 rendering_device/driver.windows="d3d12"
 lights_and_shadows/directional_shadow/soft_shadow_filter_quality=5
 lights_and_shadows/positional_shadow/soft_shadow_filter_quality=5

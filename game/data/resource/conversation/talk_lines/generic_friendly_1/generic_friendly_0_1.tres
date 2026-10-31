@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="TalkData" format=3 uid="uid://c24mvyrmgd4ok"]
+
+[ext_resource type="Script" uid="uid://dtdhg42o40j0r" path="res://data/resource/conversation/talk_data/talk_data.gd" id="1_g0y0j"]
+
+[resource]
+script = ExtResource("1_g0y0j")
+talk_text = "Olá Inquisidor"
+last_talk = true
+metadata/_custom_type_script = "uid://dtdhg42o40j0r"

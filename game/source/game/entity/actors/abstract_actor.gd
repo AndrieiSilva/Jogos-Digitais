@@ -14,8 +14,6 @@ class_name Actor extends CharacterBody3D
 @export var actor_data : ActorData
 @export var current_weapon_data : WeaponData
 
-@export var life_label : Label3D = null
-
 signal move_requested(target : Vector3)
 
 var push_velocity : Vector3 = Vector3.ZERO

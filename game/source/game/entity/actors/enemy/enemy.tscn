@@ -13,7 +13,7 @@
 [ext_resource type="Script" uid="uid://u0byr7vlrf2t" path="res://source/game/entity/actors/enemy/states/run_state.gd" id="10_gorfj"]
 [ext_resource type="Script" uid="uid://ckr2ig52vaixm" path="res://source/game/entity/actors/enemy/states/follow_state.gd" id="11_nayy0"]
 [ext_resource type="Script" uid="uid://b2s0hvqhe6k2f" path="res://source/game/entity/actors/enemy/states/base_attack_state.gd" id="12_oe4gn"]
-[ext_resource type="Script" uid="uid://dlgcsm30a0xme" path="res://source/core/systems/enemy_detection/enemy_detection.gd" id="12_vntiw"]
+[ext_resource type="Script" uid="uid://dlgcsm30a0xme" path="res://source/core/systems/detection/enemy_detection.gd" id="12_vntiw"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xisrv"]
 radius = 0.3
@@ -21,18 +21,19 @@ radius = 0.3
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_xisrv"]
 radius = 10.0
 
-[node name="Enemy" type="CharacterBody3D" unique_id=235059105 node_paths=PackedStringArray("model_node", "nav_agent", "collision_shape", "state_tree", "state_chart", "life_label")]
+[node name="Enemy" type="CharacterBody3D" unique_id=235059105 node_paths=PackedStringArray("model_node", "life_label", "character_animated_model", "nav_agent", "collision_shape", "state_tree", "state_chart")]
 collision_layer = 16
 collision_mask = 307
 script = ExtResource("1_mog23")
 model_node = NodePath("Model")
+life_label = NodePath("HealthLabel")
+character_animated_model = NodePath("Model/main_character_model")
 nav_agent = NodePath("NavigationAgent3D")
 collision_shape = NodePath("CollisionShape3D")
 state_tree = NodePath("StateTree")
 state_chart = NodePath("StateChart")
 actor_data = ExtResource("2_ij7nb")
 current_weapon_data = ExtResource("3_x3fwq")
-life_label = NodePath("HealthLabel")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=548657379]
 path_height_offset = 1.0

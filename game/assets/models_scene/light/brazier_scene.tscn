@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bls0awjmwnl7j"]
+
+[ext_resource type="PackedScene" uid="uid://bwdfjmx5b8acx" path="res://assets/models/props/brazier.glb" id="1_kqp45"]
+
+[node name="brazier" unique_id=660558341 instance=ExtResource("1_kqp45")]
+
+[node name="bra_Metal_0" parent="." index="0" unique_id=1247342379]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." index="1" unique_id=939736460]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
+light_color = Color(1, 0.78431374, 0.5882353, 1)
+light_energy = 2.0
+light_volumetric_fog_energy = 2.0
+shadow_enabled = true
+omni_range = 10.0
